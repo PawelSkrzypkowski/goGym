@@ -45,8 +45,12 @@ public class FirstStartController implements Initializable {
 	private Button createUser;
 	ObservableList<Integer> dayOptions = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
 			14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31);
-	ObservableList<String> monthOptions = FXCollections.observableArrayList("StyczeÒ", "Luty", "Marzec", "KwiecieÒ",
+	private static ObservableList<String> monthOptions = FXCollections.observableArrayList("StyczeÒ", "Luty", "Marzec", "KwiecieÒ",
 			"Maj", "Czerwiec", "Lipiec", "SierpieÒ", "WrzesieÒ", "Paüdziernik", "Listopad", "GrudzieÒ");
+
+	public static ObservableList<String> getMonthOptions() {
+		return monthOptions;
+	}
 
 	public boolean checkNameCorrectness(String name) {
 		Pattern pattern = Pattern.compile("[^a-zA-Z•π∆Ê Í£≥—Ò”ÛåúèüØø -]");
@@ -78,8 +82,7 @@ public class FirstStartController implements Initializable {
 				field.setText("0");
 			try {
 				logInFloat[i] = Float.parseFloat(field.getText());
-			} catch (NumberFormatException e)// jesli zly format liczby
-			{
+			} catch (NumberFormatException e){// jesli zly format liczby
 				fail = true;
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
@@ -117,12 +120,12 @@ public class FirstStartController implements Initializable {
 				stage.close();
 				Main startAgain = new Main();
 				startAgain.start(stage);
-			} catch (ParseException e) {
-				System.out.println("Blπd: ");
-				e.printStackTrace();
-			} catch (IOException e) {
-				System.out.println("Blπd: ");
-				e.printStackTrace();
+			} catch (ParseException | IOException e) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Informacja");
+				alert.setHeaderText("");
+				alert.setContentText("B≥πd: " + e.toString());
+				alert.showAndWait();
 			}
 		}
 	}

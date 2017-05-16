@@ -6,6 +6,8 @@ import diary.Workout;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
 
@@ -40,7 +42,11 @@ public class Main extends Application {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informacja");
+			alert.setHeaderText("");
+			alert.setContentText("B³¹d: " + e.toString());
+			alert.showAndWait();
 		}
 	}
 

@@ -44,18 +44,18 @@ public class StartPageController implements Initializable {
 				mainPage.getChildren().clear();
 				loadMain();
 			});
+			progressButton.setOnAction((event) -> {
+				TrainingProgressController trainingProgressController = new TrainingProgressController();
+				trainingProgressController.createStage(mainPage);
+			});
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText(
-					"Uszkodzony lub brak pliku u¿ytkownika! Usuñ lub przywróc plik user i uruchom aplikacje ponownie.");
+			alert.setContentText("B³¹d: " + e.toString() + ". Uszkodzony lub brak pliku u¿ytkownika! Usuñ lub przywróc plik user i uruchom aplikacje ponownie.");
 			alert.showAndWait();
 		}
-
 	}
 
 	public void loadMain() {

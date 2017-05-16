@@ -1,6 +1,5 @@
 package user;
 
-import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +13,55 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 public class User implements Serializable {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((birthDate == null) ? 0 : birthDate.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((logs == null) ? 0 : logs.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (birthDate == null) {
+			if (other.birthDate != null)
+				return false;
+		} else if (!birthDate.equals(other.birthDate))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (logs == null) {
+			if (other.logs != null)
+				return false;
+		} else if (!logs.equals(other.logs))
+			return false;
+		if (startDate == null) {
+			if (other.startDate != null)
+				return false;
+		} else if (!startDate.equals(other.startDate))
+			return false;
+		return true;
+	}
+
 	private Date startDate = new Date();
 	private String firstName;
 	private String lastName;
@@ -46,19 +94,10 @@ public class User implements Serializable {
 	public static User readUser() throws IOException, ClassNotFoundException {
 		ObjectInputStream file = null;
 		User user = null;
-		try {
-			file = new ObjectInputStream(new FileInputStream("user"));
-			user = (User) file.readObject();
-
-		} catch (EOFException ex) {
-			System.out.println("End of file");
-		}
-
-		finally {
-			if (file != null) {
-				file.close();
-			}
-		}
+		file = new ObjectInputStream(new FileInputStream("user"));
+		user = (User) file.readObject();
+		if (file != null)
+			file.close();
 		return user;
 	}
 

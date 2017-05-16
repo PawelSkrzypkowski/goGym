@@ -5,6 +5,56 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class Log implements Serializable {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(biceps);
+		result = prime * result + Float.floatToIntBits(calf);
+		result = prime * result + Float.floatToIntBits(chest);
+		result = prime * result + Float.floatToIntBits(hips);
+		result = prime * result + ((mensurationDate == null) ? 0 : mensurationDate.hashCode());
+		result = prime * result + Float.floatToIntBits(neck);
+		result = prime * result + Float.floatToIntBits(stomach);
+		result = prime * result + Float.floatToIntBits(thigh);
+		result = prime * result + Float.floatToIntBits(waist);
+		result = prime * result + Float.floatToIntBits(weight);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Log other = (Log) obj;
+		if (Float.floatToIntBits(biceps) != Float.floatToIntBits(other.biceps))
+			return false;
+		if (Float.floatToIntBits(calf) != Float.floatToIntBits(other.calf))
+			return false;
+		if (Float.floatToIntBits(chest) != Float.floatToIntBits(other.chest))
+			return false;
+		if (Float.floatToIntBits(hips) != Float.floatToIntBits(other.hips))
+			return false;
+		if (mensurationDate == null) {
+			if (other.mensurationDate != null)
+				return false;
+		} else if (!mensurationDate.equals(other.mensurationDate))
+			return false;
+		if (Float.floatToIntBits(neck) != Float.floatToIntBits(other.neck))
+			return false;
+		if (Float.floatToIntBits(stomach) != Float.floatToIntBits(other.stomach))
+			return false;
+		if (Float.floatToIntBits(thigh) != Float.floatToIntBits(other.thigh))
+			return false;
+		if (Float.floatToIntBits(waist) != Float.floatToIntBits(other.waist))
+			return false;
+		if (Float.floatToIntBits(weight) != Float.floatToIntBits(other.weight))
+			return false;
+		return true;
+	}
 	private Date mensurationDate = new Date();
 	private float weight;
 	private float neck;

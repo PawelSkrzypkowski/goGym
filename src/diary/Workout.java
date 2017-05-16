@@ -1,8 +1,8 @@
 package diary;
 
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -23,36 +23,90 @@ public class Workout implements Serializable {
 	private String workoutType;
 	private String difficultyLevel;
 
-	public void saveWorkout() {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((difficultyLevel == null) ? 0 : difficultyLevel.hashCode());
+		result = prime * result + ((exercises == null) ? 0 : exercises.hashCode());
+		result = prime * result + ((rest == null) ? 0 : rest.hashCode());
+		result = prime * result + ((setsNumber == null) ? 0 : setsNumber.hashCode());
+		result = prime * result + ((workoutDescription == null) ? 0 : workoutDescription.hashCode());
+		result = prime * result + ((workoutName == null) ? 0 : workoutName.hashCode());
+		result = prime * result + ((workoutType == null) ? 0 : workoutType.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Workout other = (Workout) obj;
+		if (difficultyLevel == null) {
+			if (other.difficultyLevel != null)
+				return false;
+		} else if (!difficultyLevel.equals(other.difficultyLevel))
+			return false;
+		if (exercises == null) {
+			if (other.exercises != null)
+				return false;
+		} else if (!exercises.equals(other.exercises))
+			return false;
+		if (rest == null) {
+			if (other.rest != null)
+				return false;
+		} else if (!rest.equals(other.rest))
+			return false;
+		if (setsNumber == null) {
+			if (other.setsNumber != null)
+				return false;
+		} else if (!setsNumber.equals(other.setsNumber))
+			return false;
+		if (workoutDescription == null) {
+			if (other.workoutDescription != null)
+				return false;
+		} else if (!workoutDescription.equals(other.workoutDescription))
+			return false;
+		if (workoutName == null) {
+			if (other.workoutName != null)
+				return false;
+		} else if (!workoutName.equals(other.workoutName))
+			return false;
+		if (workoutType == null) {
+			if (other.workoutType != null)
+				return false;
+		} else if (!workoutType.equals(other.workoutType))
+			return false;
+		return true;
+	}
+
+	public void saveWorkout() throws FileNotFoundException, IOException {
+		new File("workouts/").mkdir();
 		ObjectOutputStream file = null;
-		try {
-			file = new ObjectOutputStream(new FileOutputStream("workouts/" + workoutName));
-			file.writeObject(this);
-			file.flush();
-			if (file != null)
-				file.close();
-		}
-		catch(IOException e){
-			
-		}
+		file = new ObjectOutputStream(new FileOutputStream("workouts/" + workoutName));
+		file.writeObject(this);
+		file.flush();
+		if (file != null)
+			file.close();
 	}
 
 	public static Workout readWorkout(String fileName) throws IOException, ClassNotFoundException {
 		ObjectInputStream file = null;
 		Workout workout = null;
+		new File("workouts/").mkdir();
 		if(new File("workouts/" + fileName).exists() == true)
-			try {
-				file = new ObjectInputStream(new FileInputStream("workouts/" + fileName));
-				workout = (Workout) file.readObject();
-				if (file != null) {
-					file.close();
-				}
-			} catch (EOFException ex) {
-				System.out.println("End of file");
-			}
+		file = new ObjectInputStream(new FileInputStream("workouts/" + fileName));
+		workout = (Workout) file.readObject();
+		if (file != null) {
+			file.close();
+		}
 		return workout;
 	}
-	public void changeWorkoutProperties(String name, String description, String type, String level){
+	public void changeWorkoutProperties(String name, String description, String type, String level) throws FileNotFoundException, IOException{
 		if(!getWorkoutDescription().equals(description))
 			setWorkoutDescription(description);
 		if(!getWorkoutType().equals(type))
@@ -72,28 +126,23 @@ public class Workout implements Serializable {
 			return false;
 		return true;
 	}
-	public void deleteWorkout() {
-		try {
+	public void deleteWorkout() throws IOException {
 			Files.delete(Paths.get("workouts/" + getWorkoutName()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
-	public void editExercise(int index, Exercise exercise, int setsNumber, int rest) {
+	public void editExercise(int index, Exercise exercise, int setsNumber, int rest) throws FileNotFoundException, IOException {
 		getExercises().set(index, exercise);
 		getSetsNumber().set(index, setsNumber);
 		getRest().set(index, rest);
 		saveWorkout();
 	}
-	public void moveUpExercise(int index) {
+	public void moveUpExercise(int index) throws FileNotFoundException, IOException {
 		Exercise tempExercise = getExercises().get(index);
 		Integer tempSetsNumber = getSetsNumber().get(index);
 		Integer tempRest = getRest().get(index);
 		editExercise(index, getExercises().get(index - 1), getSetsNumber().get(index - 1), getRest().get(index - 1));
 		editExercise(index - 1, tempExercise, tempSetsNumber, tempRest);
 	}
-	public void moveDownExercise(int index) {
+	public void moveDownExercise(int index) throws FileNotFoundException, IOException {
 		Exercise tempExercise = getExercises().get(index);
 		Integer tempSetsNumber = getSetsNumber().get(index);
 		Integer tempRest = getRest().get(index);
@@ -116,27 +165,27 @@ public class Workout implements Serializable {
 		this.setDifficultyLevel(difficultyLevel);
 	}
 
-	public void addItemAtTheEnd(Exercise exercise, Integer setsNumber, Integer rest) {
+	public void addItemAtTheEnd(Exercise exercise, Integer setsNumber, Integer rest) throws FileNotFoundException, IOException {
 		this.exercises.add(exercise);
 		this.setsNumber.add(setsNumber);
 		this.rest.add(rest);
 		saveWorkout();
 	}
 
-	public void addItemAtTheBeginning(Exercise exercise, Integer setsNumber, Integer rest) {
+	public void addItemAtTheBeginning(Exercise exercise, Integer setsNumber, Integer rest) throws FileNotFoundException, IOException {
 		this.exercises.add(0, exercise);
 		this.setsNumber.add(0, setsNumber);
 		this.rest.add(0, rest);
 		saveWorkout();
 	}
 
-	public void addItemAfter(Exercise exercise, Integer setsNumber, Integer rest, int index) {
+	public void addItemAfter(Exercise exercise, Integer setsNumber, Integer rest, int index) throws FileNotFoundException, IOException {
 		this.exercises.add(index, exercise);
 		this.setsNumber.add(index, setsNumber);
 		this.rest.add(index, rest);
 		saveWorkout();
 	}
-	public void deleteItem(int index){
+	public void deleteItem(int index) throws FileNotFoundException, IOException{
 		this.exercises.remove(index);
 		this.setsNumber.remove(index);
 		this.rest.remove(index);
