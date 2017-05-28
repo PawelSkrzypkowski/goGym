@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -13,8 +14,8 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
-@SuppressWarnings("serial")
 public class Workout implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String workoutName;
 	private List<Exercise> exercises;
 	private List<Integer> setsNumber;
@@ -94,7 +95,7 @@ public class Workout implements Serializable {
 			file.close();
 	}
 
-	public static Workout readWorkout(String fileName) throws IOException, ClassNotFoundException {
+	public static Workout readWorkout(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		ObjectInputStream file = null;
 		Workout workout = null;
 		new File("workouts/").mkdir();
@@ -246,6 +247,13 @@ public class Workout implements Serializable {
 
 	public void setDifficultyLevel(String difficultyLevel) {
 		this.difficultyLevel = difficultyLevel;
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [workoutName=" + workoutName + ", exercises=" + exercises + ", setsNumber=" + setsNumber
+				+ ", rest=" + rest + ", workoutDescription=" + workoutDescription + ", workoutType=" + workoutType
+				+ ", difficultyLevel=" + difficultyLevel + "]";
 	}
 
 

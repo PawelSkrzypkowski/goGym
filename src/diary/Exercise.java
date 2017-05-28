@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -13,8 +14,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-@SuppressWarnings("serial")
 public class Exercise implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String name;
 	// private Obrazek obrazek;
 	private String description;
@@ -45,7 +46,7 @@ public class Exercise implements Serializable {
 		}
 	}
 
-	public static Exercise readExercise(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static Exercise readExercise(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		new File("exercises/").mkdir();
 		ObjectInputStream file = null;
 		Exercise exercise = null;
@@ -145,6 +146,11 @@ public class Exercise implements Serializable {
 
 	public void setRecordReps(int recordReps) {
 		this.recordReps = recordReps;
+	}
+	@Override
+	public String toString() {
+		return "Exercise [name=" + name + ", description=" + description + ", workingMuscles="
+				+ Arrays.toString(workingMuscles) + ", record=" + record + ", recordReps=" + recordReps + "]";
 	}
 
 }

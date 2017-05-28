@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-@SuppressWarnings("serial")
 public class Set implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Integer reps;
 	private Boolean dropSet;
 	private List<Double> weight;
@@ -89,11 +89,8 @@ public class Set implements Serializable{
 		this.weight = weight;
 	}
 
-
 	@Override
-	public String toString(){
-		String wartosc = new String();
-		wartosc = "(" + reps.toString() + ", " + dropSet.toString() + ", " + weight.toString() + ")";
-		return wartosc;
+	public String toString() {
+		return "Set [reps=" + reps + ", dropSet=" + dropSet + ", weight=" + weight + "]";
 	}
 }

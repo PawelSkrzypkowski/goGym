@@ -1,18 +1,29 @@
 package user;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
 
-@SuppressWarnings("serial")
 public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private Date startDate = new Date();
+	private String firstName;
+	private String lastName;
+	private Date birthDate;
+	private List<Log> logs;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,12 +73,6 @@ public class User implements Serializable {
 		return true;
 	}
 
-	private Date startDate = new Date();
-	private String firstName;
-	private String lastName;
-	private Date birthDate;
-	private List<Log> logs;
-
 	public User() {
 		this.setLogs(new LinkedList<Log>());
 	}
@@ -91,7 +96,7 @@ public class User implements Serializable {
 		}
 	}
 
-	public static User readUser() throws IOException, ClassNotFoundException {
+	public static User readUser() throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		ObjectInputStream file = null;
 		User user = null;
 		file = new ObjectInputStream(new FileInputStream("user"));
@@ -122,6 +127,15 @@ public class User implements Serializable {
 		}
 
 		return age;
+	}
+	
+	public TreeMap<Date, Float> getDateLogMap(String logName) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+		TreeMap<Date, Float> map = new TreeMap<Date, Float>();
+		for(Log l : logs){
+			Method method = l.getClass().getMethod("get" + logName);
+			map.put(l.getMensurationDate(), (Float)method.invoke(l));
+		}
+		return map;
 	}
 
 	public void addLog(Log log) {
@@ -170,5 +184,11 @@ public class User implements Serializable {
 
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
+	}
+
+	@Override
+	public String toString() {
+		return "User [startDate=" + startDate + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate="
+				+ birthDate + ", logs=" + logs + "]";
 	}
 }

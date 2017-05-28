@@ -1,11 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 
 import diary.Diary;
@@ -17,15 +23,20 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import user.User;
 
 public class TrainingProgressController {
-
+	private String[] logNames = new String[]{"Weight", "Neck", "Chest", "Biceps", "Waist", "Stomach", "Hips", "Thigh", "Calf"};
+	private String[] logNamesPl = new String[]{"Waga", "Szyja", "Klatka piersiowa", "Biceps", "Talia", "Brzuch", "Biodra", "Udo", "£ydka"};
+	
 	public void showExerciseChart(Exercise exercise, VBox mainPage) {
 		try {
+			mainPage.getChildren().clear();
 			TreeMap<Date, Double> map = Diary.getMapDateRecord(exercise);
 			Double max = 0.0;
 			CategoryAxis xAxis = new CategoryAxis();
@@ -40,6 +51,7 @@ public class TrainingProgressController {
 				if (max < entry.getValue())
 					max = entry.getValue();
 			}
+			series.setName("Maksymalne wyniki na poszczególnych treningach");
 			chart.getData().add(series);
 			Label record = new Label("Aktualny rekord: " + max.toString());
 			mainPage.getChildren().addAll(chart, record);
@@ -49,31 +61,54 @@ public class TrainingProgressController {
 			e.printStackTrace();
 		}
 	}
-
+	public void showLogChart(int i, VBox mainPage){
+		mainPage.getChildren().clear();
+		try {
+			TreeMap<Date, Float> tm = User.readUser().getDateLogMap(logNames[i]);
+			CategoryAxis xAxis = new CategoryAxis();
+			NumberAxis yAxis = new NumberAxis();
+			LineChart<String, Number> chart = new LineChart<String, Number>(xAxis, yAxis);
+			XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
+			Float max = (float) 0;
+			Float min = (float) 999;
+			for(Entry<Date, Float> entry : tm.entrySet()){
+				SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+				series.getData().add(new XYChart.Data<String, Number>(sdf.format(entry.getKey()), entry.getValue()));
+				if(max < entry.getValue())
+					max = entry.getValue();
+				if(min > entry.getValue())
+					min = entry.getValue();
+			}
+			series.setName("Zmiany partii cia³a: " + logNamesPl[i]);
+			chart.getData().add(series);
+			Label recordMin = new Label("Najmniejsza wartoœæ: " + min.toString()), recordMax = new Label("Najwiêksza wartoœæ: " + max.toString());
+			mainPage.getChildren().addAll(chart, recordMin, recordMax);
+		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException | ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void showMonthlyRaisedWeightChart(VBox mainPage) {
 		try{
-		CategoryAxis xAxis = new CategoryAxis();
-		NumberAxis yAxis = new NumberAxis();
-		LineChart<String, Number> chart = new LineChart<String, Number>(xAxis, yAxis);
-		chart.setTitle("Raport miesiêczny - podnoszony ciê¿ar");
-		XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
-		Double max = 0.0;
-		for (int i = 12; i >= 0; i--) {
-			Double raised = Diary.getMonthlyRaisedWeight(i);
-			String m;
-			if (raised > 0.0) {
-				if (Calendar.MONTH - i > 0)
-					m = FirstStartController.getMonthOptions().get(Calendar.MONTH - i - 1);
-				else
-					m = FirstStartController.getMonthOptions().get(12 - Math.abs(Calendar.MONTH - i) - 1);
+			mainPage.getChildren().clear();
+			CategoryAxis xAxis = new CategoryAxis();
+			NumberAxis yAxis = new NumberAxis();
+			LineChart<String, Number> chart = new LineChart<String, Number>(xAxis, yAxis);
+			chart.setTitle("Raport miesiêczny - podnoszony ciê¿ar");
+			XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
+			Double max = 0.0;
+			for (int i = 11; i >= 0; i--) {
+				Double raised = Diary.getMonthlyRaisedWeight(i);
+				String m = FirstStartController.getMonthOptions().get(((Calendar.getInstance().get(Calendar.MONTH) - i) % 12 + 12) % 12);
 				series.getData().add(new XYChart.Data<String, Number>(m, raised));
 				if(raised > max)
 					max = raised;
 			}
-		}
-		chart.getData().add(series);
-		Label record = new Label("Aktualny miesiêczny rekord: " + max.toString());
-		mainPage.getChildren().add(chart);
+			series.setName("Podnoszony ciê¿ar w przeci¹gu roku");
+			chart.getData().add(series);
+			Label record = new Label("Aktualny miesiêczny rekord: " + max.toString());
+			mainPage.getChildren().addAll(chart, record);
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
@@ -122,15 +157,112 @@ public class TrainingProgressController {
 		gp.addRow(4, label9);
 		gp.addRow(5, label10);
 		mainPage.getChildren().add(gp);
-		/*
-		 * usun to tuaj nizej
-		 */
-		showExerciseChart(diary.getExercisesDone().get(0).getExercise(), mainPage);
-		showMonthlyRaisedWeightChart(mainPage);
+	}
+	public void showMonthSummary(VBox mainPage, int minusMonth) {
+		mainPage.getChildren().clear();
+		try{
+		Label summary = new Label("Podsumowanie treningów z miesi¹ca " + FirstStartController.getMonthOptions().get(((Calendar.getInstance().get(Calendar.MONTH) - minusMonth) % 12 + 12) % 12));
+		summary.setFont(new Font(20));
+		mainPage.getChildren().add(summary);
+		Integer restTime = Diary.getMonthlyRestTime(minusMonth) / 60;// min
+		Integer exerciseTime = Diary.getMonthlyExercisingTime(minusMonth);
+		Label label1 = new Label("Ca³kowity czas treningu:"), label2 = new Label("Czas æwiczeñ:");
+		label1.setPrefWidth(245);
+		label2.setPrefWidth(245);
+		Label label3 = new Label(Diary.getMonthlyTrainingTime(minusMonth) + " min");
+		label3.setFont(new Font(15));
+		Label label4 = new Label(exerciseTime.toString() + " min");
+		label4.setFont(new Font(15));
+		Label label5 = new Label("Czas odpoczynku:"), label6 = new Label("Wykonane æwiczenia:");
+		Label label7 = new Label(restTime.toString() + " min");
+		label7.setFont(new Font(15));
+		Label label8 = new Label(Diary.getMonthlyExercisesDone(minusMonth).toString());
+		label8.setFont(new Font(15));
+		Label label9 = new Label("Podniesiony ciê¿ar:");
+		Label label10 = new Label(Diary.getMonthlyRaisedWeight(minusMonth).toString() + " kg");
+		label10.setFont(new Font(17));
+		GridPane gp = new GridPane();
+		gp.setPrefWidth(493);
+		gp.setPadding(new Insets(10, 10, 10, 10));
+		gp.addRow(0, label1, label2);
+		gp.addRow(1, label3, label4);
+		gp.addRow(2, label5, label6);
+		gp.addRow(3, label7, label8);
+		gp.addRow(4, label9);
+		gp.addRow(5, label10);
+		mainPage.getChildren().add(gp);
+		}
+		catch(IOException | ClassNotFoundException e){
+			//blad
+		}
 	}
 
 	public void createStage(VBox mainPage) {
 		mainPage.getChildren().clear();
-		showTrainingSummary(mainPage, "16-05-2017 14-55-51");
+		Button trainingsSummaries = new Button("Poka¿ podsumowanie treningów"), showExercisesSummaries = new Button("Poka¿ podsumowanie æwiczeñ"), showMonthByMonthSummaries = new Button("Poka¿ podsumowanie miesiêczne"),
+				showMeansurmentsSummaries = new Button("Poka¿ podsumowanie pomiarów cia³a");
+		mainPage.getChildren().addAll(trainingsSummaries, showExercisesSummaries, showMonthByMonthSummaries, showMeansurmentsSummaries);
+		trainingsSummaries.setOnAction((event) -> {
+			mainPage.getChildren().clear();
+			try {
+				LinkedList<Diary> list = Diary.downloadDiaries();
+				SortedSet<Date> set = new TreeSet<Date>(Collections.reverseOrder());
+				for(Diary d : list)
+					set.add(d.getStartDate());
+				for(Date date : set){
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+					Button button = new Button("Trening z dnia: " + sdf.format(date));
+					mainPage.getChildren().add(button);
+					button.setOnAction((event2) -> {
+						SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
+						showTrainingSummary(mainPage, sdf2.format(date));
+					});
+				}
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		showExercisesSummaries.setOnAction((event) -> {
+			mainPage.getChildren().clear();
+			try {
+				List<Exercise> list = Exercise.downloadExercises();
+				for(Exercise ex : list){
+					Button button = new Button("Zobacz postêpy w æwiczeniu " + ex.getName());
+					mainPage.getChildren().add(button);
+					button.setOnAction((event2) -> {
+						showExerciseChart(ex, mainPage);
+					});
+				}
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		showMonthByMonthSummaries.setOnAction((event) -> {
+			showMonthlyRaisedWeightChart(mainPage);
+			for (int i = 0; i <= 11; i++) {
+				String m = FirstStartController.getMonthOptions().get(((Calendar.getInstance().get(Calendar.MONTH) - i) % 12 + 12) % 12);
+				Button monthSummary = new Button("Podsumowanie miesi¹ca " + m);
+				mainPage.getChildren().add(monthSummary);
+				final int i2 = i;
+				monthSummary.setOnAction((event2) -> {
+					showMonthSummary(mainPage, i2);
+				});
+			}
+		});
+		showMeansurmentsSummaries.setOnAction((event) -> {
+			mainPage.getChildren().clear();
+			int i=0;
+			for(String s : logNames){
+				Button button = new Button("Postêpy - " + s);
+				mainPage.getChildren().add(button);
+				final int in = i;
+				button.setOnAction((event2) -> {
+					showLogChart(in, mainPage);
+				});
+				i++;
+			}
+		});
 	}
 }

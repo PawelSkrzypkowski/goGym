@@ -3,8 +3,18 @@ package user;
 import java.io.Serializable;
 import java.util.Date;
 
-@SuppressWarnings("serial")
 public class Log implements Serializable {
+	private Date mensurationDate = new Date();
+	private float weight;
+	private float neck;
+	private float chest;
+	private float biceps;
+	private float waist;
+	private float stomach;
+	private float hips;
+	private float thigh;
+	private float calf;
+	private static final long serialVersionUID = 1L;
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -55,16 +65,6 @@ public class Log implements Serializable {
 			return false;
 		return true;
 	}
-	private Date mensurationDate = new Date();
-	private float weight;
-	private float neck;
-	private float chest;
-	private float biceps;
-	private float waist;
-	private float stomach;
-	private float hips;
-	private float thigh;
-	private float calf;
 	public Log(){}
 	public Log(float weight, float neck, float chest, float biceps, float waist, float stomach, float hips, float thigh, float calf){
 		this.setWeight(weight);
@@ -147,6 +147,12 @@ public class Log implements Serializable {
 	}
 	public void setCalf(float calf) {
 		this.calf = calf;
+	}
+	@Override
+	public String toString() {
+		return "Log [mensurationDate=" + mensurationDate + ", weight=" + weight + ", neck=" + neck + ", chest=" + chest
+				+ ", biceps=" + biceps + ", waist=" + waist + ", stomach=" + stomach + ", hips=" + hips + ", thigh="
+				+ thigh + ", calf=" + calf + "]";
 	}
 
 }

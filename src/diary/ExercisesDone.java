@@ -4,15 +4,10 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-@SuppressWarnings("serial")
 public class ExercisesDone implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Exercise exercise;
 	private List<Set> sets;
-
-	@Override
-	public String toString(){
-			return "(" + exercise.toString() + ", " + sets.toString() + ")";
-	}
 	
 	public ExercisesDone(){
 		setSets(new LinkedList<Set>());
@@ -67,6 +62,10 @@ public class ExercisesDone implements Serializable {
 
 	public void setExercise(Exercise exercise) {
 		this.exercise = exercise;
+	}
+	@Override
+	public String toString() {
+		return "ExercisesDone [exercise=" + exercise + ", sets=" + sets + "]";
 	}
 
 }
