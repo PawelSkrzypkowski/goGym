@@ -57,8 +57,12 @@ public class TrainingProgressController {
 			mainPage.getChildren().addAll(chart, record);
 
 		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informacja");
+			alert.setHeaderText("");
+			alert.setContentText("B³¹d: " + e.toString()
+					+ ". Odczyt pliku nie powiód³ siê.");
+			alert.showAndWait();
 		}
 	}
 	public void showLogChart(int i, VBox mainPage){
@@ -85,8 +89,11 @@ public class TrainingProgressController {
 			mainPage.getChildren().addAll(chart, recordMin, recordMax);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException | ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informacja");
+			alert.setHeaderText("");
+			alert.setContentText("B³¹d: " + e.toString());
+			alert.showAndWait();
 		}
 	}
 	public void showMonthlyRaisedWeightChart(VBox mainPage) {
@@ -110,7 +117,12 @@ public class TrainingProgressController {
 			Label record = new Label("Aktualny miesiêczny rekord: " + max.toString());
 			mainPage.getChildren().addAll(chart, record);
 		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informacja");
+			alert.setHeaderText("");
+			alert.setContentText("B³¹d: " + e.toString()
+					+ ". B³¹d odczytu pliku.");
+			alert.showAndWait();
 		}
 	}
 
@@ -193,7 +205,12 @@ public class TrainingProgressController {
 		mainPage.getChildren().add(gp);
 		}
 		catch(IOException | ClassNotFoundException e){
-			//blad
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informacja");
+			alert.setHeaderText("");
+			alert.setContentText("B³¹d: " + e.toString()
+					+ ". B³¹d odczytu pliku.");
+			alert.showAndWait();
 		}
 	}
 
@@ -219,8 +236,12 @@ public class TrainingProgressController {
 					});
 				}
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Informacja");
+				alert.setHeaderText("");
+				alert.setContentText("B³¹d: " + e.toString()
+						+ ". B³¹d odczytu pliku.");
+				alert.showAndWait();
 			}
 		});
 		showExercisesSummaries.setOnAction((event) -> {
@@ -235,8 +256,12 @@ public class TrainingProgressController {
 					});
 				}
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Informacja");
+				alert.setHeaderText("");
+				alert.setContentText("B³¹d: " + e.toString()
+						+ ". B³¹d odczytu pliku.");
+				alert.showAndWait();
 			}
 		});
 		showMonthByMonthSummaries.setOnAction((event) -> {

@@ -1,6 +1,6 @@
 package controller;
 
-import java.awt.Desktop;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,7 +8,10 @@ import java.io.InvalidClassException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
 import application.Logs;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -24,13 +27,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.scene.control.Alert.AlertType;
 import user.User;
 
 public class StartPageController implements Initializable {
 	@FXML
-	private Button homeButton, plansButton, calculatorsButton, progressButton, logsButton, settingsButton;
+	private Button homeButton, plansButton, calculatorsButton, progressButton, logsButton;
 	@FXML
 	private ImageView refreshUserData, editAvatar, avatar;
 	@FXML
@@ -68,6 +70,10 @@ public class StartPageController implements Initializable {
 					e.printStackTrace();
 				}
 			});
+			calculatorsButton.setOnAction((event) -> {
+				CalculatorsController cc = new CalculatorsController();
+				cc.createStage(mainPage);
+			});
 			refreshUserData.setOnMouseClicked((event) -> {// moze by dodac
 															// podswietlnie? :)
 				try {
@@ -99,6 +105,18 @@ public class StartPageController implements Initializable {
 					avatar.setImage(image);
 					double margin = (avatar.getFitWidth() - image.getWidth()) / 2;
 					avatar.setX(margin);
+					BufferedImage bi = SwingFXUtils.fromFXImage(image, null);
+					try{
+						File dir = new File("images/avatar.png");
+						ImageIO.write(bi, "png", dir);
+					} catch(IOException | IllegalArgumentException e){
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Informacja");
+						alert.setHeaderText("");
+						alert.setContentText("B³¹d: " + e.toString()
+								+ ". Zapis pliku nie powiód³ siê.");
+						alert.showAndWait();
+					}
 				}
 			});
 		} catch (ClassNotFoundException | IOException e) {
@@ -129,5 +147,10 @@ public class StartPageController implements Initializable {
 		sp.setHbarPolicy(ScrollBarPolicy.NEVER);
 		sp.setFitToWidth(true);
 		page.getChildren().add(sp);
+		
+		Image avatarImage = new Image("file:images/avatar.png");
+		double margin = (avatar.getFitWidth() - avatarImage.getWidth()) / 2;
+		avatar.setImage(avatarImage);
+		avatar.setX(margin);
 	}
 }
