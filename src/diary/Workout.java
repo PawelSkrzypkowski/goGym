@@ -13,7 +13,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * Klasa do tworzenia treningów
+ * @author Pawe³
+ *
+ */
 public class Workout implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String workoutName;
@@ -84,7 +88,11 @@ public class Workout implements Serializable {
 			return false;
 		return true;
 	}
-
+	/**
+	 * Metoda zapisujaca trening
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void saveWorkout() throws FileNotFoundException, IOException {
 		new File("workouts/").mkdir();
 		ObjectOutputStream file = null;
@@ -94,19 +102,39 @@ public class Workout implements Serializable {
 		if (file != null)
 			file.close();
 	}
-
+	/**
+	 * Metoda odczytuj¹ca trening
+	 * @param fileName
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws InvalidClassException
+	 */
 	public static Workout readWorkout(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		ObjectInputStream file = null;
 		Workout workout = null;
 		new File("workouts/").mkdir();
 		if(new File("workouts/" + fileName).exists() == true)
 		file = new ObjectInputStream(new FileInputStream("workouts/" + fileName));
+		if(file ==null){
+			return workout;
+		}
 		workout = (Workout) file.readObject();
 		if (file != null) {
 			file.close();
 		}
 		return workout;
 	}
+	/**
+	 * Metoda zmieniaj¹ca elementy opisowe treningu
+	 * @param name
+	 * @param description
+	 * @param type
+	 * @param level
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void changeWorkoutProperties(String name, String description, String type, String level) throws FileNotFoundException, IOException{
 		if(!getWorkoutDescription().equals(description))
 			setWorkoutDescription(description);
@@ -120,6 +148,13 @@ public class Workout implements Serializable {
 		}
 		saveWorkout();
 	}
+	/**
+	 * Metoda sprawdzajaca czy istnieje juz trening i czy nie zostanie nadpisany
+	 * @param name
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public boolean checkIfWorkoutExist(String name) throws ClassNotFoundException, IOException{//sprawdza czy po zmianie nazwy nie zostanie nadpisany inny plan
 		if(name.equals(getWorkoutName()))//jesli nazwa nie zostala zmieniona
 			return false;
@@ -127,15 +162,34 @@ public class Workout implements Serializable {
 			return false;
 		return true;
 	}
+	/**
+	 * Metoda usuwaj¹ca trening
+	 * @throws IOException
+	 */
 	public void deleteWorkout() throws IOException {
 			Files.delete(Paths.get("workouts/" + getWorkoutName()));
 	}
+	/**
+	 * Metoda zmieniajaca wybrane cwiczenie
+	 * @param index
+	 * @param exercise
+	 * @param setsNumber
+	 * @param rest
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void editExercise(int index, Exercise exercise, int setsNumber, int rest) throws FileNotFoundException, IOException {
 		getExercises().set(index, exercise);
 		getSetsNumber().set(index, setsNumber);
 		getRest().set(index, rest);
 		saveWorkout();
 	}
+	/**
+	 * Metoda zamieniajaca cwiczenie miejscami z cwiczeniem wyzej
+	 * @param index
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void moveUpExercise(int index) throws FileNotFoundException, IOException {
 		Exercise tempExercise = getExercises().get(index);
 		Integer tempSetsNumber = getSetsNumber().get(index);
@@ -143,6 +197,12 @@ public class Workout implements Serializable {
 		editExercise(index, getExercises().get(index - 1), getSetsNumber().get(index - 1), getRest().get(index - 1));
 		editExercise(index - 1, tempExercise, tempSetsNumber, tempRest);
 	}
+	/**
+	 * Metoda zamieniajaca cwiczenie miejscami z cwiczeniem nizej
+	 * @param index
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void moveDownExercise(int index) throws FileNotFoundException, IOException {
 		Exercise tempExercise = getExercises().get(index);
 		Integer tempSetsNumber = getSetsNumber().get(index);
@@ -150,12 +210,21 @@ public class Workout implements Serializable {
 		editExercise(index, getExercises().get(index + 1), getSetsNumber().get(index + 1), getRest().get(index + 1));
 		editExercise(index + 1, tempExercise, tempSetsNumber, tempRest);
 	}
+	/**
+	 * Konstruktor tworzacy pusty trening
+	 */
 	public Workout() {
 		setExercises(new LinkedList<Exercise>());
 		setSetsNumber(new LinkedList<Integer>());
 		setRest(new LinkedList<Integer>());
 	}
-
+	/**
+	 * Konstruktor tworzacy trening z elementami opisowymi
+	 * @param name
+	 * @param workoutDescription
+	 * @param workoutType
+	 * @param difficultyLevel
+	 */
 	public Workout(String name, String workoutDescription, String workoutType, String difficultyLevel) {
 		setExercises(new LinkedList<Exercise>());
 		setSetsNumber(new LinkedList<Integer>());
@@ -165,27 +234,55 @@ public class Workout implements Serializable {
 		this.setWorkoutType(workoutType);
 		this.setDifficultyLevel(difficultyLevel);
 	}
-
+	/**
+	 * Metoda dodajaca cwiczenie na koncu
+	 * @param exercise
+	 * @param setsNumber
+	 * @param rest
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void addItemAtTheEnd(Exercise exercise, Integer setsNumber, Integer rest) throws FileNotFoundException, IOException {
 		this.exercises.add(exercise);
 		this.setsNumber.add(setsNumber);
 		this.rest.add(rest);
 		saveWorkout();
 	}
-
+	/**
+	 * Metoda dodajaca cwiczenie na poczatku
+	 * @param exercise
+	 * @param setsNumber
+	 * @param rest
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void addItemAtTheBeginning(Exercise exercise, Integer setsNumber, Integer rest) throws FileNotFoundException, IOException {
 		this.exercises.add(0, exercise);
 		this.setsNumber.add(0, setsNumber);
 		this.rest.add(0, rest);
 		saveWorkout();
 	}
-
+	/**
+	 * Metoda dodajaca cwiczenie po wybranym cwiczeniu
+	 * @param exercise
+	 * @param setsNumber
+	 * @param rest
+	 * @param index
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void addItemAfter(Exercise exercise, Integer setsNumber, Integer rest, int index) throws FileNotFoundException, IOException {
 		this.exercises.add(index, exercise);
 		this.setsNumber.add(index, setsNumber);
 		this.rest.add(index, rest);
 		saveWorkout();
 	}
+	/**
+	 * Metoda usuwajaca wybrane cwiczenie
+	 * @param index
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void deleteItem(int index) throws FileNotFoundException, IOException{
 		this.exercises.remove(index);
 		this.setsNumber.remove(index);

@@ -3,15 +3,25 @@ package diary;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * Klasa do obslugi wykonanych cwiczen
+ * @author Pawe³
+ *
+ */
 public class ExercisesDone implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Exercise exercise;
 	private List<Set> sets;
-	
+	/**
+	 * Konstruktor tworzacy pusty obiekt
+	 */
 	public ExercisesDone(){
 		setSets(new LinkedList<Set>());
 	}
+	/**
+	 * Konstruktor tworzacy obiekt z wybranego cwiczenia
+	 * @param exercise
+	 */
 	public ExercisesDone(Exercise exercise){
 		setSets(new LinkedList<Set>());
 		setExercise(exercise);

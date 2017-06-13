@@ -3,7 +3,11 @@ package diary;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * Klasa do tworzenia wykonanych serii
+ * @author Pawe³
+ *
+ */
 public class Set implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer reps;
@@ -14,12 +18,22 @@ public class Set implements Serializable{
 	public Integer getReps() {
 		return reps;
 	}
-
+	/**
+	 * Konstruktor tworzacy obiekt z dropSetem
+	 * @param reps
+	 * @param dropSet
+	 * @param weight
+	 */
 	public Set(Integer reps, Boolean dropSet, List<Double> weight){
 		setReps(reps);
 		setDropSet(dropSet);
 		setWeight(weight);
 	}
+	/**
+	 * Konstruktor tworzacy obiekt bez dropsetu
+	 * @param reps
+	 * @param weight
+	 */
 	public Set(Integer reps, Double weight){
 		setReps(reps);
 		setDropSet(false);

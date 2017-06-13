@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import application.Main;
+import application.CreateExercises;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +25,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import user.Log;
 import user.User;
-
+/**
+ * Klasa - kontroler rejestracji nowego u¿ytkownika
+ * @author Pawe³
+ *
+ */
 public class FirstStartController implements Initializable {
 	@FXML
 	private VBox vb;
@@ -69,7 +73,10 @@ public class FirstStartController implements Initializable {
 			return false;
 		return true;
 	}
-
+	/**
+	 * Metoda przechwytujaca tworzenie nowego uzytkownika
+	 * @param event
+	 */
 	public void handleCreateUser(ActionEvent event) {
 		Float[] logInFloat = new Float[9];
 		int i = 0;
@@ -118,18 +125,31 @@ public class FirstStartController implements Initializable {
 																// okna
 																// rejestracji
 				stage.close();
-				Main startAgain = new Main();
-				startAgain.start(stage);
-			} catch (ParseException | IOException e) {
+				CreateExercises start = new CreateExercises();
+				start.start();
+			} catch (IOException e) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
 				alert.setContentText("B³¹d: " + e.toString());
 				alert.showAndWait();
+			} catch (ParseException e) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Informacja");
+				alert.setHeaderText("");
+				alert.setContentText("B³¹d: niepoprawna data");
+				alert.showAndWait();
 			}
 		}
 	}
-
+	/**
+	 * Metoda zmieniaj¹ca polsk¹ datê na datê w formacie Javowym
+	 * @param day
+	 * @param month
+	 * @param year
+	 * @return
+	 * @throws ParseException
+	 */
 	public Date changeToDateType(Integer day, String month, Integer year) throws ParseException {
 		switch (month) {
 		case "Styczeñ":
@@ -172,9 +192,12 @@ public class FirstStartController implements Initializable {
 			month = "1";
 		}
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		format.setLenient(false);
 		return format.parse(day.toString() + "-" + month + "-" + year.toString());
 	}
-
+	/**
+	 * Metoda inicjalizuj¹ca, tworz¹ca widok okna oraz listenery
+	 */
 	public void initialize(URL url, ResourceBundle rb) {
 		birthDay.setItems(dayOptions);
 		birthMonth.setItems(monthOptions);

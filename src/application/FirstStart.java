@@ -5,15 +5,28 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+/**
+ * Klasa tworz¹ca scene do pierwszego w³¹czenia aplikacji
+ * @author Pawe³
+ *
+ */
 public class FirstStart {
 	Stage secondaryStage = new Stage();
+	/**
+	 * Metoda sprawdzajaca czy istenieje juz u¿ytkownik
+	 * @return true je¿eli istnieje, false je¿eli nie istnieje
+	 */
 	public static boolean checkIfUserExist(){
-		boolean czy = new File("user").isFile();
-		return czy;
+		boolean check = new File("user").isFile();
+		return check;
 	}
+	/**
+	 * Metoda tworz¹ca scene
+	 * @throws IOException
+	 */
 	public void newUser() throws IOException{
 		if(checkIfUserExist() == false)
 		{
@@ -22,6 +35,8 @@ public class FirstStart {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			secondaryStage.setScene(scene);
 			secondaryStage.setResizable(false);
+			secondaryStage.setTitle("goGym - Rejestracja");
+			secondaryStage.getIcons().add(new Image((getClass().getResource("/icon.png").toExternalForm())));
 			secondaryStage.show();
 		}
 	}

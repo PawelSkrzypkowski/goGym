@@ -10,14 +10,28 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import user.Log;
 import user.User;
-
+/**
+ * Klasa obs³uguj¹ca sekcjê kalkulatorów aplikacji
+ * @author Pawe³
+ *
+ */
 public class CalculatorsController {
+	/**
+	 * Metoda do obs³ugi obliczania BMI
+	 * @param mainPage
+	 * @throws InvalidClassException
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void showBMI(VBox mainPage)
 			throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException {
 		Label weight = new Label("Waga:"), height = new Label("Wzrost:");
@@ -64,7 +78,14 @@ public class CalculatorsController {
 			}
 		});
 	}
-
+	/**
+	 * Metoda do obs³ugi obliczania BMR
+	 * @param mainPage
+	 * @throws InvalidClassException
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void showBMR(VBox mainPage) throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
 		ToggleGroup sex = new ToggleGroup();
 		RadioButton female = new RadioButton("Kobieta");
@@ -81,6 +102,7 @@ public class CalculatorsController {
 		Text descr = new Text(
 				"Wspó³czynnik ten okreœla minimaln¹ iloœæ kalorii niezbêdnych do zachowania podstawowych funkcji organizmu.\nKalkulator dodatkowo okreœla niezbêdn¹ iloœæ kalorii i sk³adników po¿ywienia przy okreœleniu poziomu Twojej aktywnoœci fizycznej. Podany udzia³ procentowy sk³adników po¿ywienia zapewnia zdrowy i bezpieczny sposób od¿ywiania.");
 		descr.setWrappingWidth(450);
+		descr.setFill(Color.WHITE);
 		TextField setWeight = new TextField(), setHeight = new TextField(), setAge = new TextField();
 		Button calculate = new Button("Oblicz");
 		User user = User.readUser();
@@ -117,7 +139,10 @@ public class CalculatorsController {
 			}
 		});
 	}
-
+	/**
+	 * Metoda do obs³ugi obliczania perfekcyjnej wagi
+	 * @param mainPage
+	 */
 	public void showPerfectWeight(VBox mainPage){
 		ToggleGroup sex = new ToggleGroup();
 		RadioButton female = new RadioButton("Kobieta");
@@ -134,6 +159,7 @@ public class CalculatorsController {
 		Text descr = new Text(
 				"Podczas badañ prowadzonych przez francuskiego lekarza Pierre’a Broca na ¿o³nierzach w XIX wieku zauwa¿ono zale¿noœæ, wed³ug której przeciêtnie masa cia³a badanych stanowi³a wartoœæ wzrostu w cm – 100. Obecnie stosuje siê modyfikacjê tego wzoru z uwzglêdnieniem p³ci. Przyjmuje siê, ¿e wzór Broca jest miarodajny dla osób o wzroœcie nie mniejszym ni¿ 160 cm i nie wiêkszym ni¿ 190 cm.");
 		descr.setWrappingWidth(450);
+		descr.setFill(Color.WHITE);
 		TextField setHeight = new TextField();
 		Button calculate = new Button("Oblicz");
 		setHeight.setPromptText("cm");
@@ -160,7 +186,14 @@ public class CalculatorsController {
 			}
 		});
 	}
-	
+	/**
+	 * Metoda do obs³ugi obliczania iloœci tkanki t³uszczowej
+	 * @param mainPage
+	 * @throws InvalidClassException
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void showFat(VBox mainPage) throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
 		ToggleGroup sex = new ToggleGroup();
 		RadioButton female = new RadioButton("Kobieta");
@@ -177,6 +210,7 @@ public class CalculatorsController {
 		Text descr = new Text(
 				"Jest to wskaŸnik okreœlaj¹cy procentowy udzia³ t³uszczu w masie ca³ego cia³a");
 		descr.setWrappingWidth(450);
+		descr.setFill(Color.WHITE);
 		TextField setWeight = new TextField(), setWaist = new TextField();
 		Button calculate = new Button("Oblicz");
 		User user = User.readUser();
@@ -209,7 +243,14 @@ public class CalculatorsController {
 			}
 		});
 	}
-	
+	/**
+	 * Metoda do obs³ugi obliczania WHR
+	 * @param mainPage
+	 * @throws InvalidClassException
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void showWHR(VBox mainPage) throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
 		Label hips = new Label("Biodra:"), waist = new Label("Talia:");
 		Label title = new Label("WskaŸnik dystrybucji tkanki t³uszczowej - WHR");
@@ -220,6 +261,7 @@ public class CalculatorsController {
 		Text descr = new Text(
 				"Jest kolejnym sposobem na obliczanie poziom zapasowej tkanki t³uszczowej. Optymalna wartoœæ nie powinna przekraczaæ 0,8 wœród kobiet i 1 u mê¿czyzn. Proporcje te minimalizuj¹ prawdopodobieñstwo wyst¹pienia choroby wieñcowej i cukrzycy typu II.");
 		descr.setWrappingWidth(450);
+		descr.setFill(Color.WHITE);
 		TextField setHips = new TextField(), setWaist = new TextField();
 		Button calculate = new Button("Oblicz");
 		User user = User.readUser();
@@ -247,9 +289,15 @@ public class CalculatorsController {
 			}
 		});
 	}
-
+	/**
+	 * Metoda do obs³ugi kalkulatorów
+	 * @param mainPage
+	 */
 	public void createStage(VBox mainPage) {
 		mainPage.getChildren().clear();
+		ImageView calc = new ImageView("/calculators.png");
+		mainPage.getChildren().add(calc);
+		mainPage.setSpacing(10);
 		Button BMI = new Button("Kalkulator BMI"), BMR = new Button("Kalkulator BMR"),
 				perfectWeight = new Button("Kalkulator idealnej wagi"),
 				fat = new Button("Kalkulator tkanki t³uszczowej"), WHR = new Button("Kalkulator WHR");

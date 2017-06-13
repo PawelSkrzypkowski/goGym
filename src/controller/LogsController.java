@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,10 +14,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.VBox;
 import user.Log;
 import user.User;
-
+/**
+ * Klasa - kontroler modu³u aplikacji do dodawania pomiarów cia³a
+ * @author Pawe³
+ *
+ */
 public class LogsController implements Initializable {
 	@FXML
 	private TextField setWeight, setNeck, setChest, setBiceps, setWaist, setStomach, setHips, setThigh, setCalf;
@@ -31,7 +35,10 @@ public class LogsController implements Initializable {
 			return false;
 		return true;
 	}
-	
+	/**
+	 * Metoda przechwyuj¹ca dodawania pomiaru
+	 * @param event
+	 */
 	public void addLog(ActionEvent event){
 		Float[] logInFloat = new Float[9];
 		int i = 0;
@@ -73,11 +80,9 @@ public class LogsController implements Initializable {
 			}
 		}
 	}
-	
-	public void createStage(VBox mainPage) {
-
-	}
-
+	/**
+	 * MEtoda inicjalizuj¹ca i tworz¹ca widok do dodawania pomiarów
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		TextField[] logTable = { setWeight, setNeck, setChest, setBiceps, setWaist, setStomach, setHips, setThigh,

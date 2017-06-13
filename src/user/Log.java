@@ -2,7 +2,11 @@ package user;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * Klasa do obs³ugi pomiarów
+ * @author Pawe³
+ *
+ */
 public class Log implements Serializable {
 	private Date mensurationDate = new Date();
 	private float weight;
@@ -15,9 +19,23 @@ public class Log implements Serializable {
 	private float thigh;
 	private float calf;
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Metoda obliczaj¹ca BMI
+	 * @param weight
+	 * @param height
+	 * @return
+	 */
 	public static Double calculateBMI(float weight, int height){
 		return (double)weight / (height*height) * 10000;
 	}
+	/**
+	 * Metoda obliczaj¹ca BMR
+	 * @param isFemale
+	 * @param weight
+	 * @param height
+	 * @param age
+	 * @return
+	 */
 	public static Integer calculateBMR(boolean isFemale, float weight, int height, int age){
 		int plus;
 		if(isFemale)
@@ -25,18 +43,37 @@ public class Log implements Serializable {
 		else plus = 5;
 		return (int)(9.99 * weight + 6.25 * height - 4.92 * age + plus);
 	}
+	/**
+	 * Metoda obliczaj¹ca wskaznik Broca
+	 * @param isFemale
+	 * @param height
+	 * @return
+	 */
 	public static Double calculateBroc(boolean isFemale, int height){
 		double x;
 		if(isFemale) x = 0.85;
 		else x = 0.9;
 		return (height - 100) * x;
 	}
+	/**
+	 * Metoda obliczaj¹ca ilosc tluszczu
+	 * @param isFemale
+	 * @param weight
+	 * @param waist
+	 * @return
+	 */
 	public static Double calculateFat(boolean isFemale, float weight, float waist){
 		double minus;
 		if(isFemale) minus = 76.76;
 		else minus = 98.42;
 		return ((4.15 * waist) / 2.54-0.082 * weight * 2.2-minus)/(weight * 2.2)*100;
 	}
+	/**
+	 * Metoda obliczaj¹ca WHR
+	 * @param hips
+	 * @param waist
+	 * @return
+	 */
 	public static Double calculateWHR(float hips, float waist){
 		
 		return (double)waist/hips;
@@ -91,7 +128,22 @@ public class Log implements Serializable {
 			return false;
 		return true;
 	}
+	/**
+	 * Pusty konstruktor
+	 */
 	public Log(){}
+	/**
+	 * Konstruktor tworzacy pomiar podajac kazdy element osobno
+	 * @param weight
+	 * @param neck
+	 * @param chest
+	 * @param biceps
+	 * @param waist
+	 * @param stomach
+	 * @param hips
+	 * @param thigh
+	 * @param calf
+	 */
 	public Log(float weight, float neck, float chest, float biceps, float waist, float stomach, float hips, float thigh, float calf){
 		this.setWeight(weight);
 		this.setNeck(neck);
@@ -103,6 +155,10 @@ public class Log implements Serializable {
 		this.setThigh(thigh);
 		this.setCalf(calf);
 	}
+	/**
+	 * Konstruktor tworzacy pomiar podajac dane w tablicy
+	 * @param log
+	 */
 	public Log(Float[] log){
 		this.setWeight(log[0]);
 		this.setNeck(log[1]);

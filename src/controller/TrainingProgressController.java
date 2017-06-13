@@ -23,17 +23,26 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import user.User;
-
+/**
+ * Klasa - kontroler obs³uguj¹ca sekcjê do przegl¹dania postêpów treningowych
+ * @author Pawe³
+ *
+ */
 public class TrainingProgressController {
 	private String[] logNames = new String[]{"Weight", "Neck", "Chest", "Biceps", "Waist", "Stomach", "Hips", "Thigh", "Calf"};
 	private String[] logNamesPl = new String[]{"Waga", "Szyja", "Klatka piersiowa", "Biceps", "Talia", "Brzuch", "Biodra", "Udo", "£ydka"};
-	
+	/**
+	 * Metoda pokazuj¹ca wykres wybranego æwiczenia
+	 * @param exercise
+	 * @param mainPage
+	 */
 	public void showExerciseChart(Exercise exercise, VBox mainPage) {
 		try {
 			mainPage.getChildren().clear();
@@ -65,6 +74,11 @@ public class TrainingProgressController {
 			alert.showAndWait();
 		}
 	}
+	/**
+	 * Metoda pokazuj¹ca wykres wybranego elementu pomiarów cia³a
+	 * @param i
+	 * @param mainPage
+	 */
 	public void showLogChart(int i, VBox mainPage){
 		mainPage.getChildren().clear();
 		try {
@@ -96,6 +110,10 @@ public class TrainingProgressController {
 			alert.showAndWait();
 		}
 	}
+	/**
+	 * Metoda pokazuj¹ca wykres podnoszonego ciêzaru w przeci¹gu roku
+	 * @param mainPage
+	 */
 	public void showMonthlyRaisedWeightChart(VBox mainPage) {
 		try{
 			mainPage.getChildren().clear();
@@ -125,7 +143,11 @@ public class TrainingProgressController {
 			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * Metoda pokazujaca podsumowanie wybranego treningu
+	 * @param mainPage
+	 * @param fileName
+	 */
 	public void showTrainingSummary(VBox mainPage, String fileName) {
 		Diary diary = null;
 		try {
@@ -170,6 +192,11 @@ public class TrainingProgressController {
 		gp.addRow(5, label10);
 		mainPage.getChildren().add(gp);
 	}
+	/**
+	 * Metoda pokauzj¹ca podsumowanie wybranego miesi¹ca
+	 * @param mainPage
+	 * @param minusMonth
+	 */
 	public void showMonthSummary(VBox mainPage, int minusMonth) {
 		mainPage.getChildren().clear();
 		try{
@@ -213,11 +240,17 @@ public class TrainingProgressController {
 			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * Metoda umo¿liwiaj¹ca wybranie wybranego podsumowania
+	 * @param mainPage
+	 */
 	public void createStage(VBox mainPage) {
 		mainPage.getChildren().clear();
+		ImageView progress = new ImageView("/progress.png");
+		mainPage.getChildren().add(progress);
 		Button trainingsSummaries = new Button("Poka¿ podsumowanie treningów"), showExercisesSummaries = new Button("Poka¿ podsumowanie æwiczeñ"), showMonthByMonthSummaries = new Button("Poka¿ podsumowanie miesiêczne"),
 				showMeansurmentsSummaries = new Button("Poka¿ podsumowanie pomiarów cia³a");
+		mainPage.setSpacing(10);
 		mainPage.getChildren().addAll(trainingsSummaries, showExercisesSummaries, showMonthByMonthSummaries, showMeansurmentsSummaries);
 		trainingsSummaries.setOnAction((event) -> {
 			mainPage.getChildren().clear();
@@ -279,8 +312,8 @@ public class TrainingProgressController {
 		showMeansurmentsSummaries.setOnAction((event) -> {
 			mainPage.getChildren().clear();
 			int i=0;
-			for(String s : logNames){
-				Button button = new Button("Postêpy - " + s);
+			for(@SuppressWarnings("unused") String s : logNames){
+				Button button = new Button("Postêpy - " + logNamesPl[i]);
 				mainPage.getChildren().add(button);
 				final int in = i;
 				button.setOnAction((event2) -> {

@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
+
 import application.Logs;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -24,12 +25,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import user.User;
-
+/**
+ * Klasa  - kontroler do obslugi okna Strony G³ownej aplikacji
+ * @author Pawe³
+ *
+ */
 public class StartPageController implements Initializable {
 	@FXML
 	private Button homeButton, plansButton, calculatorsButton, progressButton, logsButton;
@@ -42,7 +49,9 @@ public class StartPageController implements Initializable {
 	private HBox page;
 	@FXML
 	private VBox root;
-
+	/**
+	 * Metoda inicjalizujaca, ladujaca dane uzytkownika, strone glowna oraz dodajaca handlery
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
@@ -102,13 +111,13 @@ public class StartPageController implements Initializable {
 						image = new Image(file.toURI().toString(), avatar.getFitWidth(), avatar.getFitHeight(), true,
 								false);
 					}
-					avatar.setImage(image);
 					double margin = (avatar.getFitWidth() - image.getWidth()) / 2;
 					avatar.setX(margin);
 					BufferedImage bi = SwingFXUtils.fromFXImage(image, null);
 					try{
-						File dir = new File("images/avatar.png");
+						File dir = new File("avatar.png");
 						ImageIO.write(bi, "png", dir);
+						loadAvatar();
 					} catch(IOException | IllegalArgumentException e){
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Informacja");
@@ -128,7 +137,13 @@ public class StartPageController implements Initializable {
 			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * Metoda ladujaca dane uzytkownika
+	 * @throws InvalidClassException
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void loadUserDetails()
 			throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException {
 		User user = User.readUser();
@@ -136,21 +151,41 @@ public class StartPageController implements Initializable {
 				+ user.getLogs().get(user.getLogs().size() - 1).getWeight() + " kg\n" + "Wiek: " + user.calculateAge()
 				+ " lat");
 	}
-
+	/**
+	 * Metoda laduajca avatar
+	 */
+	public void loadAvatar(){
+		File externalAvatar = new File("avatar.png");
+		Image avatarImage;
+		if(externalAvatar.exists())
+			avatarImage = new Image("file:avatar.png");
+		else
+			avatarImage = new Image(getClass().getResource("/avatar.png").toExternalForm());
+		double margin = (avatar.getFitWidth() - avatarImage.getWidth()) / 2;
+		avatar.setImage(avatarImage);
+		avatar.setX(margin);
+	}
+	/**
+	 * Metoda ladujaca strone glowna
+	 */
 	public void loadMain() {
-		ImageView home = new ImageView("file:images/home.png");
+		ImageView home = new ImageView("/home.png");
 		mainPage.getChildren().add(home);
 		mainPage.setPadding(new Insets(10));
 		mainPage.setPrefWidth(500);
+		mainPage.setStyle("-fx-background-color:  #2e3539");
+		mainPage.setSpacing(0);
 		ScrollPane sp = new ScrollPane(mainPage);
 		sp.setFitToHeight(true);
 		sp.setHbarPolicy(ScrollBarPolicy.NEVER);
 		sp.setFitToWidth(true);
+		sp.setStyle("-fx-background-color:  #2e3539");
 		page.getChildren().add(sp);
-		
-		Image avatarImage = new Image("file:images/avatar.png");
-		double margin = (avatar.getFitWidth() - avatarImage.getWidth()) / 2;
-		avatar.setImage(avatarImage);
-		avatar.setX(margin);
+		Text text = new Text("Witaj w aplikacji goGym. Aplikacja umo¿liwia uk³adanie w³asnych treningów oraz przeprowadzanie ich w czasie rzeczywistym. Wspieranie siê goGym w codziennych treningach gwarantuje wykonanie zaplanowanej iloœci æwiczeñ, serii oraz przerw.\n"
+				+ "Ponadto aplikacja umo¿liwia obliczanie podstawowych wskaŸników cia³a cz³owieka oraz œledzenie postêpów w perspektywie æwiczeñ, miesiêcy oraz w³asnego cia³a.\n\n Zapraszamy do æwiczenia i ¿yczymy wielu sukcesów!");
+		text.setWrappingWidth(450);
+		text.setFill(Color.WHITE);
+		mainPage.getChildren().add(text);
+		loadAvatar();
 	}
 }

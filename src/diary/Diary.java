@@ -11,14 +11,23 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+/**
+ * Klasa obs³uguj¹ca wykonane treningi
+ * @author Pawe³
+ *
+ */
 public class Diary implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Date startDate;
 	private Date finishDate;
 	private List<ExercisesDone> exercisesDone;
 	private Integer restTime;//seconds
-	
+	/**
+	 * Metoda pobieraj¹ca wykonane treningi
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static LinkedList<Diary> downloadDiaries() throws ClassNotFoundException, IOException {
 		LinkedList<Diary> diary = new LinkedList<Diary>();
 		File folder = new File("diary/");
@@ -30,6 +39,13 @@ public class Diary implements Serializable {
 		}
 		return diary;
 	}
+	/**
+	 * Metoda obliczaj¹ca podniesiony ciezar w ciagu wybranego miesiaca
+	 * @param minusMonth
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static Double getMonthlyRaisedWeight(int minusMonth) throws ClassNotFoundException, IOException{//dzisiejszy miesiac - minusMonth
 		LinkedList<Diary> diary = getDiariesFromMonth(minusMonth);
 		Double weight = 0.0;
@@ -38,6 +54,13 @@ public class Diary implements Serializable {
 		}
 		return weight;
 	}
+	/**
+	 * Metoda pobieraj¹ca treningi w ciagu wybranego miesiaca
+	 * @param minusMonth
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static LinkedList<Diary> getDiariesFromMonth(int minusMonth) throws ClassNotFoundException, IOException{
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
@@ -64,6 +87,13 @@ public class Diary implements Serializable {
 		}
 		return monthDiaries;
 	}
+	/**
+	 * Metoda pobierajaca czas treningow w ciagu miesiaca
+	 * @param minusMonth
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static Integer getMonthlyTrainingTime(int minusMonth) throws ClassNotFoundException, IOException{//dzisiejszy miesiac - minusMonth
 		LinkedList<Diary> diaries = getDiariesFromMonth(minusMonth);
 		Integer trainingTime = 0;
@@ -72,6 +102,13 @@ public class Diary implements Serializable {
 		}
 		return trainingTime;
 	}
+	/**
+	 * Metoda pobierajaca czas cwiczen w ciagu miesiaca
+	 * @param minusMonth
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static Integer getMonthlyExercisingTime(int minusMonth) throws ClassNotFoundException, IOException{//dzisiejszy miesiac - minusMonth
 		LinkedList<Diary> diaries = getDiariesFromMonth(minusMonth);
 		Integer exercisingTime = 0;
@@ -80,6 +117,13 @@ public class Diary implements Serializable {
 		}
 		return exercisingTime;
 	}
+	/**
+	 * Metoda obliczajaca iloœæ przerw w treningach w ciagu miesiaca
+	 * @param minusMonth
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static Integer getMonthlyRestTime(int minusMonth) throws ClassNotFoundException, IOException{//dzisiejszy miesiac - minusMonth
 		LinkedList<Diary> diaries = getDiariesFromMonth(minusMonth);
 		Integer restTime = 0;
@@ -88,6 +132,13 @@ public class Diary implements Serializable {
 		}
 		return restTime;
 	}
+	/**
+	 * Metoda obliczajca ilsoc wykonanych cwiczen w ciagu miesiaca
+	 * @param minusMonth
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static Integer getMonthlyExercisesDone(int minusMonth) throws ClassNotFoundException, IOException{//dzisiejszy miesiac - minusMonth
 		LinkedList<Diary> diaries = getDiariesFromMonth(minusMonth);
 		Integer exercisesDone = 0;
@@ -96,6 +147,13 @@ public class Diary implements Serializable {
 		}
 		return exercisesDone;
 	}
+	/**
+	 * Metoda zwracajaca mapê Data - rekord dla wybranego cwiczenia
+	 * @param exercise
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static TreeMap<Date, Double> getMapDateRecord(Exercise exercise) throws ClassNotFoundException, IOException{
 		LinkedList<Diary> diaries = downloadDiaries();
 		TreeMap<Date, Double> hm = new TreeMap<Date, Double>();
@@ -117,16 +175,24 @@ public class Diary implements Serializable {
 		}
 		return hm;
 	}
-	
+	/**
+	 * Metoda obliczajca czas treningu
+	 * @return
+	 */
 	public Integer showTrainingTime() {
 		double time = (finishDate.getTime() - startDate.getTime()) / 60000.0;
 		return (int) time;
 	}
-	
+	/**
+	 * Metoda zwiekszjaca ilosc przerw
+	 * @param rest
+	 */
 	public void increaseRestTime(int rest){
 		setRestTime(getRestTime() + rest);
 	}
-	
+	/**
+	 * Konstruktor tworz¹cy nowy Wykonany trening
+	 */
 	public Diary(){
 		startDate = new Date();
 		exercisesDone = new LinkedList<ExercisesDone>();
@@ -169,7 +235,10 @@ public class Diary implements Serializable {
 			return false;
 		return true;
 	}
-
+	/**
+	 * Metoda zwracajaca podniesiony ciezar
+	 * @return podniesiony ciezar
+	 */
 	public double showRaisedWeight() {
 		double weight = 0;
 		for (int i = 0; i < exercisesDone.size(); i++)
@@ -178,7 +247,10 @@ public class Diary implements Serializable {
 					weight += exercisesDone.get(i).getSets().get(j).getWeight().get(k);
 		return weight;
 	}
-
+	/**
+	 * Metoda zapisujaca dziennik
+	 * @throws IOException
+	 */
 	public void saveDiary() throws IOException {
 		ObjectOutputStream file = null;
 		new File("diary/").mkdir();
@@ -192,7 +264,15 @@ public class Diary implements Serializable {
 				file.close();
 		}
 	}
-
+	/**
+	 * Metoda odczytuj¹ca wybrany trening
+	 * @param fileName
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws InvalidClassException
+	 */
 	public static Diary readDiary(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		ObjectInputStream file = null;
 		Diary diary = null;

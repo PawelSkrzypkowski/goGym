@@ -13,7 +13,11 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * Klasa do obslugi cwiczen
+ * @author Pawe³
+ *
+ */
 public class Exercise implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
@@ -22,7 +26,12 @@ public class Exercise implements Serializable {
 	private String[] workingMuscles;
 	private int record;
 	private int recordReps;
-
+	/**
+	 * Konstruktor tworzacy cwiczenie
+	 * @param name
+	 * @param description
+	 * @param workingMuscles
+	 */
 	public Exercise(String name, String description, String[] workingMuscles) {
 		this.setName(name);
 		this.setDescription(description);
@@ -30,9 +39,15 @@ public class Exercise implements Serializable {
 		this.setRecord(0);
 		this.setRecordReps(0);
 	}
+	/**
+	 * Konstruktor tworzacy puste cwiczenie
+	 */
 	public Exercise() {
 	}
-
+	/**
+	 * Metoda zapisujacy cwiczenie
+	 * @throws IOException
+	 */
 	public void saveExercise() throws IOException {
 		new File("exercises/").mkdir();
 		ObjectOutputStream file = null;
@@ -45,7 +60,15 @@ public class Exercise implements Serializable {
 				file.close();
 		}
 	}
-
+	/**
+	 * Metoda odczytuj¹ca cwiczenie
+	 * @param fileName
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws InvalidClassException
+	 */
 	public static Exercise readExercise(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		new File("exercises/").mkdir();
 		ObjectInputStream file = null;
@@ -96,6 +119,13 @@ public class Exercise implements Serializable {
 			return false;
 		return true;
 	}
+	/**
+	 * Metoda pobierajaca liste wszystkich cwiczen
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static List<Exercise> downloadExercises() throws FileNotFoundException, ClassNotFoundException, IOException {
 		List<Exercise> list = new LinkedList<Exercise>();
 		File folder = new File("exercises/");

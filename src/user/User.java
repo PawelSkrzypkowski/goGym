@@ -15,7 +15,11 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TreeMap;
-
+/**
+ * Klasa do obslugi uzytkownika i jego pomiarow
+ * @author Pawe³
+ *
+ */
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Date startDate = new Date();
@@ -83,7 +87,10 @@ public class User implements Serializable {
 		this.setBirthDate(birthDate);
 		this.setLogs(new LinkedList<Log>());
 	}
-
+	/**
+	 * Metoda zapisujaca uzytkownika
+	 * @throws IOException
+	 */
 	public void saveUser() throws IOException {
 		ObjectOutputStream file = null;
 		try {
@@ -95,7 +102,14 @@ public class User implements Serializable {
 				file.close();
 		}
 	}
-
+	/**
+	 * Metoda odczytujaca uzytkownika
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws InvalidClassException
+	 */
 	public static User readUser() throws FileNotFoundException, IOException, ClassNotFoundException, InvalidClassException {
 		ObjectInputStream file = null;
 		User user = null;
@@ -105,7 +119,10 @@ public class User implements Serializable {
 			file.close();
 		return user;
 	}
-
+	/**
+	 * Metoda obliczajca wiek uzytkownika
+	 * @return
+	 */
 	public int calculateAge() {
 		Calendar today = Calendar.getInstance();
 		Calendar birthDate = Calendar.getInstance();
@@ -128,7 +145,16 @@ public class User implements Serializable {
 
 		return age;
 	}
-	
+	/**
+	 * Metoda zwracjaca mape Data - Pomiar
+	 * @param logName
+	 * @return
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	public TreeMap<Date, Float> getDateLogMap(String logName) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 		TreeMap<Date, Float> map = new TreeMap<Date, Float>();
 		for(Log l : logs){

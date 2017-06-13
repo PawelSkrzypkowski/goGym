@@ -21,6 +21,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -33,14 +34,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-
+/**
+ * Klasa - kontroler do obslugi planow treningowych
+ * @author Pawe³
+ *
+ */
 public class PlansController {
 	private List<Workout> workoutList;
-
+	/**
+	 * Konstruktor tworzacy pusty obiekt
+	 */
 	public PlansController() {
 		workoutList = new LinkedList<Workout>();
 	}
-
+	/**
+	 * Metoda pobierajaca plany treningowe
+	 */
 	public void downloadPlans() {
 		File folder = new File("workouts/");
 		File[] listOfWorkouts = folder.listFiles();
@@ -82,13 +91,19 @@ public class PlansController {
 			return false;
 		return true;
 	}
-
+	/**
+	 * Metoda zapewniajaca wyglad do edycji cwiczenia
+	 * @param exercise
+	 * @param workout
+	 * @param options
+	 * @param i
+	 * @param mainPage
+	 */
 	public void editExerciseSupport(Exercise exercise, Workout workout, ObservableList<String> options, int i,
 			VBox mainPage) {
 		ComboBox<String> cb = new ComboBox<String>(options);
 		cb.setValue(exercise.getName());
 		cb.setMaxWidth(150);
-		cb.setStyle("-fx-background-color: #3399FF;");
 		TextField editSetsNumber = new TextField(workout.getSetsNumber().get(i).toString());
 		editSetsNumber.setMaxWidth(50);
 		TextField editRest = new TextField(workout.getRest().get(i).toString());
@@ -107,16 +122,11 @@ public class PlansController {
 		else
 			hb.getChildren().addAll(save, delete, up, down);
 		VBox vb = new VBox();
+		vb.setPadding(new Insets(5));
 		if (i % 2 == 1) {
-			vb.setStyle("-fx-background-color: #3399FF;");
-			cb.setStyle("-fx-background-color: #0066CC;");
-			editSetsNumber.setStyle("-fx-background-color: #0066CC;");
-			editRest.setStyle("-fx-background-color: #0066CC;");
+			vb.setStyle("-fx-background-color: #bc5856; -fx-background-radius: 5 5 5 5; -fx-border-radius: 5 5 5 5;");
 		} else {
-			vb.setStyle("-fx-background-color: #0066CC;");
-			cb.setStyle("-fx-background-color: #3399FF;");
-			editSetsNumber.setStyle("-fx-background-color: #3399FF;");
-			editRest.setStyle("-fx-background-color: #3399FF;");
+			vb.setStyle("-fx-background-color: #0db5df; -fx-background-radius: 5 5 5 5; -fx-border-radius: 5 5 5 5;");
 		}
 		vb.getChildren().addAll(cb, setsNumber, editSetsNumber, rest, editRest, hb);
 		mainPage.getChildren().add(vb);
@@ -162,18 +172,18 @@ public class PlansController {
 			editWorkout(workout, mainPage);
 		});
 	}
-
+	/**
+	 * Metoda do zapisu edytowanego cwiczenia
+	 * @param workout
+	 * @param exerciseName
+	 * @param setsNumber
+	 * @param rest
+	 * @param i
+	 */
 	public void saveEdittedExercise(Workout workout, String exerciseName, String setsNumber, String rest, int i) {
 		Exercise ex;
 		try {
 			ex = Exercise.readExercise(exerciseName);
-			if (ex == null || checkIntegerCorrectness(setsNumber) == false || checkIntegerCorrectness(rest) == false) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Informacja");
-				alert.setHeaderText("");
-				alert.setContentText("Podales niepoprawne dane!");
-				alert.showAndWait();
-			} else
 				workout.editExercise(i, ex, Integer.parseInt(setsNumber), Integer.parseInt(rest));
 		} catch (ClassNotFoundException | IOException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -181,31 +191,41 @@ public class PlansController {
 			alert.setHeaderText("");
 			alert.setContentText("B³¹d pliku. B³¹d: " + e.toString());
 			alert.showAndWait();
+		} catch(NumberFormatException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informacja");
+			alert.setHeaderText("");
+			alert.setContentText("Podales niepoprawne dane!");
+			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * Metoda do zapisu nowego cwiczenia
+	 * @param workout
+	 * @param exerciseName
+	 * @param setsNumber
+	 * @param rest
+	 */
 	public void saveNewExercise(Workout workout, String exerciseName, String setsNumber, String rest) {
 		Exercise ex;
 		try {
 			ex = Exercise.readExercise(exerciseName);
-			if (ex == null || checkIntegerCorrectness(setsNumber) == false || checkIntegerCorrectness(rest) == false) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Informacja");
-				alert.setHeaderText("");
-				alert.setContentText("Podales niepoprawne dane!");
-				alert.showAndWait();
-			} else
-				workout.addItemAtTheEnd(ex, Integer.parseInt(setsNumber), Integer.parseInt(rest));
-		} catch (ClassNotFoundException | IOException e) {
+			workout.addItemAtTheEnd(ex, Integer.parseInt(setsNumber), Integer.parseInt(rest));
+		} catch(NumberFormatException | ClassNotFoundException | IOException e){
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B³¹d pliku. B³¹d: " + e.toString());
+			alert.setContentText("Podales niepoprawne dane!");
 			alert.showAndWait();
 		}
 
 	}
-
+	/**
+	 * Metoda zapewbiajaca wyglad przy dodawaniu nowego cwiczenia
+	 * @param workout
+	 * @param options
+	 * @param mainPage
+	 */
 	public void addExerciseSupport(Workout workout, ObservableList<String> options, VBox mainPage) {
 		Label add = new Label("Dodaj: ");
 		add.setFont(new Font(15));
@@ -221,7 +241,11 @@ public class PlansController {
 			editWorkout(workout, mainPage);
 		});
 	}
-
+	/**
+	 * Metoda do edycji elementow opisowych treningu
+	 * @param workout
+	 * @param mainPage
+	 */
 	public void editWorkoutPropertiesSupport(Workout workout, VBox mainPage) {
 		Label name = new Label("Nazwa:"), description = new Label("Opis:"), type = new Label("Typ treningu:"),
 				level = new Label("Poziom treningu:"), header = new Label("Cwiczenia:");
@@ -264,7 +288,11 @@ public class PlansController {
 			}
 		});
 	}
-
+	/**
+	 * Metoda do edycji treningu
+	 * @param workout
+	 * @param mainPage
+	 */
 	public void editWorkout(Workout workout, VBox mainPage) {
 		mainPage.getChildren().clear();
 		editWorkoutPropertiesSupport(workout, mainPage);
@@ -289,7 +317,10 @@ public class PlansController {
 			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * Metoda dodajaca trening
+	 * @param mainPage
+	 */
 	public void addWorkout(VBox mainPage) {
 		mainPage.getChildren().clear();
 		Workout workout = new Workout("", "", "", "");
@@ -316,7 +347,14 @@ public class PlansController {
 			alert.showAndWait();
 		}
 	}
-
+	/**
+	 * Metoda do odbywania przerwy
+	 * @param workout
+	 * @param diary
+	 * @param exerciseNumber
+	 * @param setNumber
+	 * @param mainPage
+	 */
 	public void doRest(Workout workout, Diary diary, int exerciseNumber, int setNumber, VBox mainPage) {
 		int restTime = workout.getRest().get(exerciseNumber - 1);
 		mainPage.getChildren().clear();
@@ -345,7 +383,14 @@ public class PlansController {
 				doSet(workout, diary, exerciseNumber, setNumber + 1, mainPage);
 		});
 	}
-
+	/**
+	 * Metoda do wykonywania wybranej serii treningu
+	 * @param workout
+	 * @param diary
+	 * @param exerciseNumber
+	 * @param setNumber
+	 * @param mainPage
+	 */
 	public void doSet(Workout workout, Diary diary, int exerciseNumber, int setNumber, VBox mainPage) {
 		mainPage.getChildren().clear();
 		Label header = new Label(workout.getWorkoutName());
@@ -448,9 +493,14 @@ public class PlansController {
 			}
 		});
 	}
-
+	/**
+	 * Metoda do obslugi wybranego treningu
+	 * @param workout
+	 * @param mainPage
+	 * @param i
+	 */
 	public void showWorkoutSupport(Workout workout, VBox mainPage, int i) {
-		HBox hb = new HBox(10);
+		HBox hb = new HBox(5);
 		Label name = new Label(workout.getWorkoutName());
 		Button start = new Button("Rozpocznij");
 		Button edit = new Button("Edytuj");
@@ -466,11 +516,13 @@ public class PlansController {
 		level.setMaxHeight(15);
 		level.setMaxWidth(450);
 		VBox vb = new VBox();
+		vb.setMaxWidth(475);
+		vb.setPadding(new Insets(5));
 		vb.getChildren().addAll(hb, description, type, level);
 		if (i % 2 == 1)
-			vb.setStyle("-fx-background-color: #3399FF;");
+			vb.setStyle("-fx-background-color: #0db5df; -fx-background-radius: 5 5 5 5; -fx-border-radius: 5 5 5 5;");
 		else
-			vb.setStyle("-fx-background-color: #0066CC;");
+			vb.setStyle("-fx-background-color: #bc5856; -fx-background-radius: 5 5 5 5; -fx-border-radius: 5 5 5 5;");
 		mainPage.getChildren().add(vb);
 		delete.setOnAction((event) -> {
 			try {
@@ -490,16 +542,29 @@ public class PlansController {
 		});
 		start.setOnAction((event) -> {
 			Diary diary = new Diary();
-			doSet(workout, diary, 1, 1, mainPage);
+			if(workout.getExercises().isEmpty()){
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Informacja");
+				alert.setHeaderText("");
+				alert.setContentText("Wybrany trening jest pusty.");
+				alert.showAndWait();
+			} else {
+				doSet(workout, diary, 1, 1, mainPage);
+			}
 		});
 	}
-
+	/**
+	 * Metoda umozliwiajaca obsluge wszystkich opcji obslugi treningow
+	 * @param mainPage
+	 */
 	public void createStage(VBox mainPage) {
 		downloadPlans();
 		mainPage.getChildren().clear();
-		ImageView imageView = new ImageView("file:images/plans.png");
+		mainPage.setSpacing(0);
+		ImageView plans = new ImageView("/plans.png");
+		mainPage.getChildren().add(plans);
 		Button addNewWorkout = new Button("Dodaj nowy plan");
-		mainPage.getChildren().addAll(imageView, addNewWorkout);
+		mainPage.getChildren().add(addNewWorkout);
 		int i = 0;
 		for (Workout workout : workoutList) {
 			mainPage.getChildren().add(new Label());
