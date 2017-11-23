@@ -29,7 +29,7 @@
             <Insets left="10.0" right="10.0" />
          </VBox.margin>
       </Label>
-      <Label prefHeight="24.0" prefWidth="54.0" text="Imie*:">
+      <Label prefHeight="24.0" prefWidth="54.0" text="Imię*:">
          <font>
             <Font size="14.0" />
          </font>
