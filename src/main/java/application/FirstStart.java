@@ -9,22 +9,22 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
- * Klasa tworz�ca scene do pierwszego w��czenia aplikacji
- * @author Pawe�
+ * Klasa tworząca scene do pierwszego włączenia aplikacji
+ * @author Paweł
  *
  */
 public class FirstStart {
 	Stage secondaryStage = new Stage();
 	/**
-	 * Metoda sprawdzajaca czy istenieje juz u�ytkownik
-	 * @return true je�eli istnieje, false je�eli nie istnieje
+	 * Metoda sprawdzajaca czy istenieje juz użytkownik
+	 * @return true jeżeli istnieje, false jeżeli nie istnieje
 	 */
 	public static boolean checkIfUserExist(){
 		boolean check = new File("user").isFile();
 		return check;
 	}
 	/**
-	 * Metoda tworz�ca scene
+	 * Metoda tworząca scene
 	 * @throws IOException
 	 */
 	public void newUser() throws IOException{

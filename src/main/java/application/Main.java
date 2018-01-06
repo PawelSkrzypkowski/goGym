@@ -10,13 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
 /**
- * Klasa do obs�ugi uruchomienia aplikacji
- * @author Pawe�
+ * Klasa do obsługi uruchomienia aplikacji
+ * @author Paweł
  *
  */
 public class Main extends Application {
 	/**
-	 * Metoda decyduj�ca czy utworzy� scen� do normalnego u�ytkowania czy stworzy� obiekt FirstStart
+	 * Metoda decydująca czy utworzyć scenę do normalnego użytkowania czy stworzyć obiekt FirstStart
 	 */
 	@Override
 	public void start(Stage primaryStage) {
@@ -40,7 +40,7 @@ public class Main extends Application {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.getStackTrace());
+			alert.setContentText("Błąd: " + e.getStackTrace());
 			alert.showAndWait();
 		}
 	}

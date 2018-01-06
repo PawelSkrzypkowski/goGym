@@ -20,13 +20,13 @@ import model.user.Log;
 import model.user.User;
 
 /**
- * Klasa obs�uguj�ca sekcj� kalkulator�w aplikacji
- * @author Pawe�
+ * Klasa obsługująca sekcję kalkulatorów aplikacji
+ * @author Paweł
  *
  */
 public class CalculatorsController {
 	/**
-	 * Metoda do obs�ugi obliczania BMI
+	 * Metoda do obsługi obliczania BMI
 	 * @param mainPage
 	 * @throws InvalidClassException
 	 * @throws FileNotFoundException
@@ -36,20 +36,20 @@ public class CalculatorsController {
 	public void showBMI(VBox mainPage)
 			throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException {
 		Label weight = new Label("Waga:"), height = new Label("Wzrost:");
-		Label title = new Label("Wska�nik masy cia�a - BMI");
+		Label title = new Label("Wskażnik masy ciała - BMI");
 		title.setFont(new Font(15));
 		Label des[] = new Label[8];
 		Label score = new Label();
 		score.setVisible(false);
 		score.setFont(new Font(15));
-		des[0] = new Label("do 16: wyg�odzenie");
+		des[0] = new Label("do 16: wygłodzenie");
 		des[1] = new Label("od 16 do 17: wychudzenie");
 		des[2] = new Label("od 17 do 18.5: niedowaga");
-		des[3] = new Label("od 18.5 do 25: warto�� prawid�owa");
+		des[3] = new Label("od 18.5 do 25: wartość prawidłowa");
 		des[4] = new Label("od 25 do 30: nadwaga");
-		des[5] = new Label("od 30 do 35: I stopie� oty�o�ci");
-		des[6] = new Label("od 35 do 40: II stopie� oty�o�ci");
-		des[7] = new Label("powy�ej 40: III stopie� oty�o�ci");
+		des[5] = new Label("od 30 do 35: I stopień otyłości");
+		des[6] = new Label("od 35 do 40: II stopień otyłości");
+		des[7] = new Label("powyżej 40: III stopień otyłości");
 		TextField setWeight = new TextField(), setHeight = new TextField();
 		Button calculate = new Button("Oblicz");
 		User user = User.readUser();
@@ -74,13 +74,13 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 			}
 		});
 	}
 	/**
-	 * Metoda do obs�ugi obliczania BMR
+	 * Metoda do obsługi obliczania BMR
 	 * @param mainPage
 	 * @throws InvalidClassException
 	 * @throws FileNotFoundException
@@ -90,18 +90,18 @@ public class CalculatorsController {
 	public void showBMR(VBox mainPage) throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
 		ToggleGroup sex = new ToggleGroup();
 		RadioButton female = new RadioButton("Kobieta");
-		RadioButton male = new RadioButton("M�czyzna");
+		RadioButton male = new RadioButton("Mężczyzna");
 		female.setToggleGroup(sex);
 		male.setToggleGroup(sex);
 		female.setSelected(true);
 		Label weight = new Label("Waga:"), height = new Label("Wzrost:"), age = new Label("Wiek:");
-		Label title = new Label("Wska�nik podstawowej przemiany materii - BMR");
+		Label title = new Label("Wskażnik podstawowej przemiany materii - BMR");
 		title.setFont(new Font(15));
 		Label score = new Label();
 		score.setVisible(false);
 		score.setFont(new Font(15));
 		Text descr = new Text(
-				"Wsp�czynnik ten okre�la minimaln� ilo�� kalorii niezb�dnych do zachowania podstawowych funkcji organizmu.\nKalkulator dodatkowo okre�la niezb�dn� ilo�� kalorii i sk�adnik�w po�ywienia przy okre�leniu poziomu Twojej aktywno�ci fizycznej. Podany udzia� procentowy sk�adnik�w po�ywienia zapewnia zdrowy i bezpieczny spos�b od�ywiania.");
+				"Współczynnik ten określa minimalną ilość kalorii niezbędnych do zachowania podstawowych funkcji organizmu.\nKalkulator dodatkowo określa niezbędną ilość kalorii i składników po�ywienia przy okre�leniu poziomu Twojej aktywno�ci fizycznej. Podany udzia� procentowy sk�adnik�w po�ywienia zapewnia zdrowy i bezpieczny spos�b od�ywiania.");
 		descr.setWrappingWidth(450);
 		descr.setFill(Color.WHITE);
 		TextField setWeight = new TextField(), setHeight = new TextField(), setAge = new TextField();

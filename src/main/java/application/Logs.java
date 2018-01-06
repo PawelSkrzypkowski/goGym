@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 /**
- * Klasa do obs�ugi pliku FXML u�ywanego w Pomiarach cia�a
- * @author Pawe�
+ * Klasa do obsługi pliku FXML używanego w Pomiarach ciała
+ * @author Paweł
  *
  */
 public class Logs {
