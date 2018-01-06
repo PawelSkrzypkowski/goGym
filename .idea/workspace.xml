@@ -2,97 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c06e40cf-4cf8-4ae5-97ff-6981d49fa5e2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/avatar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/HACK-PRZYSIADY" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/KRZY�OWANIE LINEK WYCI�GU W STANIU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/NO�YCE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/ODWODZENIE N�G NA ZEWN�TRZ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/ODWROTNE WSPI�CIA W STANIU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Odwrotne rozpi�tki (na maszynie)" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PODCI�GANIE (WIOS�OWANIE) W LE�ENIU NA �AWECZCE POZIOMEJ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PODCI�GANIE KO�CA SZTANGI W OPADZIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PODCI�GANIE NA DR��KU PODCHWYTEM" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PODCI�GANIE NA DR��KU SZEROKIM UCHWYTEM (NACHWYT)" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PODCI�GANIE NA DR��KU W UCHWYCIE NEUTRALNYM" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PODCI�GANIE SZTANGI W OPADZIE(WIOS�OWANIE)" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/POMPKI NA POR�CZACH" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PROSTOWANIE RAMION NA WYCI�GU STOJ�C" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PROSTOWNIE N�G W SIADZIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PROSTOWNIE RAMIENIA ZE SZTANGIELK� W OPADZIE TU�OWIA" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PRZENOSZENIE SZTANGIELKI W LE�ENIU W POPRZEK �AWKI POZIOMEJ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PRZNOSZENIE SZTANGI W LE�ENIU NA �AWCE POZIOMEJ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PRZYCI�GANIE LINKI WYCI�GU DOLNEGO W SIADZIE P�ASKIM" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PRZYSIADY ZE SZTANG� TRZYMAN� Z PRZODU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/PRZYWODZENIE N�G DO WEWN�TRZ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Podci�ganie sztangi wzd�u� tu�owia" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/ROZPI�TKI W SIADZIE NA MASZYNIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/ROZPI�TKI ZE SZTANGIELKAMI W LE�ENIU NA �AWCE POZIOMEJ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/ROZPI�TKI ZE SZTANGIELKAMI W LE�ENIU NA �AWCE SKO�NEJ - G�OW� DO G�RY" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SKR�TY TU�OWIA" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SK�ONY BOCZNE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SK�ONY TU�OWIA Z LINK� WYCI�GU KL�CZ�C" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SK�ONY TU�OWIA Z LINK� WYCI�GU SIEDZ�C" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SK�ONY W LE�ENIU G�OW� W Dӣ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SK�ONY W LE�ENIU P�ASKO" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SK�ONY ZE SZTANG� TRZYMAN� NA KARKU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/SYZYFKI" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE NADGARSTK�W NACHWYTEM W SIADZIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE NADGARSTK�W PODCHWYTEM W SIADZIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE N�G W LE�ENIU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE RAMIENIA ZE SZTANGIELK� W SIADZIE-W PODPORZE O KOLANO" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE RAMION ZE SZTANGA NACHWYTEM STOJ�C" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE RAMION ZE SZTANGIELKAMI STOJ�C PODCHWYTEM(Z �SUPINACJ�� NADGARSTKA)" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE RAMION ZE SZTANGIELKAMI W SIADZIE NA �AWCE SKO�NEJ(Z SUPINACJ� NADGARSTKA)" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE RAMION ZE SZTANG� NA �MODLITEWNIKU�" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UGINANIE RAMION ZE SZTANG� STOJAC PODCHWYTEM" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UNOSZENIE N�G W LE�ENIU NA SKO�NEJ �AWCE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UNOSZENIE N�G W PODPORZE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/UNOSZENIE N�G W ZWISIE NA DR��KU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Unoszenie ramion w prz�d ze sztang�" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Unoszenie ramion ze sztangielkami w le�eniu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Unoszenie sztangielek bokiem w g�r�" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Unoszenie sztangielek w opadzie tu�owia" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WSPIECIA NA PALCE W STANIU" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WSPI�CIA NA PALCE NA HACK-MASZYNIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYCISKANIE SZTANGI W LE�ENIU NA �AWCE POZIOMEJ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYCISKANIE SZTANGI W LE�ENIU NA �AWCE POZIOMEJ W�SKIM UCHWYTEM" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYCISKANIE SZTANGI W LE�ENIU NA �AWCE SKO�NEJ-G�OW�  W G�R�" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYCISKANIE SZTANGI W LE�ENIU NA �AWCE SKO�NEJ-G�OW� W Dӣ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYCISKANIE SZTANGIELEK W LE�ENIU NA �AWCE SKO�NEJ-G�OW� W Dӣ" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYCISKANIE �FRANCUSKIE�SZTANGI W SIADZIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/WYPYCHANIE CIʯARU NA MASZYNIE LUB SUWNICY PALCAMI N�G" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Wyciskanie sztangi sprzed g�owy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Wyciskanie sztangi zza g�owy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/Wyciskanie sztangielek" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/�CI�GANIE DR��KA lub R�CZKI WYCI�GU G�RNEGO W SIADZIE SZEROKIM UCHWYTEM (NACHWYT)" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/�CI�GANIE KOLAN W SIADZIE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/exercises/�SPINANIE�, UNOSZENIE KOLAN W LE�ENIU P�ASKO" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/user" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/workouts/3-dniowy Full Body Workout" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/CreateExercises.class" afterPath="$PROJECT_DIR$/target/classes/application/CreateExercises.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/Main.class" afterPath="$PROJECT_DIR$/target/classes/application/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/CalculatorsController.class" afterPath="$PROJECT_DIR$/target/classes/controller/CalculatorsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/FirstStartController.class" afterPath="$PROJECT_DIR$/target/classes/controller/FirstStartController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/LogsController.class" afterPath="$PROJECT_DIR$/target/classes/controller/LogsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/PlansController.class" afterPath="$PROJECT_DIR$/target/classes/controller/PlansController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/StartPageController.class" afterPath="$PROJECT_DIR$/target/classes/controller/StartPageController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/controller/TrainingProgressController.class" afterPath="$PROJECT_DIR$/target/classes/controller/TrainingProgressController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/CreateExercises.java" afterPath="$PROJECT_DIR$/src/main/java/application/CreateExercises.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/CalculatorsController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/CalculatorsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/FirstStartController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/FirstStartController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/LogsController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/LogsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/PlansController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/PlansController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/StartPageController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/StartPageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/TrainingProgressController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/TrainingProgressController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/diary/Diary.java" afterPath="$PROJECT_DIR$/src/main/java/model/diary/Diary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/diary/Exercise.java" afterPath="$PROJECT_DIR$/src/main/java/model/diary/Exercise.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/diary/ExercisesDone.java" afterPath="$PROJECT_DIR$/src/main/java/model/diary/ExercisesDone.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/diary/Set.java" afterPath="$PROJECT_DIR$/src/main/java/model/diary/Set.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/diary/Workout.java" afterPath="$PROJECT_DIR$/src/main/java/model/diary/Workout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/user/Log.java" afterPath="$PROJECT_DIR$/src/main/java/model/user/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/user/User.java" afterPath="$PROJECT_DIR$/src/main/java/model/user/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/FirstStart.fxml" afterPath="$PROJECT_DIR$/target/classes/FirstStart.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,11 +27,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/application/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
               <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -150,6 +70,8 @@
         <option value="$PROJECT_DIR$/src/main/java/model/user/Log.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/user/User.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/application/Main.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -797,10 +719,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3598000" />
+    <option name="totallyTimeSpent" value="3719000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1000,14 +922,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/application/CreateExercises.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1173,6 +1087,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding />
         </state>
       </provider>
