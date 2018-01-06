@@ -32,15 +32,15 @@ import model.diary.Exercise;
 import model.user.User;
 
 /**
- * Klasa - kontroler obs�uguj�ca sekcj� do przegl�dania post�p�w treningowych
+ * Klasa - kontroler obsługujący sekcję do przeglądania postępów treningowych
  * @author Pawe�
  *
  */
 public class TrainingProgressController {
 	private String[] logNames = new String[]{"Weight", "Neck", "Chest", "Biceps", "Waist", "Stomach", "Hips", "Thigh", "Calf"};
-	private String[] logNamesPl = new String[]{"Waga", "Szyja", "Klatka piersiowa", "Biceps", "Talia", "Brzuch", "Biodra", "Udo", "�ydka"};
+	private String[] logNamesPl = new String[]{"Waga", "Szyja", "Klatka piersiowa", "Biceps", "Talia", "Brzuch", "Biodra", "Udo", "Łydka"};
 	/**
-	 * Metoda pokazuj�ca wykres wybranego �wiczenia
+	 * Metoda pokazująca wykres wybranego ćwiczenia
 	 * @param exercise
 	 * @param mainPage
 	 */
@@ -52,7 +52,7 @@ public class TrainingProgressController {
 			CategoryAxis xAxis = new CategoryAxis();
 			NumberAxis yAxis = new NumberAxis();
 			LineChart<String, Number> chart = new LineChart<String, Number>(xAxis, yAxis);
-			chart.setTitle("Post�py w �wiczeniu " + exercise.getName());
+			chart.setTitle("Postępy w ćwiczeniu " + exercise.getName());
 			XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 			Set<Entry<Date, Double>> entrySet = map.entrySet();
 			for (Entry<Date, Double> entry : entrySet) {
@@ -61,7 +61,7 @@ public class TrainingProgressController {
 				if (max < entry.getValue())
 					max = entry.getValue();
 			}
-			series.setName("Maksymalne wyniki na poszczeg�lnych treningach");
+			series.setName("Maksymalne wyniki na poszczególnych treningach");
 			chart.getData().add(series);
 			Label record = new Label("Aktualny rekord: " + max.toString());
 			mainPage.getChildren().addAll(chart, record);
@@ -70,13 +70,13 @@ public class TrainingProgressController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.toString()
-					+ ". Odczyt pliku nie powi�d� si�.");
+			alert.setContentText("Błąd: " + e.toString()
+					+ ". Odczyt pliku nie powiódł się.");
 			alert.showAndWait();
 		}
 	}
 	/**
-	 * Metoda pokazuj�ca wykres wybranego elementu pomiar�w cia�a
+	 * Metoda pokazująca wykres wybranego elementu pomiarów ciała
 	 * @param i
 	 * @param mainPage
 	 */
@@ -98,21 +98,21 @@ public class TrainingProgressController {
 				if(min > entry.getValue())
 					min = entry.getValue();
 			}
-			series.setName("Zmiany partii cia�a: " + logNamesPl[i]);
+			series.setName("Zmiany partii ciała: " + logNamesPl[i]);
 			chart.getData().add(series);
-			Label recordMin = new Label("Najmniejsza warto��: " + min.toString()), recordMax = new Label("Najwi�ksza warto��: " + max.toString());
+			Label recordMin = new Label("Najmniejsza wartość: " + min.toString()), recordMax = new Label("Największa wartość: " + max.toString());
 			mainPage.getChildren().addAll(chart, recordMin, recordMax);
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException | ClassNotFoundException | IOException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.toString());
+			alert.setContentText("Błąd: " + e.toString());
 			alert.showAndWait();
 		}
 	}
 	/**
-	 * Metoda pokazuj�ca wykres podnoszonego ci�zaru w przeci�gu roku
+	 * Metoda pokazuj�ca wykres podnoszonego cięzaru w przeciągu roku
 	 * @param mainPage
 	 */
 	public void showMonthlyRaisedWeightChart(VBox mainPage) {
@@ -121,7 +121,7 @@ public class TrainingProgressController {
 			CategoryAxis xAxis = new CategoryAxis();
 			NumberAxis yAxis = new NumberAxis();
 			LineChart<String, Number> chart = new LineChart<String, Number>(xAxis, yAxis);
-			chart.setTitle("Raport miesi�czny - podnoszony ci�ar");
+			chart.setTitle("Raport miesięczny - podnoszony cięar");
 			XYChart.Series<String, Number> series = new XYChart.Series<String, Number>();
 			Double max = 0.0;
 			for (int i = 11; i >= 0; i--) {
@@ -131,16 +131,16 @@ public class TrainingProgressController {
 				if(raised > max)
 					max = raised;
 			}
-			series.setName("Podnoszony ci�ar w przeci�gu roku");
+			series.setName("Podnoszony cięar w przeciągu roku");
 			chart.getData().add(series);
-			Label record = new Label("Aktualny miesi�czny rekord: " + max.toString());
+			Label record = new Label("Aktualny miesięczny rekord: " + max.toString());
 			mainPage.getChildren().addAll(chart, record);
 		} catch (ClassNotFoundException | IOException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.toString()
-					+ ". B��d odczytu pliku.");
+			alert.setContentText("Błąd: " + e.toString()
+					+ ". Błąd odczytu pliku.");
 			alert.showAndWait();
 		}
 	}
@@ -157,7 +157,7 @@ public class TrainingProgressController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("Nie odnaleziono pliku! B��d: " + e.toString());
+			alert.setContentText("Nie odnaleziono pliku! Błąd: " + e.toString());
 			alert.showAndWait();
 		}
 		mainPage.getChildren().clear();
@@ -167,19 +167,19 @@ public class TrainingProgressController {
 		mainPage.getChildren().add(summary);
 		Integer restTime = diary.getRestTime() / 60;// min
 		Integer exerciseTime = diary.showTrainingTime() - restTime;
-		Label label1 = new Label("Ca�kowity czas treningu:"), label2 = new Label("Czas �wicze�:");
+		Label label1 = new Label("Całkowity czas treningu:"), label2 = new Label("Czas ćwiczeń:");
 		label1.setPrefWidth(245);
 		label2.setPrefWidth(245);
 		Label label3 = new Label(diary.showTrainingTime().toString() + " min");
 		label3.setFont(new Font(15));
 		Label label4 = new Label(exerciseTime.toString() + " min");
 		label4.setFont(new Font(15));
-		Label label5 = new Label("Czas odpoczynku:"), label6 = new Label("Wykonane �wiczenia:");
+		Label label5 = new Label("Czas odpoczynku:"), label6 = new Label("Wykonane ćwiczenia:");
 		Label label7 = new Label(restTime.toString() + " min");
 		label7.setFont(new Font(15));
 		Label label8 = new Label(new Integer(diary.getExercisesDone().size()).toString());
 		label8.setFont(new Font(15));
-		Label label9 = new Label("Podniesiony ci�ar:");
+		Label label9 = new Label("Podniesiony cięar:");
 		Label label10 = new Label(new Double(diary.showRaisedWeight()).toString() + " kg");
 		label10.setFont(new Font(17));
 		GridPane gp = new GridPane();
@@ -194,31 +194,31 @@ public class TrainingProgressController {
 		mainPage.getChildren().add(gp);
 	}
 	/**
-	 * Metoda pokauzj�ca podsumowanie wybranego miesi�ca
+	 * Metoda pokauzjąca podsumowanie wybranego miesiąca
 	 * @param mainPage
 	 * @param minusMonth
 	 */
 	public void showMonthSummary(VBox mainPage, int minusMonth) {
 		mainPage.getChildren().clear();
 		try{
-		Label summary = new Label("Podsumowanie trening�w z miesi�ca " + FirstStartController.getMonthOptions().get(((Calendar.getInstance().get(Calendar.MONTH) - minusMonth) % 12 + 12) % 12));
+		Label summary = new Label("Podsumowanie treningów z miesiąca " + FirstStartController.getMonthOptions().get(((Calendar.getInstance().get(Calendar.MONTH) - minusMonth) % 12 + 12) % 12));
 		summary.setFont(new Font(20));
 		mainPage.getChildren().add(summary);
 		Integer restTime = Diary.getMonthlyRestTime(minusMonth) / 60;// min
 		Integer exerciseTime = Diary.getMonthlyExercisingTime(minusMonth);
-		Label label1 = new Label("Ca�kowity czas treningu:"), label2 = new Label("Czas �wicze�:");
+		Label label1 = new Label("Całkowity czas treningu:"), label2 = new Label("Czas ćwiczeń:");
 		label1.setPrefWidth(245);
 		label2.setPrefWidth(245);
 		Label label3 = new Label(Diary.getMonthlyTrainingTime(minusMonth) + " min");
 		label3.setFont(new Font(15));
 		Label label4 = new Label(exerciseTime.toString() + " min");
 		label4.setFont(new Font(15));
-		Label label5 = new Label("Czas odpoczynku:"), label6 = new Label("Wykonane �wiczenia:");
+		Label label5 = new Label("Czas odpoczynku:"), label6 = new Label("Wykonane ćwiczenia:");
 		Label label7 = new Label(restTime.toString() + " min");
 		label7.setFont(new Font(15));
 		Label label8 = new Label(Diary.getMonthlyExercisesDone(minusMonth).toString());
 		label8.setFont(new Font(15));
-		Label label9 = new Label("Podniesiony ci�ar:");
+		Label label9 = new Label("Podniesiony cięar:");
 		Label label10 = new Label(Diary.getMonthlyRaisedWeight(minusMonth).toString() + " kg");
 		label10.setFont(new Font(17));
 		GridPane gp = new GridPane();
@@ -236,21 +236,21 @@ public class TrainingProgressController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.toString()
-					+ ". B��d odczytu pliku.");
+			alert.setContentText("Błąd: " + e.toString()
+					+ ". Błąd odczytu pliku.");
 			alert.showAndWait();
 		}
 	}
 	/**
-	 * Metoda umo�liwiaj�ca wybranie wybranego podsumowania
+	 * Metoda umożliwiająca wybranie wybranego podsumowania
 	 * @param mainPage
 	 */
 	public void createStage(VBox mainPage) {
 		mainPage.getChildren().clear();
 		ImageView progress = new ImageView("/images/progress.png");
 		mainPage.getChildren().add(progress);
-		Button trainingsSummaries = new Button("Poka� podsumowanie trening�w"), showExercisesSummaries = new Button("Poka� podsumowanie �wicze�"), showMonthByMonthSummaries = new Button("Poka� podsumowanie miesi�czne"),
-				showMeansurmentsSummaries = new Button("Poka� podsumowanie pomiar�w cia�a");
+		Button trainingsSummaries = new Button("Pokaż podsumowanie treningów"), showExercisesSummaries = new Button("Pokaż podsumowanie ćwiczeń"), showMonthByMonthSummaries = new Button("Pokaż podsumowanie miesięczne"),
+				showMeansurmentsSummaries = new Button("Pokaż podsumowanie pomiarów ciała");
 		mainPage.setSpacing(10);
 		mainPage.getChildren().addAll(trainingsSummaries, showExercisesSummaries, showMonthByMonthSummaries, showMeansurmentsSummaries);
 		trainingsSummaries.setOnAction((event) -> {
@@ -273,8 +273,8 @@ public class TrainingProgressController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString()
-						+ ". B��d odczytu pliku.");
+				alert.setContentText("Błąd: " + e.toString()
+						+ ". Błąd odczytu pliku.");
 				alert.showAndWait();
 			}
 		});
@@ -283,7 +283,7 @@ public class TrainingProgressController {
 			try {
 				List<Exercise> list = Exercise.downloadExercises();
 				for(Exercise ex : list){
-					Button button = new Button("Zobacz post�py w �wiczeniu " + ex.getName());
+					Button button = new Button("Zobacz postępy w ćwiczeniu " + ex.getName());
 					mainPage.getChildren().add(button);
 					button.setOnAction((event2) -> {
 						showExerciseChart(ex, mainPage);
@@ -293,8 +293,8 @@ public class TrainingProgressController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString()
-						+ ". B��d odczytu pliku.");
+				alert.setContentText("Błąd: " + e.toString()
+						+ ". Błąd odczytu pliku.");
 				alert.showAndWait();
 			}
 		});
@@ -302,7 +302,7 @@ public class TrainingProgressController {
 			showMonthlyRaisedWeightChart(mainPage);
 			for (int i = 0; i <= 11; i++) {
 				String m = FirstStartController.getMonthOptions().get(((Calendar.getInstance().get(Calendar.MONTH) - i) % 12 + 12) % 12);
-				Button monthSummary = new Button("Podsumowanie miesi�ca " + m);
+				Button monthSummary = new Button("Podsumowanie miesiąca " + m);
 				mainPage.getChildren().add(monthSummary);
 				final int i2 = i;
 				monthSummary.setOnAction((event2) -> {
@@ -314,7 +314,7 @@ public class TrainingProgressController {
 			mainPage.getChildren().clear();
 			int i=0;
 			for(@SuppressWarnings("unused") String s : logNames){
-				Button button = new Button("Post�py - " + logNamesPl[i]);
+				Button button = new Button("Postępy - " + logNamesPl[i]);
 				mainPage.getChildren().add(button);
 				final int in = i;
 				button.setOnAction((event2) -> {

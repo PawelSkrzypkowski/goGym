@@ -16,8 +16,8 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 /**
- * Klasa do tworzenia trening�w
- * @author Pawe�
+ * Klasa do tworzenia treningów
+ * @author Paweł
  *
  */
 public class Workout implements Serializable {
@@ -105,7 +105,7 @@ public class Workout implements Serializable {
 			file.close();
 	}
 	/**
-	 * Metoda odczytuj�ca trening
+	 * Metoda odczytująca trening
 	 * @param fileName
 	 * @return
 	 * @throws FileNotFoundException
@@ -129,7 +129,7 @@ public class Workout implements Serializable {
 		return workout;
 	}
 	/**
-	 * Metoda zmieniaj�ca elementy opisowe treningu
+	 * Metoda zmieniająca elementy opisowe treningu
 	 * @param name
 	 * @param description
 	 * @param type
@@ -165,7 +165,7 @@ public class Workout implements Serializable {
 		return true;
 	}
 	/**
-	 * Metoda usuwaj�ca trening
+	 * Metoda usuwająca trening
 	 * @throws IOException
 	 */
 	public void deleteWorkout() throws IOException {

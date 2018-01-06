@@ -95,13 +95,13 @@ public class CalculatorsController {
 		male.setToggleGroup(sex);
 		female.setSelected(true);
 		Label weight = new Label("Waga:"), height = new Label("Wzrost:"), age = new Label("Wiek:");
-		Label title = new Label("Wskażnik podstawowej przemiany materii - BMR");
+		Label title = new Label("Wskaźnik podstawowej przemiany materii - BMR");
 		title.setFont(new Font(15));
 		Label score = new Label();
 		score.setVisible(false);
 		score.setFont(new Font(15));
 		Text descr = new Text(
-				"Współczynnik ten określa minimalną ilość kalorii niezbędnych do zachowania podstawowych funkcji organizmu.\nKalkulator dodatkowo określa niezbędną ilość kalorii i składników po�ywienia przy okre�leniu poziomu Twojej aktywno�ci fizycznej. Podany udzia� procentowy sk�adnik�w po�ywienia zapewnia zdrowy i bezpieczny spos�b od�ywiania.");
+				"Współczynnik ten określa minimalną ilość kalorii niezbędnych do zachowania podstawowych funkcji organizmu.\nKalkulator dodatkowo określa niezbędną ilość kalorii i składników pożywienia przy określeniu poziomu Twojej aktywności fizycznej. Podany udział procentowy składników pożywienia zapewnia zdrowy i bezpieczny sposób odżywiania.");
 		descr.setWrappingWidth(450);
 		descr.setFill(Color.WHITE);
 		TextField setWeight = new TextField(), setHeight = new TextField(), setAge = new TextField();
@@ -135,30 +135,30 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą�");
 				alert.showAndWait();
 			}
 		});
 	}
 	/**
-	 * Metoda do obs�ugi obliczania perfekcyjnej wagi
+	 * Metoda do obsługi obliczania perfekcyjnej wagi
 	 * @param mainPage
 	 */
 	public void showPerfectWeight(VBox mainPage){
 		ToggleGroup sex = new ToggleGroup();
 		RadioButton female = new RadioButton("Kobieta");
-		RadioButton male = new RadioButton("M�czyzna");
+		RadioButton male = new RadioButton("Mężczyzna");
 		female.setToggleGroup(sex);
 		male.setToggleGroup(sex);
 		female.setSelected(true);
 		Label height = new Label("Wzrost:");
-		Label title = new Label("Wska�nik idealenj wagi - Wskaznik Broca");
+		Label title = new Label("Wskaźnik idealenj wagi - Wskaznik Broca");
 		title.setFont(new Font(15));
 		Label score = new Label();
 		score.setVisible(false);
 		score.setFont(new Font(15));
 		Text descr = new Text(
-				"Podczas bada� prowadzonych przez francuskiego lekarza Pierre�a Broca na �o�nierzach w XIX wieku zauwa�ono zale�no��, wed�ug kt�rej przeci�tnie masa cia�a badanych stanowi�a warto�� wzrostu w cm � 100. Obecnie stosuje si� modyfikacj� tego wzoru z uwzgl�dnieniem p�ci. Przyjmuje si�, �e wz�r Broca jest miarodajny dla os�b o wzro�cie nie mniejszym ni� 160 cm i nie wi�kszym ni� 190 cm.");
+				"Podczas badał prowadzonych przez francuskiego lekarza Pierre'a Broca na żołnierzach w XIX wieku zauważono zależność, według której przeciętnie masa ciała badanych stanowiła wartość wzrostu w cm - 100. Obecnie stosuje się modyfikację tego wzoru z uwzględnieniem płci. Przyjmuje się, że wzór Broca jest miarodajny dla osób o wzroście nie mniejszym niż 160 cm i nie większym niż 190 cm.");
 		descr.setWrappingWidth(450);
 		descr.setFill(Color.WHITE);
 		TextField setHeight = new TextField();
@@ -182,13 +182,13 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 			}
 		});
 	}
 	/**
-	 * Metoda do obs�ugi obliczania ilo�ci tkanki t�uszczowej
+	 * Metoda do obsługi obliczania ilości tkanki tłuszczowej
 	 * @param mainPage
 	 * @throws InvalidClassException
 	 * @throws FileNotFoundException
@@ -198,18 +198,18 @@ public class CalculatorsController {
 	public void showFat(VBox mainPage) throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
 		ToggleGroup sex = new ToggleGroup();
 		RadioButton female = new RadioButton("Kobieta");
-		RadioButton male = new RadioButton("M�czyzna");
+		RadioButton male = new RadioButton("Mężczyzna");
 		female.setToggleGroup(sex);
 		male.setToggleGroup(sex);
 		female.setSelected(true);
 		Label weight = new Label("Waga:"), waist = new Label("Talia:");
-		Label title = new Label("Wska�nik poziomu tkanki t�usczowej");
+		Label title = new Label("Wskaźnik poziomu tkanki tłuszczowej");
 		title.setFont(new Font(15));
 		Label score = new Label();
 		score.setVisible(false);
 		score.setFont(new Font(15));
 		Text descr = new Text(
-				"Jest to wska�nik okre�laj�cy procentowy udzia� t�uszczu w masie ca�ego cia�a");
+				"Jest to wskaźnik określający procentowy udział tłuszczu w masie całego ciała");
 		descr.setWrappingWidth(450);
 		descr.setFill(Color.WHITE);
 		TextField setWeight = new TextField(), setWaist = new TextField();
@@ -239,13 +239,13 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 			}
 		});
 	}
 	/**
-	 * Metoda do obs�ugi obliczania WHR
+	 * Metoda do obsługi obliczania WHR
 	 * @param mainPage
 	 * @throws InvalidClassException
 	 * @throws FileNotFoundException
@@ -254,13 +254,13 @@ public class CalculatorsController {
 	 */
 	public void showWHR(VBox mainPage) throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
 		Label hips = new Label("Biodra:"), waist = new Label("Talia:");
-		Label title = new Label("Wska�nik dystrybucji tkanki t�uszczowej - WHR");
+		Label title = new Label("Wskaźnik dystrybucji tkanki tłuszczowej - WHR");
 		title.setFont(new Font(15));
 		Label score = new Label();
 		score.setVisible(false);
 		score.setFont(new Font(15));
 		Text descr = new Text(
-				"Jest kolejnym sposobem na obliczanie poziom zapasowej tkanki t�uszczowej. Optymalna warto�� nie powinna przekracza� 0,8 w�r�d kobiet i 1 u m�czyzn. Proporcje te minimalizuj� prawdopodobie�stwo wyst�pienia choroby wie�cowej i cukrzycy typu II.");
+				"Jest kolejnym sposobem na obliczanie poziom zapasowej tkanki tłuszczowej. Optymalna wartość nie powinna przekraczać 0,8 wśród kobiet i 1 u mężczyzn. Proporcje te minimalizują prawdopodobieństwo wystąpienia choroby wieńcowej i cukrzycy typu II.");
 		descr.setWrappingWidth(450);
 		descr.setFill(Color.WHITE);
 		TextField setHips = new TextField(), setWaist = new TextField();
@@ -285,13 +285,13 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 			}
 		});
 	}
 	/**
-	 * Metoda do obs�ugi kalkulator�w
+	 * Metoda do obsługi kalkulatorów
 	 * @param mainPage
 	 */
 	public void createStage(VBox mainPage) {
@@ -301,7 +301,7 @@ public class CalculatorsController {
 		mainPage.setSpacing(10);
 		Button BMI = new Button("Kalkulator BMI"), BMR = new Button("Kalkulator BMR"),
 				perfectWeight = new Button("Kalkulator idealnej wagi"),
-				fat = new Button("Kalkulator tkanki t�uszczowej"), WHR = new Button("Kalkulator WHR");
+				fat = new Button("Kalkulator tkanki tłuszczowej"), WHR = new Button("Kalkulator WHR");
 		mainPage.getChildren().addAll(BMI, BMR, perfectWeight, fat, WHR);
 		BMI.setOnAction((event) -> {
 			try {
@@ -310,7 +310,7 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d odczytu pliku. B��d: " + e.toString());
+				alert.setContentText("Błąd odczytu pliku. Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 		});
@@ -321,7 +321,7 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d odczytu pliku. B��d: " + e.toString());
+				alert.setContentText("Błąd odczytu pliku. Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 		});
@@ -335,7 +335,7 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d odczytu pliku. B��d: " + e.toString());
+				alert.setContentText("Błąd odczytu pliku. Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 		});
@@ -346,7 +346,7 @@ public class CalculatorsController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d odczytu pliku. B��d: " + e.toString());
+				alert.setContentText("Błąd odczytu pliku. Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 		});

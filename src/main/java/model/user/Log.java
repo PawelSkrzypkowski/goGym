@@ -3,8 +3,8 @@ package model.user;
 import java.io.Serializable;
 import java.util.Date;
 /**
- * Klasa do obs�ugi pomiar�w
- * @author Pawe�
+ * Klasa do obsługi pomiarów
+ * @author Paweł
  *
  */
 public class Log implements Serializable {
@@ -20,7 +20,7 @@ public class Log implements Serializable {
 	private float calf;
 	private static final long serialVersionUID = 1L;
 	/**
-	 * Metoda obliczaj�ca BMI
+	 * Metoda obliczająca BMI
 	 * @param weight
 	 * @param height
 	 * @return
@@ -29,7 +29,7 @@ public class Log implements Serializable {
 		return (double)weight / (height*height) * 10000;
 	}
 	/**
-	 * Metoda obliczaj�ca BMR
+	 * Metoda obliczająca BMR
 	 * @param isFemale
 	 * @param weight
 	 * @param height
@@ -44,7 +44,7 @@ public class Log implements Serializable {
 		return (int)(9.99 * weight + 6.25 * height - 4.92 * age + plus);
 	}
 	/**
-	 * Metoda obliczaj�ca wskaznik Broca
+	 * Metoda obliczająca wskaznik Broca
 	 * @param isFemale
 	 * @param height
 	 * @return
@@ -56,7 +56,7 @@ public class Log implements Serializable {
 		return (height - 100) * x;
 	}
 	/**
-	 * Metoda obliczaj�ca ilosc tluszczu
+	 * Metoda obliczająca ilosc tluszczu
 	 * @param isFemale
 	 * @param weight
 	 * @param waist
@@ -69,7 +69,7 @@ public class Log implements Serializable {
 		return ((4.15 * waist) / 2.54-0.082 * weight * 2.2-minus)/(weight * 2.2)*100;
 	}
 	/**
-	 * Metoda obliczaj�ca WHR
+	 * Metoda obliczająca WHR
 	 * @param hips
 	 * @param waist
 	 * @return

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.TreeMap;
 /**
  * Klasa do obslugi uzytkownika i jego pomiarow
- * @author Pawe�
+ * @author Paweł
  *
  */
 public class User implements Serializable {

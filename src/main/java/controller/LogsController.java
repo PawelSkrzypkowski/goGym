@@ -17,7 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import model.user.Log;
 import model.user.User;
 /**
- * Klasa - kontroler modu�u aplikacji do dodawania pomiar�w cia�a
+ * Klasa - kontroler modułu aplikacji do dodawania pomiarów ciała
  * @author Pawe�
  *
  */
@@ -36,7 +36,7 @@ public class LogsController implements Initializable {
 		return true;
 	}
 	/**
-	 * Metoda przechwyuj�ca dodawania pomiaru
+	 * Metoda przechwyująca dodawania pomiaru
 	 * @param event
 	 */
 	public void addLog(ActionEvent event){
@@ -54,7 +54,7 @@ public class LogsController implements Initializable {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 				break;
 			}
@@ -69,19 +69,19 @@ public class LogsController implements Initializable {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Doda�e� pomiary!");
+				alert.setContentText("Dodałeś pomiary!");
 				alert.showAndWait();
 			} catch (IOException | ClassNotFoundException e) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString());
+				alert.setContentText("Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 		}
 	}
 	/**
-	 * MEtoda inicjalizuj�ca i tworz�ca widok do dodawania pomiar�w
+	 * MEtoda inicjalizująca i tworząca widok do dodawania pomiarów
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

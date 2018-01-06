@@ -15,7 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 /**
  * Klasa do obslugi cwiczen
- * @author Pawe�
+ * @author Paweł
  *
  */
 public class Exercise implements Serializable {
@@ -45,7 +45,7 @@ public class Exercise implements Serializable {
 	public Exercise() {
 	}
 	/**
-	 * Metoda zapisujacy cwiczenie
+	 * Metoda zapisujaca cwiczenie
 	 * @throws IOException
 	 */
 	public void saveExercise() throws IOException {
@@ -61,7 +61,7 @@ public class Exercise implements Serializable {
 		}
 	}
 	/**
-	 * Metoda odczytuj�ca cwiczenie
+	 * Metoda odczytująca cwiczenie
 	 * @param fileName
 	 * @return
 	 * @throws FileNotFoundException

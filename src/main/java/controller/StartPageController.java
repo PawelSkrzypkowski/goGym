@@ -34,8 +34,8 @@ import javafx.scene.control.Alert.AlertType;
 import model.user.User;
 
 /**
- * Klasa  - kontroler do obslugi okna Strony G�ownej aplikacji
- * @author Pawe�
+ * Klasa  - kontroler do obslugi okna Strony Głównej aplikacji
+ * @author Paweł
  *
  */
 public class StartPageController implements Initializable {
@@ -92,8 +92,8 @@ public class StartPageController implements Initializable {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Informacja");
 					alert.setHeaderText("");
-					alert.setContentText("B��d: " + e.toString()
-							+ ". Uszkodzony lub brak pliku u�ytkownika! Usu� lub przywr�c plik user i uruchom aplikacje ponownie.");
+					alert.setContentText("Błąd: " + e.toString()
+							+ ". Uszkodzony lub brak pliku użytkownika! Usuń lub przywróc plik user i uruchom aplikacje ponownie.");
 					alert.showAndWait();
 				}
 			});
@@ -123,8 +123,8 @@ public class StartPageController implements Initializable {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Informacja");
 						alert.setHeaderText("");
-						alert.setContentText("B��d: " + e.toString()
-								+ ". Zapis pliku nie powi�d� si�.");
+						alert.setContentText("Błąd: " + e.toString()
+								+ ". Zapis pliku nie powiódł się.");
 						alert.showAndWait();
 					}
 				}
@@ -133,8 +133,8 @@ public class StartPageController implements Initializable {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.toString()
-					+ ". Uszkodzony lub brak pliku u�ytkownika! Usu� lub przywr�c plik user i uruchom aplikacje ponownie.");
+			alert.setContentText("Błąd: " + e.toString()
+					+ ". Uszkodzony lub brak pliku użytkownika! Usuń lub przywróc plik user i uruchom aplikacje ponownie.");
 			alert.showAndWait();
 		}
 	}
@@ -182,8 +182,8 @@ public class StartPageController implements Initializable {
 		sp.setFitToWidth(true);
 		sp.setStyle("-fx-background-color:  #2e3539");
 		page.getChildren().add(sp);
-		Text text = new Text("Witaj w aplikacji goGym. Aplikacja umo�liwia uk�adanie w�asnych trening�w oraz przeprowadzanie ich w czasie rzeczywistym. Wspieranie si� goGym w codziennych treningach gwarantuje wykonanie zaplanowanej ilo�ci �wicze�, serii oraz przerw.\n"
-				+ "Ponadto aplikacja umo�liwia obliczanie podstawowych wska�nik�w cia�a cz�owieka oraz �ledzenie post�p�w w perspektywie �wicze�, miesi�cy oraz w�asnego cia�a.\n\n Zapraszamy do �wiczenia i �yczymy wielu sukces�w!");
+		Text text = new Text("Witaj w aplikacji goGym. Aplikacja umożliwia układanie własnych treningów oraz przeprowadzanie ich w czasie rzeczywistym. Wspieranie się goGym w codziennych treningach gwarantuje wykonanie zaplanowanej ilości ćwiczeń, serii oraz przerw.\n"
+				+ "Ponadto aplikacja umożliwia obliczanie podstawowych wskaźników ciała człowieka oraz śledzenie postępów w perspektywie ćwiczeń, miesięcy oraz własnego ciała.\n\n Zapraszamy do ćwiczenia i życzymy wielu sukcesów!");
 		text.setWrappingWidth(450);
 		text.setFill(Color.WHITE);
 		mainPage.getChildren().add(text);

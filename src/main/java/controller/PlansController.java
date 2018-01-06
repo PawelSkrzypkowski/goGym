@@ -38,7 +38,7 @@ import model.diary.Workout;
 
 /**
  * Klasa - kontroler do obslugi planow treningowych
- * @author Pawe�
+ * @author Paweł
  *
  */
 public class PlansController {
@@ -63,7 +63,7 @@ public class PlansController {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Informacja");
 					alert.setHeaderText("");
-					alert.setContentText("Uszkodzony lub brak pliku treningowego! Usu� lub przywr�c plik "
+					alert.setContentText("Uszkodzony lub brak pliku treningowego! Usuń lub przywróc plik "
 							+ file.getAbsolutePath() + " i uruchom aplikacje ponownie.");
 					alert.showAndWait();
 				}
@@ -84,7 +84,7 @@ public class PlansController {
 	}
 
 	public boolean checkStringCorrectness(String name) {
-		Pattern pattern = Pattern.compile("[^a-zA-Z0-9�����ꣳ���󌜏��� -]");
+		Pattern pattern = Pattern.compile("[^A-Za-z0-9żźćńółęąśŻŹĆĄŚĘŁÓŃ -]");
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.find() == true || name.length() == 0)// jesli zostal
 															// odnaleziony znak
@@ -110,9 +110,9 @@ public class PlansController {
 		editSetsNumber.setMaxWidth(50);
 		TextField editRest = new TextField(workout.getRest().get(i).toString());
 		editRest.setMaxWidth(50);
-		Label setsNumber = new Label("Ilo�c serii: "), rest = new Label("Odpoczynek: ");
-		Button save = new Button("Zapisz"), delete = new Button("Usu�"), up = new Button("Do g�ry"),
-				down = new Button("Do dolu");
+		Label setsNumber = new Label("Ilośc serii: "), rest = new Label("Odpoczynek: ");
+		Button save = new Button("Zapisz"), delete = new Button("Usuń"), up = new Button("Do góry"),
+				down = new Button("Do dołu");
 		HBox hb = new HBox();
 		hb.setSpacing(30);
 		if (i == 0 && i == workout.getExercises().size() - 1)
@@ -144,7 +144,7 @@ public class PlansController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString());
+				alert.setContentText("Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 			editWorkout(workout, mainPage);
@@ -156,7 +156,7 @@ public class PlansController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString());
+				alert.setContentText("Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 			editWorkout(workout, mainPage);
@@ -168,7 +168,7 @@ public class PlansController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString());
+				alert.setContentText("Błąd: " + e.toString());
 				alert.showAndWait();
 			}
 			editWorkout(workout, mainPage);
@@ -191,7 +191,7 @@ public class PlansController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d pliku. B��d: " + e.toString());
+			alert.setContentText("Błąd pliku. Błąd: " + e.toString());
 			alert.showAndWait();
 		} catch(NumberFormatException e) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -231,7 +231,7 @@ public class PlansController {
 	public void addExerciseSupport(Workout workout, ObservableList<String> options, VBox mainPage) {
 		Label add = new Label("Dodaj: ");
 		add.setFont(new Font(15));
-		Label setsNumber = new Label("Ilo�c serii: "), rest = new Label("Odpoczynek: ");
+		Label setsNumber = new Label("Ilośc serii: "), rest = new Label("Odpoczynek: ");
 		TextField editSetsNumber = new TextField("3");
 		TextField editRest = new TextField();
 		editRest.setPromptText("sekundy");
@@ -250,7 +250,7 @@ public class PlansController {
 	 */
 	public void editWorkoutPropertiesSupport(Workout workout, VBox mainPage) {
 		Label name = new Label("Nazwa:"), description = new Label("Opis:"), type = new Label("Typ treningu:"),
-				level = new Label("Poziom treningu:"), header = new Label("Cwiczenia:");
+				level = new Label("Poziom treningu:"), header = new Label("Ćwiczenia:");
 		header.setFont(new Font(15));
 		TextField editName = new TextField(workout.getWorkoutName()),
 				editType = new TextField(workout.getWorkoutType()),
@@ -268,13 +268,13 @@ public class PlansController {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Informacja");
 					alert.setHeaderText("");
-					alert.setContentText("Mo�esz korzysta� tylko z liter, cyfr i znaku -");
+					alert.setContentText("Możesz korzystać tylko z liter, cyfr i znaku -");
 					alert.showAndWait();
 				} else if (workout.checkIfWorkoutExist(editName.getText())) {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Informacja");
 					alert.setHeaderText("");
-					alert.setContentText("Podana nazwa juz jest zaj�ta");
+					alert.setContentText("Podana nazwa juz jest zajęta");
 					alert.showAndWait();
 				} else {
 					workout.changeWorkoutProperties(editName.getText(), editDescription.getText(), editType.getText(),
@@ -315,7 +315,7 @@ public class PlansController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d pliku. B��d: " + e.toString());
+			alert.setContentText("Błąd pliku. Błąd: " + e.toString());
 			alert.showAndWait();
 		}
 	}
@@ -345,7 +345,7 @@ public class PlansController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d podczas zapisywania/odczytywania pliku");
+			alert.setContentText("Błąd podczas zapisywania/odczytywania pliku");
 			alert.showAndWait();
 		}
 	}
@@ -364,7 +364,7 @@ public class PlansController {
 		IntegerProperty startTime = new SimpleIntegerProperty(START);
 		Label seconds = new Label();
 		seconds.textProperty().bind(startTime.asString());
-		Button skip = new Button("Pomi�");
+		Button skip = new Button("Pomiń");
 		mainPage.getChildren().addAll(seconds, skip);
 		Timeline timeline = new Timeline();
 		timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(START + 1), new KeyValue(startTime, 0)));
@@ -401,12 +401,12 @@ public class PlansController {
 		Exercise exercise = workout.getExercises().get(exerciseNumber - 1);
 		Label exerciseName = new Label(exercise.getName());
 		TextField reps = new TextField(), weight = new TextField();
-		reps.setPromptText("Ilo�� powt�rze�");
-		weight.setPromptText("Ci�ar");
+		reps.setPromptText("Ilość powtórzeń");
+		weight.setPromptText("Ciężar");
 		HBox set = new HBox(15);
 		set.getChildren().addAll(reps, new Label("x"), weight);
-		Button save = new Button("Zapisz"), skipSet = new Button("Pomi� seri�"),
-				skipExercise = new Button("Pomi� �wiczenie");
+		Button save = new Button("Zapisz"), skipSet = new Button("Pomiń serię"),
+				skipExercise = new Button("Pomiń ćwiczenie");
 		mainPage.getChildren().addAll(exerciseName, set, save, skipSet, skipExercise);
 		skipExercise.setOnAction((event) -> {
 			if (workout.getExercises().size() == exerciseNumber){// jesli koniec treningu
@@ -417,7 +417,7 @@ public class PlansController {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Informacja");
 					alert.setHeaderText("");
-					alert.setContentText("B��d podczas zapisywania treningu");
+					alert.setContentText("Błąd podczas zapisywania treningu");
 					alert.showAndWait();
 				}
 				SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
@@ -442,7 +442,7 @@ public class PlansController {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Informacja");
 						alert.setHeaderText("");
-						alert.setContentText("B��d podczas zapisywania treningu");
+						alert.setContentText("Błąd podczas zapisywania treningu");
 						alert.showAndWait();
 					}
 					SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
@@ -475,7 +475,7 @@ public class PlansController {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Informacja");
 						alert.setHeaderText("");
-						alert.setContentText("B��d podczas zapisywania treningu");
+						alert.setContentText("Błąd podczas zapisywania treningu");
 						alert.showAndWait();
 					}
 					SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
@@ -490,7 +490,7 @@ public class PlansController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 			}
 		});
@@ -506,7 +506,7 @@ public class PlansController {
 		Label name = new Label(workout.getWorkoutName());
 		Button start = new Button("Rozpocznij");
 		Button edit = new Button("Edytuj");
-		Button delete = new Button("Usu�");
+		Button delete = new Button("Usuń");
 		hb.getChildren().addAll(name, start, edit, delete);
 		Label description = new Label(workout.getWorkoutDescription());
 		description.setMaxHeight(30);
@@ -533,7 +533,7 @@ public class PlansController {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d usuwania pliku");
+				alert.setContentText("Błąd usuwania pliku");
 				alert.showAndWait();
 			}
 			workoutList.clear();

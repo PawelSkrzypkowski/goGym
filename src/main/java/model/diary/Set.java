@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 /**
  * Klasa do tworzenia wykonanych serii
- * @author Pawe�
+ * @author Paweł
  *
  */
 public class Set implements Serializable{

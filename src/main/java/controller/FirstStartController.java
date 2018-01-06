@@ -50,15 +50,15 @@ public class FirstStartController implements Initializable {
 	private Button createUser;
 	ObservableList<Integer> dayOptions = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
 			14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31);
-	private static ObservableList<String> monthOptions = FXCollections.observableArrayList("Stycze�", "Luty", "Marzec", "Kwiecie�",
-			"Maj", "Czerwiec", "Lipiec", "Sierpie�", "Wrzesie�", "Pa�dziernik", "Listopad", "Grudzie�");
+	private static ObservableList<String> monthOptions = FXCollections.observableArrayList("Styczeń", "Luty", "Marzec", "Kwiecień",
+			"Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień");
 
 	public static ObservableList<String> getMonthOptions() {
 		return monthOptions;
 	}
 
 	public boolean checkNameCorrectness(String name) {
-		Pattern pattern = Pattern.compile("[^a-zA-Z�����ꣳ���󌜏��� -]");
+		Pattern pattern = Pattern.compile("[^A-Za-z0-9żźćńółęąśŻŹĆĄŚĘŁÓŃ -]");
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.find() == true)// jesli zostal odnaleziony znak spoza
 									// zakresu a-z i A-Z -, czyli niepoprawny
@@ -95,7 +95,7 @@ public class FirstStartController implements Initializable {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Wprowadzona warto�� nie jest liczb�");
+				alert.setContentText("Wprowadzona wartość nie jest liczbą");
 				alert.showAndWait();
 				break;
 			}
@@ -106,11 +106,11 @@ public class FirstStartController implements Initializable {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("Nie poda�e� wymaganych danych");
+			alert.setContentText("Nie podałeś wymaganych danych");
 			alert.showAndWait();
 			fail = true;
 		}
-		if (fail == false) {// jesli mozna zarejestrowa�
+		if (fail == false) {// jesli mozna zarejestrować
 			try {
 				Date birthDate = changeToDateType(birthDay.getValue(), birthMonth.getValue(), birthYear.getValue());
 				User user = new User(setFirstName.getText(), setLastName.getText(), birthDate);
@@ -120,7 +120,7 @@ public class FirstStartController implements Initializable {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("Zostale� zarejestrowany!");
+				alert.setContentText("Zostaleś zarejestrowany!");
 				alert.showAndWait();
 				Stage stage = (Stage) vb.getScene().getWindow();// zamykanie
 																// okna
@@ -132,19 +132,19 @@ public class FirstStartController implements Initializable {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: " + e.toString());
+				alert.setContentText("Błąd: " + e.toString());
 				alert.showAndWait();
 			} catch (ParseException e) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Informacja");
 				alert.setHeaderText("");
-				alert.setContentText("B��d: niepoprawna data");
+				alert.setContentText("Błąd: niepoprawna data");
 				alert.showAndWait();
 			}
 		}
 	}
 	/**
-	 * Metoda zmieniaj�ca polsk� dat� na dat� w formacie Javowym
+	 * Metoda zmieniająca polską datę na datę w formacie Javowym
 	 * @param day
 	 * @param month
 	 * @param year
@@ -153,7 +153,7 @@ public class FirstStartController implements Initializable {
 	 */
 	public Date changeToDateType(Integer day, String month, Integer year) throws ParseException {
 		switch (month) {
-		case "Stycze�":
+		case "Styczeń":
 			month = "01";
 			break;
 		case "Luty":
@@ -162,7 +162,7 @@ public class FirstStartController implements Initializable {
 		case "Marzec":
 			month = "03";
 			break;
-		case "Kwiecie�":
+		case "Kwiecień":
 			month = "04";
 			break;
 		case "Maj":
@@ -174,19 +174,19 @@ public class FirstStartController implements Initializable {
 		case "Lipiec":
 			month = "07";
 			break;
-		case "Sierpie�":
+		case "Sierpień":
 			month = "08";
 			break;
-		case "Wrzesie�":
+		case "Wrzesień":
 			month = "09";
 			break;
-		case "Pa�dziernik":
+		case "Październik":
 			month = "10";
 			break;
 		case "Listopad":
 			month = "11";
 			break;
-		case "Grudzie�":
+		case "Grudzień":
 			month = "12";
 			break;
 		default:
@@ -197,7 +197,7 @@ public class FirstStartController implements Initializable {
 		return format.parse(day.toString() + "-" + month + "-" + year.toString());
 	}
 	/**
-	 * Metoda inicjalizuj�ca, tworz�ca widok okna oraz listenery
+	 * Metoda inicjalizująca, tworząca widok okna oraz listenery
 	 */
 	public void initialize(URL url, ResourceBundle rb) {
 		birthDay.setItems(dayOptions);

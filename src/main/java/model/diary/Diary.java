@@ -12,8 +12,8 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
 /**
- * Klasa obs�uguj�ca wykonane treningi
- * @author Pawe�
+ * Klasa obsługująca wykonane treningi
+ * @author Paweł
  *
  */
 public class Diary implements Serializable {
@@ -23,7 +23,7 @@ public class Diary implements Serializable {
 	private List<ExercisesDone> exercisesDone;
 	private Integer restTime;//seconds
 	/**
-	 * Metoda pobieraj�ca wykonane treningi
+	 * Metoda pobierająca wykonane treningi
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws IOException
@@ -40,7 +40,7 @@ public class Diary implements Serializable {
 		return diary;
 	}
 	/**
-	 * Metoda obliczaj�ca podniesiony ciezar w ciagu wybranego miesiaca
+	 * Metoda obliczająca podniesiony ciezar w ciagu wybranego miesiaca
 	 * @param minusMonth
 	 * @return
 	 * @throws ClassNotFoundException
@@ -55,7 +55,7 @@ public class Diary implements Serializable {
 		return weight;
 	}
 	/**
-	 * Metoda pobieraj�ca treningi w ciagu wybranego miesiaca
+	 * Metoda pobierająca treningi w ciagu wybranego miesiaca
 	 * @param minusMonth
 	 * @return
 	 * @throws ClassNotFoundException
@@ -118,7 +118,7 @@ public class Diary implements Serializable {
 		return exercisingTime;
 	}
 	/**
-	 * Metoda obliczajaca ilo�� przerw w treningach w ciagu miesiaca
+	 * Metoda obliczajaca ilość przerw w treningach w ciagu miesiaca
 	 * @param minusMonth
 	 * @return
 	 * @throws ClassNotFoundException
@@ -148,7 +148,7 @@ public class Diary implements Serializable {
 		return exercisesDone;
 	}
 	/**
-	 * Metoda zwracajaca map� Data - rekord dla wybranego cwiczenia
+	 * Metoda zwracajaca mapę Data - rekord dla wybranego cwiczenia
 	 * @param exercise
 	 * @return
 	 * @throws ClassNotFoundException
@@ -191,7 +191,7 @@ public class Diary implements Serializable {
 		setRestTime(getRestTime() + rest);
 	}
 	/**
-	 * Konstruktor tworz�cy nowy Wykonany trening
+	 * Konstruktor tworzący nowy Wykonany trening
 	 */
 	public Diary(){
 		startDate = new Date();
@@ -265,7 +265,7 @@ public class Diary implements Serializable {
 		}
 	}
 	/**
-	 * Metoda odczytuj�ca wybrany trening
+	 * Metoda odczytująca wybrany trening
 	 * @param fileName
 	 * @return
 	 * @throws FileNotFoundException

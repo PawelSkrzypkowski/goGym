@@ -17,14 +17,14 @@ import model.diary.Exercise;
 import model.diary.Workout;
 
 /**
- * Klasa u�ywana przy pierwszym w��czeniu apliakcji do utworzenia plik�w z �wiczeniami i przyk�adowym treningiem.
- * @author Pawe� Skrzypkowski
+ * Klasa używana przy pierwszym włączeniu apliakcji do utworzenia plików z ćwiczeniami i przykładowym treningiem.
+ * @author Paweł Skrzypkowski
  *
  */
 public class CreateExercises {
 	Stage stage = new Stage();
 	/**
-	 * Metoda tworz�ca okno oraz �aduj�ca �wiczenia i trening
+	 * Metoda tworząca okno oraz ładująca ćwiczenia i trening
 	 */
 	public void start() {
 		try {
@@ -34,10 +34,10 @@ public class CreateExercises {
 			scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 			stage.setScene(scene);
 			stage.setResizable(false);
-			stage.setTitle("�adowanie plik�w");
+			stage.setTitle("Ładowanie plików");
 			stage.getIcons().add(new Image((getClass().getResource("/images/icon.png").toExternalForm())));
 			stage.show();
-			Label descr = new Label("�wiczenia za�adowane"), descr2 = new Label("Przyk�adowy trening za�adowany");
+			Label descr = new Label("Ćwiczenia załadowane"), descr2 = new Label("Przykładowy trening załadowany");
 			root.getChildren().addAll(descr, descr2);
 			descr.setVisible(false);
 			descr2.setVisible(false);
@@ -53,12 +53,12 @@ public class CreateExercises {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Informacja");
 			alert.setHeaderText("");
-			alert.setContentText("B��d: " + e.toString() + ". �adowanie plik�w nie powiod�o si�.");
+			alert.setContentText("Błąd: " + e.toString() + ". Ładowanie plików nie powiodło się.");
 			alert.showAndWait();
 		}
 	}
 	/**
-	 * Metoda tworz�ca przyk��dowy trening
+	 * Metoda tworząca przykładowy trening
 	 * @return true
 	 * @throws InvalidClassException
 	 * @throws FileNotFoundException
@@ -66,17 +66,17 @@ public class CreateExercises {
 	 * @throws IOException
 	 */
 	public boolean loadWorkout() throws InvalidClassException, FileNotFoundException, ClassNotFoundException, IOException{
-		Workout exampleWorkout = new Workout("3-dniowy Full Body Workout", "Trening FBW, czyli Full Body Workout, jest to opcja treningu niemal�e dla ka�dego adepta si�owni. Znajduje swoje zastosowanie w treningu rozbudowuj�cym mas� mi�niow�, redukuj�cym tkank� t�uszczow�, zwi�kszaj�cym si��. Mo�emy stosowa� go r�wnie� jako opcj� treningu obwodowego. Dobrze u�o�ony i wykonywany plan FBW kompleksowo zadba o rozw�j wszystkich partii mi�niowych naszego cia�a.", "FBW", "pocz�tkuj�cy");
+		Workout exampleWorkout = new Workout("3-dniowy Full Body Workout", "Trening FBW, czyli Full Body Workout, jest to opcja treningu niemalże dla każdego adepta siłowni. Znajduje swoje zastosowanie w treningu rozbudowującym masę mięśniową, redukującym tkankę tłuszczową, zwiększającym siłę. Możemy stosować go również jako opcję treningu obwodowego. Dobrze ułożony i wykonywany plan FBW kompleksowo zadba o rozwój wszystkich partii mięśniowych naszego ciała.", "FBW", "początkujący");
 		LinkedList<Exercise> exercises = new LinkedList<Exercise>();
 		LinkedList<Integer> sets = new LinkedList<Integer>();
 		LinkedList<Integer> rest = new LinkedList<Integer>();
-		exercises.add(Exercise.readExercise("PRZYSIADY ZE SZTANG� TRZYMAN� Z PRZODU"));
-		exercises.add(Exercise.readExercise("PODCI�GANIE NA DR��KU SZEROKIM UCHWYTEM (NACHWYT)"));
-		exercises.add(Exercise.readExercise("ROZPI�TKI ZE SZTANGIELKAMI W LE�ENIU NA �AWCE SKO�NEJ - G�OW� DO G�RY"));
-		exercises.add(Exercise.readExercise("Wyciskanie sztangi zza g�owy"));
-		exercises.add(Exercise.readExercise("PROSTOWANIE RAMION NA WYCI�GU STOJ�C"));
-		exercises.add(Exercise.readExercise("UGINANIE RAMION ZE SZTANGIELKAMI STOJ�C PODCHWYTEM(Z �SUPINACJ�� NADGARSTKA)"));
-		exercises.add(Exercise.readExercise("SK�ONY TU�OWIA Z LINK� WYCI�GU KL�CZ�C"));
+		exercises.add(Exercise.readExercise("PRZYSIADY ZE SZTANGĄ TRZYMANĄ Z PRZODU"));
+		exercises.add(Exercise.readExercise("PODCIĄGANIE NA DRĄŻKU SZEROKIM UCHWYTEM (NACHWYT)"));
+		exercises.add(Exercise.readExercise("ROZPIĘTKI ZE SZTANGIELKAMI W LEŻENIU NA ŁAWCE SKOŚNEJ - GŁOWĄ DO GÓRY"));
+		exercises.add(Exercise.readExercise("Wyciskanie sztangi zza głowy"));
+		exercises.add(Exercise.readExercise("PROSTOWANIE RAMION NA WYCIĄGU STOJĄC"));
+		exercises.add(Exercise.readExercise("UGINANIE RAMION ZE SZTANGIELKAMI STOJĄC PODCHWYTEM(Z „SUPINACJĄ” NADGARSTKA)"));
+		exercises.add(Exercise.readExercise("SKŁONY TUŁOWIA Z LINKĄ WYCIĄGU KLĘCZĄC"));
 		for(int i=0;i<7;i++){
 			sets.add(4);
 			rest.add(60);
@@ -87,312 +87,312 @@ public class CreateExercises {
 		exampleWorkout.saveWorkout();
 		return true;
 	}
-/**
- * Metoda tworz�ca �wiczenia
- * @return true
- * @throws IOException
- */
+	/**
+	 * Metoda tworząca ćwiczenia
+	 * @return true
+	 * @throws IOException
+	 */
 	public boolean loadExercises() throws IOException {
 		// Barki
 
-		new Exercise("Wyciskanie sztangi sprzed g�owy",
-				"�wiczenie to mo�na wykonywa� zar�wno w pozycji stoj�cej (tzw. �o�nierskie wyciskanie), jak i siedz�cej. Do �wiczenia mo�na r�wnie� u�y� tzw. suwnicy Smitha.",
-				new String[] { "przednie i boczne aktony mi�sni naramiennych", "mi�nie tr�jg�owe ramion" })
-						.saveExercise();
+		new Exercise("Wyciskanie sztangi sprzed głowy",
+				"Ćwiczenie to można wykonywać zarówno w pozycji stojącej (tzw. żołnierskie wyciskanie), jak i siedzącej. Do ćwiczenia można również użyć tzw. suwnicy Smitha.",
+				new String[] { "przednie i boczne aktony mięsni naramiennych", "mięśnie trójgłowe ramion" })
+				.saveExercise();
 
-		new Exercise("Wyciskanie sztangi zza g�owy",
-				"�wiczenie to mo�na wykonywa� zar�wno w pozycji stoj�cej (tzw. �o�nierskie wyciskanie), jak i siedz�cej. Do �wiczenia mo�na r�wnie� u�y� tzw. suwnicy Smitha.",
-				new String[] { "przednie i boczne  aktony mi�ni naramiennych", "mi�nie trojg�owe ramion" })
-						.saveExercise();
+		new Exercise("Wyciskanie sztangi zza głowy",
+				"Ćwiczenie to można wykonywać zarówno w pozycji stojącej (tzw. żołnierskie wyciskanie), jak i siedzącej. Do ćwiczenia można również użyć tzw. suwnicy Smitha.",
+				new String[] { "przednie i boczne  aktony mięśni naramiennych", "mięśnie trojgłowe ramion" })
+				.saveExercise();
 
 		new Exercise("Wyciskanie sztangielek",
-				"kolejne �wiczenie, kt�re mo�na wykonywa� zar�wno w pozycji stoj�cej, jak i siedz�cej  - d�onie ze sztangielkami przez ca�y czas trzymamy tak, aby ich wewn�trzne cz�ci skierowane by�y do przodu(inna wersja przewiduje uchwyt m�otkowy-d�onie zwr�cone w czasie ca�ego ruchu palcami w kierunku g�owy).Ruch powinien odbywa� si�  pod pe�n� kontrol� ci�aru-wa�na jest r�wnie� pozycja podczas �wiczenia-podobna do pozycji przy wyciskaniu sztangi. (wypchni�ta klatka, naturalna krzywizna kr�gos�upa)",
-				new String[] { "przednie i boczne aktony mi�ni naramiennych", "mi�nie tr�jg�owe ramion" })
-						.saveExercise();
+				"kolejne ćwiczenie, które można wykonywać zarówno w pozycji stojącej, jak i siedzącej  - dłonie ze sztangielkami przez cały czas trzymamy tak, aby ich wewnętrzne części skierowane były do przodu(inna wersja przewiduje uchwyt młotkowy-dłonie zwrócone w czasie całego ruchu palcami w kierunku głowy).Ruch powinien odbywać się  pod pełną kontrolą ciężaru-ważna jest również pozycja podczas ćwiczenia-podobna do pozycji przy wyciskaniu sztangi. (wypchnięta klatka, naturalna krzywizna kręgosłupa)",
+				new String[] { "przednie i boczne aktony mięśni naramiennych", "mięśnie trójgłowe ramion" })
+				.saveExercise();
 
-		new Exercise("Unoszenie sztangielek bokiem w g�r�",
-				"�wiczenie mo�na wykonywa� w pozycji stoj�cej lub siedz�cej, obur�cz lub jednor�cz. W pozycji wyj�ciowej tu��w lekko pochylony, r�ce ze sztangielkami nieco ugi�te w �okciach, opuszczone w d�, d�onie wewn�trznymi stronami skierowane do �rodka. Ruch unoszenia rozpoczynamy przy ugi�tych r�kach, �okcie w ka�dej fazie ruchu wyprzedzaj� d�onie. Sztangielki unosimy powy�ej linii bark�w i bez zatrzymania opuszczamy powoli w d� (lub przytrzymujemy w pozycji szczytowej przez chwil� w celu dodatkowego napi�cia mi�ni). �wiczenie to mo�na r�wnie� wykonywa� jednor�cz sztangielk� w odchyleniu-chwytamy si� por�czy, drabinek lub jakiego� innego przyrz�du i odchylamy tu��w w bok (jedna r�k� trzymamy si� por�czy, a w drugiej trzymamy sztangielk�) i unosimy sztangielk� bokiem w g�r� do poziomu (w tym punkcie mo�na zatrzyma� ruch na chwil�) nast�pnie opuszczamy j� do pozycji wyj�ciowej.",
-				new String[] { "�rodkowe aktony  mi�ni naramiennych" }).saveExercise();
+		new Exercise("Unoszenie sztangielek bokiem w górę",
+				"ćwiczenie można wykonywać w pozycji stojącej lub siedzącej, oburącz lub jednorącz. W pozycji wyjściowej tułów lekko pochylony, ręce ze sztangielkami nieco ugięte w łokciach, opuszczone w dół, dłonie wewnętrznymi stronami skierowane do środka. Ruch unoszenia rozpoczynamy przy ugiętych rękach, łokcie w każdej fazie ruchu wyprzedzają dłonie. Sztangielki unosimy powyżej linii barków i bez zatrzymania opuszczamy powoli w dół (lub przytrzymujemy w pozycji szczytowej przez chwilę w celu dodatkowego napięcia mięśni). Ćwiczenie to można również wykonywać jednorącz sztangielką w odchyleniu-chwytamy się poręczy, drabinek lub jakiegoś innego przyrządu i odchylamy tułów w bok (jedna ręką trzymamy się poręczy, a w drugiej trzymamy sztangielkę) i unosimy sztangielkę bokiem w górę do poziomu (w tym punkcie można zatrzymać ruch na chwilę) następnie opuszczamy ją do pozycji wyjściowej.",
+				new String[] { "środkowe aktony  mięśni naramiennych" }).saveExercise();
 
-		new Exercise("Unoszenie sztangielek w opadzie tu�owia",
-				"�wiczenie wykonujemy w pozycji siedz�cej lub stoj�cej -W pozycji stoj�cej: tu��w ustawiamy w po�o�eniu zbli�onym do prostopad�ego do pod�o�a i staramy si� w trakcie ruchu nie wykonywa� nim tzw. bujania-utrzymujemy mo�liwie sztywno. Z pozycji wyj�ciowej ruchem kolistym unosimy sztangielki maksymalnie w g�r�, utrzymuj�c przez ca�y czas �wiczone mi�nie w stanie napi�cia. Staramy si�, aby w ruchu powrotnym sztangielki porusza�y si� po tym samym torze. Jak w poprzednim �wiczeniu ,mo�na w pozycji szczytowej przytrzyma� przez chwil� sztangielki w celu dodatkowego napi�cia mi�ni.",
-				new String[] { "tylna cz�� mi�ni naramiennych" }).saveExercise();
+		new Exercise("Unoszenie sztangielek w opadzie tułowia",
+				"ćwiczenie wykonujemy w pozycji siedzącej lub stojącej -W pozycji stojącej: tułów ustawiamy w położeniu zbliżonym do prostopadłego do podłoża i staramy się w trakcie ruchu nie wykonywać nim tzw. bujania-utrzymujemy możliwie sztywno. Z pozycji wyjściowej ruchem kolistym unosimy sztangielki maksymalnie w górę, utrzymując przez cały czas ćwiczone mięśnie w stanie napięcia. Staramy się, aby w ruchu powrotnym sztangielki poruszały się po tym samym torze. Jak w poprzednim ćwiczeniu ,można w pozycji szczytowej przytrzymać przez chwilę sztangielki w celu dodatkowego napięcia mięśni.",
+				new String[] { "tylna część mięśni naramiennych" }).saveExercise();
 
-		new Exercise("Podci�ganie sztangi wzd�u� tu�owia",
-				"w pozycji stoj�cej rozkrok nieco szerszy od rozstawu bark�w, uchwyt na szeroko�� ramion (inna wersja przewiduje szerszy rozstaw d�oni, nawet szerszy ni� rozstaw bark�w-zaanga�owane s� wtedy bardziej boczne aktony mi�sni naramiennych, a ruch ko�czymy na wysoko�ci klatki piersiowej). Ruchem wolnym i kontrolowanym unosimy sztang� w kierunku brody, staraj�c si� aby przemieszcza�a si� mo�liwie najbli�ej tu�owia. �okcie przez ca�y czas trzymamy powy�ej gryfu sztangi. Ruch unoszenia ko�czymy, gdy sztanga znajdzie si� na wysoko�ci klatki piersiowej (lub staramy si� podci�gn�� sztang� a� do brody), opuszczamy r�wnie� powoli, unikamy odchylania i bujania tu�owia. Koncentrujemy si� na unoszeniu �okci, a sztanga pod��y za nimi.",
-				new String[] { "wszystkie aktony mi�ni naramiennych",
-						"mi�sie� czworoboczny grzbietu (tzw. kapturowy)" }).saveExercise();
+		new Exercise("Podciąganie sztangi wzdłuż tułowia",
+				"w pozycji stojącej rozkrok nieco szerszy od rozstawu barków, uchwyt na szerokość ramion (inna wersja przewiduje szerszy rozstaw dłoni, nawet szerszy niż rozstaw barków-zaangażowane są wtedy bardziej boczne aktony mięsni naramiennych, a ruch kończymy na wysokości klatki piersiowej). Ruchem wolnym i kontrolowanym unosimy sztangę w kierunku brody, starając się aby przemieszczała się możliwie najbliżej tułowia. Łokcie przez cały czas trzymamy powyżej gryfu sztangi. Ruch unoszenia kończymy, gdy sztanga znajdzie się na wysokości klatki piersiowej (lub staramy się podciągnąć sztangę aż do brody), opuszczamy również powoli, unikamy odchylania i bujania tułowia. Koncentrujemy się na unoszeniu łokci, a sztanga podąży za nimi.",
+				new String[] { "wszystkie aktony mięśni naramiennych",
+						"mięsień czworoboczny grzbietu (tzw. kapturowy)" }).saveExercise();
 
-		new Exercise("Unoszenie ramion w prz�d ze sztang�",
-				"�wiczenie wykonujemy w staniu -rozkrok nieco szerzej od bark�w, uchwyt na szeroko�� bark�w-u�o�enie d�oni zale�y od rodzaju sztangi ,z jak� wykonujemy �wiczenie: mo�na zastosowa� nachwyt (przy u�yciu sztangi prostej), nachwyt pod k�tem (przy u�yciu sztangi �amanej), uchwyt m�otkowy (przy u�yciu �kratownicy�)- rozbudowuje si� dodatkowo obszar po��czenia m. piersiowych z naramiennymi .Unosimy sztang� miarowym ruchem (bez szarpania) ponad poziom bark�w i opuszczamy r�wnie� p�ynnym ruchem. Staramy si� nie buja� tu�owiem. W szczytowym po�o�eniu mo�na zatrzyma� ruch na chwil� w celu dodatkowego napi�cia mi�ni. W fazie negatywnej (opuszczanie sztangi) utrzymujemy pe�n� kontrol� nad ci�arem.",
-				new String[] { "przednie i boczne aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("Unoszenie ramion w przód ze sztangą",
+				"ćwiczenie wykonujemy w staniu -rozkrok nieco szerzej od barków, uchwyt na szerokość barków-ułożenie dłoni zależy od rodzaju sztangi ,z jaką wykonujemy ćwiczenie: można zastosować nachwyt (przy użyciu sztangi prostej), nachwyt pod kątem (przy użyciu sztangi łamanej), uchwyt młotkowy (przy użyciu „kratownicy”)- rozbudowuje się dodatkowo obszar połączenia m. piersiowych z naramiennymi .Unosimy sztangę miarowym ruchem (bez szarpania) ponad poziom barków i opuszczamy również płynnym ruchem. Staramy się nie bujać tułowiem. W szczytowym położeniu można zatrzymać ruch na chwilę w celu dodatkowego napięcia mięśni. W fazie negatywnej (opuszczanie sztangi) utrzymujemy pełną kontrolę nad ciężarem.",
+				new String[] { "przednie i boczne aktony mięśni naramiennych" }).saveExercise();
 
-		new Exercise("Unoszenie ramion ze sztangielkami w le�eniu",
-				"�wiczenie wykonujemy w pozycji le��cej na pod�odze lub �aweczce. Ruch zaczynamy nieco poni�ej poziomu i miarowo unosimy sztangielk� do momentu, kiedy poczujemy brak napi�cia w mi�niach bark�w, czyli mniej wi�cej do pionu. Mo�na stosowa� uchwyt jak na Gifie (pracuj� tylne i boczne aktony mi�ni naramiennych), lecz mo�na zastosowa� chwyt kciukiem do do�u, separujemy wtedy bardziej tylne aktony mi�ni naramiennych).",
-				new String[] { "boczne i tylne aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("Unoszenie ramion ze sztangielkami w leżeniu",
+				"ćwiczenie wykonujemy w pozycji leżącej na podłodze lub ławeczce. Ruch zaczynamy nieco poniżej poziomu i miarowo unosimy sztangielkę do momentu, kiedy poczujemy brak napięcia w mięśniach barków, czyli mniej więcej do pionu. Można stosować uchwyt jak na Gifie (pracują tylne i boczne aktony mięśni naramiennych), lecz można zastosować chwyt kciukiem do dołu, separujemy wtedy bardziej tylne aktony mięśni naramiennych).",
+				new String[] { "boczne i tylne aktony mięśni naramiennych" }).saveExercise();
 
-		new Exercise("Odwrotne rozpi�tki (na maszynie)",
-				"przed rozpocz�ciem �wiczenia ustawiamy wysoko�� siedzenia, tak aby r�ce porusza�y si� r�wnolegle do pod�o�a. Stosujemy chwyt neutralny (m�otkowy). Chwytamy r�czki przyrz�du, robimy wdech i wstrzymujemy oddech na czas odwodzenia ramion do ty�u. Dochodzimy do momentu, w kt�rym �okcie znajd� si� tu� za plecami. Je�li nie mo�emy odci�gn�� �okci odpowiednio daleko do ty�u, powinni�my zmniejszy� obci��enie.",
-				new String[] { "tylne aktony mi�ni naramiennych." }).saveExercise();
+		new Exercise("Odwrotne rozpiętki (na maszynie)",
+				"przed rozpoczęciem ćwiczenia ustawiamy wysokość siedzenia, tak aby ręce poruszały się równolegle do podłoża. Stosujemy chwyt neutralny (młotkowy). Chwytamy rączki przyrządu, robimy wdech i wstrzymujemy oddech na czas odwodzenia ramion do tyłu. Dochodzimy do momentu, w którym łokcie znajdą się tuż za plecami. Jeśli nie możemy odciągnąć łokci odpowiednio daleko do tyłu, powinniśmy zmniejszyć obciążenie.",
+				new String[] { "tylne aktony mięśni naramiennych." }).saveExercise();
 
 		// Klatka piersiowa
-		new Exercise("WYCISKANIE SZTANGI W LE�ENIU NA �AWCE POZIOMEJ",
-				"K�adziemy si� na �awce tak, by nogi ugi�te by�y pod k�tem prostym i przylega�y do pod�o�a. Uchwyt �redni(taki, by po opuszczeniu sztangi na klatk� ramiona tworzy�y z przedramionami k�t prosty-kciuk dla bezpiecze�stwa powinien obejmowa� sztang�-cho� wielu bardziej do�wiadczonych kulturyst�w preferuje raczej tzw. �ma�pi chwyt� (kciuk ponad gryfem).Opuszczamy sztang� na klatk� na wysoko�� ok.1 cm powy�ej brodawek. Przy opuszczaniu sztangi wykonujemy g��boki wdech-wydychamy powietrze w trakcie wyciskania. Mo�na okresowo praktykowa� przytrzymywanie sztangi przez chwil� na klatce przed wyci�ni�ciem.(szczeg�lnie przydatne, je�eli mamy w planach ewentualne starty w zawodach w wyciskaniu)-dodatkowo rozbudowuje si��-pobudza do dodatkowego wysi�ku. �okcie prowadzimy w trakcie ca�ego ruchu po bokach-tak by nie �ucieka�y�do �rodka. Ruch wyciskania ko�czymy(dla lepszego napi�cia mi�ni)zanim �okcie zostan� zblokowane.",
-				new String[] { "ca�a grupa mi�ni klatki piersiowej", "mi�nie tr�jg�owe ramion",
-						"przednie aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("WYCISKANIE SZTANGI W LEŻENIU NA ŁAWCE POZIOMEJ",
+				"Kładziemy się na ławce tak, by nogi ugięte były pod kątem prostym i przylegały do podłoża. Uchwyt średni(taki, by po opuszczeniu sztangi na klatkę ramiona tworzyły z przedramionami kąt prosty-kciuk dla bezpieczeństwa powinien obejmować sztangę-choć wielu bardziej doświadczonych kulturystów preferuje raczej tzw. ”małpi chwyt” (kciuk ponad gryfem).Opuszczamy sztangę na klatkę na wysokość ok.1 cm powyżej brodawek. Przy opuszczaniu sztangi wykonujemy głęboki wdech-wydychamy powietrze w trakcie wyciskania. Można okresowo praktykować przytrzymywanie sztangi przez chwilę na klatce przed wyciśnięciem.(szczególnie przydatne, jeżeli mamy w planach ewentualne starty w zawodach w wyciskaniu)-dodatkowo rozbudowuje siłę-pobudza do dodatkowego wysiłku. Łokcie prowadzimy w trakcie całego ruchu po bokach-tak by nie „uciekały”do środka. Ruch wyciskania kończymy(dla lepszego napięcia mięśni)zanim łokcie zostaną zblokowane.",
+				new String[] { "cała grupa mięśni klatki piersiowej", "mięśnie trójgłowe ramion",
+						"przednie aktony mięśni naramiennych" }).saveExercise();
 
-		new Exercise("WYCISKANIE SZTANGI W LE�ENIU NA �AWCE SKO�NEJ-G�OW�  W G�R�",
-				"�awk� ustawiamy pod k�tem 30-45 stopni(wi�kszy k�t bardziej anga�uje w �wiczeniu mi�nie naramienne), k�adziemy si� g�ow� do g�ry. Uchwyt sztangi, oddychanie, prowadzenie �okci, jak w �wiczeniu na �awce p�askiej. Chwytamy sztang� i opuszczamy j� na klatk�-ok.10 cm. poni�ej szyi. Staramy si� skupia� uwag� na anga�owaniu w prac� tylko mi�sni piersiowych i maksymalnym wy��czeniu z niej mi�sni naramiennych. W tym celu mo�na lekko wygi�� grzbiet, jednocze�nie wypychaj�c klatk� do przodu. Nie wolno jednak odrywa� zbytnio plec�w od �awki, a biodra musz� bezwzgl�dnie przylega� do �awki. ",
-				new String[] { "mi�nie tr�jg�owe ramion", "przednie aktony mi�ni naramiennych " }).saveExercise();
+		new Exercise("WYCISKANIE SZTANGI W LEŻENIU NA ŁAWCE SKOŚNEJ-GŁOWĄ  W GÓRĘ",
+				"Ławkę ustawiamy pod kątem 30-45 stopni(większy kąt bardziej angażuje w ćwiczeniu mięśnie naramienne), kładziemy się głową do góry. Uchwyt sztangi, oddychanie, prowadzenie łokci, jak w ćwiczeniu na ławce płaskiej. Chwytamy sztangę i opuszczamy ją na klatkę-ok.10 cm. poniżej szyi. Staramy się skupiać uwagę na angażowaniu w pracę tylko mięsni piersiowych i maksymalnym wyłączeniu z niej mięsni naramiennych. W tym celu można lekko wygiąć grzbiet, jednocześnie wypychając klatkę do przodu. Nie wolno jednak odrywać zbytnio pleców od ławki, a biodra muszą bezwzględnie przylegać do ławki. ",
+				new String[] { "mięśnie trójgłowe ramion", "przednie aktony mięśni naramiennych " }).saveExercise();
 
-		new Exercise("WYCISKANIE SZTANGI W LE�ENIU NA �AWCE SKO�NEJ-G�OW� W Dӣ",
-				"�aweczk� ustawiamy pod k�tem 30-45 stopni- k�adziemy si� g�ow� w d�, zapieraj�c nogi o co� dla stabilno�ci,(aby nie zsun�� si� w d� podczas wykonywania �wiczenia).Ruch wygl�da tak samo, jak podczas wyciskania na �awce poziomej. Opuszczaj�c sztang� nabieramy g��boko powietrza, wydychamy je wyciskaj�c sztang� w g�r�. �wiczenie mo�na wykonywa� r�wnie� przy pomocy suwnicy Smitha lub maszyn.",
-				new String[] { "ca�a grupa mi�sni piersiowych z podkre�leniem dolnych rejon�w",
-						"mi�nie tr�jg�owe ramion", "przednie aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("WYCISKANIE SZTANGI W LEŻENIU NA ŁAWCE SKOŚNEJ-GŁOWĄ W DÓŁ",
+				"Ławeczkę ustawiamy pod kątem 30-45 stopni- kładziemy się głową w dół, zapierając nogi o coś dla stabilności,(aby nie zsunąć się w dół podczas wykonywania ćwiczenia).Ruch wygląda tak samo, jak podczas wyciskania na ławce poziomej. Opuszczając sztangę nabieramy głęboko powietrza, wydychamy je wyciskając sztangę w górę. Ćwiczenie można wykonywać również przy pomocy suwnicy Smitha lub maszyn.",
+				new String[] { "cała grupa mięsni piersiowych z podkreśleniem dolnych rejonów",
+						"mięśnie trójgłowe ramion", "przednie aktony mięśni naramiennych" }).saveExercise();
 
-		new Exercise("WYCISKANIE SZTANGIELEK W LE�ENIU NA �AWCE SKO�NEJ-G�OW� W Dӣ",
-				"Pozycja, jak w �wiczeniu z u�yciem sztangi-dodatkowe mo�liwo�ci: np. chc�c po�o�y� wi�kszy nacisk na rozw�j wewn�trznej cz�ci klatki mo�na w g�rnym po�o�eniu(podczas fazy wyciskania) zbli�a� sztangielki do siebie, co nie jest mo�liwe przy u�yciu sztangi. R�wnie� faza opuszczania mo�e mie� nieco odmienny przebieg - przy �wiczeniu ze sztang� ruch ogranicza nam gryf sztangi, a wykorzystuj�c do tego �wiczenia sztangielki mo�emy opuszcza� r�ce poni�ej (g��biej) poziomu klatki, co dodatkowo rozci�ga mi�snie( w my�l zasady: im wi�kszy zakres ruchu, tym pe�niejszy rozw�j mi�ni). Dodatkowo mo�na w ko�cowej fazie ruchu obraca� nadgarstki tak, by d�onie skierowane by�y do siebie palcami(pozwala to na dodatkowe napi�cie wewn�trznych cz�ci mi�ni).",
-				new String[] { "ca�a grupa mi�sni piersiowych z podkre�leniem dolnych rejon�w",
-						"mi�nie tr�jg�owe ramion", "przednie aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("WYCISKANIE SZTANGIELEK W LEŻENIU NA ŁAWCE SKOŚNEJ-GŁOWĄ W DÓŁ",
+				"Pozycja, jak w ćwiczeniu z użyciem sztangi-dodatkowe możliwości: np. chcąc położyć większy nacisk na rozwój wewnętrznej części klatki można w górnym położeniu(podczas fazy wyciskania) zbliżać sztangielki do siebie, co nie jest możliwe przy użyciu sztangi. Również faza opuszczania może mieć nieco odmienny przebieg - przy ćwiczeniu ze sztangą ruch ogranicza nam gryf sztangi, a wykorzystując do tego ćwiczenia sztangielki możemy opuszczać ręce poniżej (głębiej) poziomu klatki, co dodatkowo rozciąga mięsnie( w myśl zasady: im większy zakres ruchu, tym pełniejszy rozwój mięśni). Dodatkowo można w końcowej fazie ruchu obracać nadgarstki tak, by dłonie skierowane były do siebie palcami(pozwala to na dodatkowe napięcie wewnętrznych części mięśni).",
+				new String[] { "cała grupa mięsni piersiowych z podkreśleniem dolnych rejonów",
+						"mięśnie trójgłowe ramion", "przednie aktony mięśni naramiennych" }).saveExercise();
 
-		new Exercise("ROZPI�TKI ZE SZTANGIELKAMI W LE�ENIU NA �AWCE POZIOMEJ",
-				"�wiczenie rozpoczynamy z ramionami wyprostowanymi-prostopad�ymi do pod�o�a( palce d�oni skierowane s� do siebie), a w trakcie ruchu lekko uginamy je w �okciach. Nabieramy powietrza, gdy sztangielki s� u g�ry(na pocz�tku ruchu) wydychamy je, gdy sztangielki w�druj� do g�ry. W ko�cowej fazie ruch mo�na zatrzyma� na chwil� w celu lepszego napi�cia mi�ni. Staramy si� nie uderza� sztangielkami o siebie, ale zatrzymywa� ruch zanim si� zetkn�. Wa�ne jest wykonywanie pe�nego zakresu ruchu(by dostatecznie rozci�gn�� mi�nie)-im wi�kszy zakres wykonanego ruchu, tym pe�niejszy og�lny rozw�j mi�nia. Obci��enia dostosowujemy takie, by  wykonywa� �wiczenie poprawnie technicznie. �wiczenie to mo�na r�wnie� wykonywa� przy pomocy linek wyci�g�w,lub specjalnej maszyny",
-				new String[] { "mi�sie� piersiowy wi�kszy(jego wewn�trzna i zewn�trzna cz��)",
-						"mi�sie� kruczoramienny", "przednie aktony mi�ni naramiennych", "piersiowy mniejszy",
-						"z�baty przedni" }).saveExercise();
+		new Exercise("ROZPIĘTKI ZE SZTANGIELKAMI W LEŻENIU NA ŁAWCE POZIOMEJ",
+				"Ćwiczenie rozpoczynamy z ramionami wyprostowanymi-prostopadłymi do podłoża( palce dłoni skierowane są do siebie), a w trakcie ruchu lekko uginamy je w łokciach. Nabieramy powietrza, gdy sztangielki są u góry(na początku ruchu) wydychamy je, gdy sztangielki wędrują do góry. W końcowej fazie ruch można zatrzymać na chwilę w celu lepszego napięcia mięśni. Staramy się nie uderzać sztangielkami o siebie, ale zatrzymywać ruch zanim się zetkną. Ważne jest wykonywanie pełnego zakresu ruchu(by dostatecznie rozciągnąć mięśnie)-im większy zakres wykonanego ruchu, tym pełniejszy ogólny rozwój mięśnia. Obciążenia dostosowujemy takie, by  wykonywać ćwiczenie poprawnie technicznie. Ćwiczenie to można również wykonywać przy pomocy linek wyciągów,lub specjalnej maszyny",
+				new String[] { "mięsień piersiowy większy(jego wewnętrzna i zewnętrzna część)",
+						"mięsień kruczoramienny", "przednie aktony mięśni naramiennych", "piersiowy mniejszy",
+						"zębaty przedni" }).saveExercise();
 
-		new Exercise("ROZPI�TKI ZE SZTANGIELKAMI W LE�ENIU NA �AWCE SKO�NEJ - G�OW� DO G�RY",
-				"�aweczk� ustawiamy pod k�tem 30-45 stopni, �wiczenie rozpoczynamy z ramionami wyprostowanymi-prostopad�ymi do pod�o�a( palce d�oni skierowane s� do siebie), a w trakcie ruchu lekko uginamy je w �okciach. Nabieramy powietrza, gdy sztangielki s� u g�ry(na pocz�tku ruchu) wydychamy je, gdy sztangielki w�druj� do g�ry.Wa�ne jest wykonywanie pe�nego zakresu ruchu(by dostatecznie rozci�gn�� mi�nie)-im wi�kszy zakres wykonanego ruchu, tym pe�niejszy og�lny rozw�j mi�nia. Obci��enia dostosowujemy takie, by wykonywa� �wiczenie poprawnie technicznie. �wiczenie r�wnie� mo�na wykonywa� zast�puj�c sztangielki r�czkami wyci�g�w.",
-				new String[] { "mi�sie� piersiowy wi�kszy(jego g�rna wewn�trzna i zewn�trzna cz��)",
-						"mi�sie� kruczoramienny i przednie aktony mi�ni naramiennych", "piersiowy mniejszy",
-						"z�baty przedni" }).saveExercise();
+		new Exercise("ROZPIĘTKI ZE SZTANGIELKAMI W LEŻENIU NA ŁAWCE SKOŚNEJ - GŁOWĄ DO GÓRY",
+				"Ławeczkę ustawiamy pod kątem 30-45 stopni, ćwiczenie rozpoczynamy z ramionami wyprostowanymi-prostopadłymi do podłoża( palce dłoni skierowane są do siebie), a w trakcie ruchu lekko uginamy je w łokciach. Nabieramy powietrza, gdy sztangielki są u góry(na początku ruchu) wydychamy je, gdy sztangielki wędrują do góry.Ważne jest wykonywanie pełnego zakresu ruchu(by dostatecznie rozciągnąć mięśnie)-im większy zakres wykonanego ruchu, tym pełniejszy ogólny rozwój mięśnia. Obciążenia dostosowujemy takie, by wykonywać ćwiczenie poprawnie technicznie. Ćwiczenie również można wykonywać zastępując sztangielki rączkami wyciągów.",
+				new String[] { "mięsień piersiowy większy(jego górna wewnętrzna i zewnętrzna część)",
+						"mięsień kruczoramienny i przednie aktony mięśni naramiennych", "piersiowy mniejszy",
+						"zębaty przedni" }).saveExercise();
 
-		new Exercise("WYCISKANIE SZTANGI W LE�ENIU NA �AWCE POZIOMEJ W�SKIM UCHWYTEM",
-				"Aby �wiczenie to anga�owa�o g��wnie mi�nie piersiowe, a dopiero w drugim stopniu tr�jg�owe ramion, nale�y prowadzi� �okcie mo�liwie najdalej na boki od tu�owia i koncentrowa� si� na pracy mi�sni klatki, a nie ramion. Pozycja na �awce i oddychanie, jak przy wyciskaniu w szerokim uchwycie. Uchwyt na szeroko�� bark�w lub odrobin� w�szy. �wiczenie mo�na wykonywa� r�wnie� na suwnicy Smitha",
-				new String[] { "wewn�trzna cz�� mi�nia", "przednie aktony mi�ni naramiennych",
-						"mi�nie tr�jg�owe ramion" }).saveExercise();
+		new Exercise("WYCISKANIE SZTANGI W LEŻENIU NA ŁAWCE POZIOMEJ WĄSKIM UCHWYTEM",
+				"Aby ćwiczenie to angażowało głównie mięśnie piersiowe, a dopiero w drugim stopniu trójgłowe ramion, należy prowadzić łokcie możliwie najdalej na boki od tułowia i koncentrować się na pracy mięsni klatki, a nie ramion. Pozycja na ławce i oddychanie, jak przy wyciskaniu w szerokim uchwycie. Uchwyt na szerokość barków lub odrobinę węższy. Ćwiczenie można wykonywać również na suwnicy Smitha",
+				new String[] { "wewnętrzna część mięśnia", "przednie aktony mięśni naramiennych",
+						"mięśnie trójgłowe ramion" }).saveExercise();
 
-		new Exercise("PRZENOSZENIE SZTANGIELKI W LE�ENIU W POPRZEK �AWKI POZIOMEJ",
-				"K�adziemy si� w poprzek �awki poziomej-w ten spos�b, by do jej powierzchni przylega�a jedynie cz�� plec�w w okolicy �opatek i karku. Chwytamy sztangielk� pod talerzami(gryf sztangielki pomi�dzy kciukami i palcami wskazuj�cymi).Ramiona lekko ugi�te podczas ca�ego ruchu-ich prostowanie w trakcie �wiczenia anga�uje dodatkowo mi�snie tr�jg�owe ramion i najszersze grzbietu. Sztangielk� opuszczamy do ty�u w d� do momentu maksymalnego wychylenia, w jakim mo�emy kontrolowa� ci�ar. Bardzo istotne jest w tym �wiczeniu oddychanie- opuszczaj�c w ty� sztangielk�-nabieramy mocno powietrza( maksymalnie rozszerzaj�c klatk�)-w drodze powrotnej wypuszczamy je. Dla lepszego zaanga�owania mi�ni z�batych mo�na przy opuszczaniu sztangielki w ty� jednocze�nie obni�y� biodra, co dodatkowo rozci�gnie tu��w i powi�kszy zakres ruchu. Pami�ta� nale�y r�wnie� o koncentracji na pracy mi�ni piersiowych i wyeliminowaniu pracy mi�ni grzbietu. Mo�na to �wiczenie r�wnie� wykonywa� le��c wzd�u� �awki, ale wtedy zakres ruchu jest mniejszy.",
-				new String[] { "ca�a grupa mi�ni piersiowych", "mi�nie najszersze grzbietu" }).saveExercise();
+		new Exercise("PRZENOSZENIE SZTANGIELKI W LEŻENIU W POPRZEK ŁAWKI POZIOMEJ",
+				"Kładziemy się w poprzek ławki poziomej-w ten sposób, by do jej powierzchni przylegała jedynie część pleców w okolicy łopatek i karku. Chwytamy sztangielkę pod talerzami(gryf sztangielki pomiędzy kciukami i palcami wskazującymi).Ramiona lekko ugięte podczas całego ruchu-ich prostowanie w trakcie ćwiczenia angażuje dodatkowo mięsnie trójgłowe ramion i najszersze grzbietu. Sztangielkę opuszczamy do tyłu w dół do momentu maksymalnego wychylenia, w jakim możemy kontrolować ciężar. Bardzo istotne jest w tym ćwiczeniu oddychanie- opuszczając w tył sztangielkę-nabieramy mocno powietrza( maksymalnie rozszerzając klatkę)-w drodze powrotnej wypuszczamy je. Dla lepszego zaangażowania mięśni zębatych można przy opuszczaniu sztangielki w tył jednocześnie obniżyć biodra, co dodatkowo rozciągnie tułów i powiększy zakres ruchu. Pamiętać należy również o koncentracji na pracy mięśni piersiowych i wyeliminowaniu pracy mięśni grzbietu. Można to ćwiczenie również wykonywać leżąc wzdłuż ławki, ale wtedy zakres ruchu jest mniejszy.",
+				new String[] { "cała grupa mięśni piersiowych", "mięśnie najszersze grzbietu" }).saveExercise();
 
-		new Exercise("POMPKI NA POR�CZACH",
-				"W tym �wiczeniu, podobnie jak przy wyciskaniu w�sko r�wnie� wa�ne jest by prac� wykonywa�y w g��wnym stopniu mi�nie piersiowe, w mniejszym stopniu chodzi nam o prac� mi�ni tr�jg�owych ramion. Elementem decyduj�cym o wi�kszym zaanga�owaniu jednych, b�d� drugich mi�ni jest pozycja tu�owia i u�o�enie �okci. Nale�y wypracowa� takie u�o�enie tu�owia, przy kt�rym g��wn� prac� b�d� wykonywa�y mi�nie piersiowe, a �okcie pracowa� powinny w pewnym oddaleniu od tu�owia. Dla lepszego wyeliminowania pracy triceps�w i lepszego napi�cia mi�sni piersiowych mo�na r�wnie� nie prostowa� ramion do ko�ca.",
-				new String[] { "ca�a grupa mi�ni klatki piersiowej", "przednie aktony mi�ni naramiennych",
-						"mi�nie tr�jg�owe ramion" }).saveExercise();
+		new Exercise("POMPKI NA PORĘCZACH",
+				"W tym ćwiczeniu, podobnie jak przy wyciskaniu wąsko również ważne jest by pracę wykonywały w głównym stopniu mięśnie piersiowe, w mniejszym stopniu chodzi nam o pracę mięśni trójgłowych ramion. Elementem decydującym o większym zaangażowaniu jednych, bądź drugich mięśni jest pozycja tułowia i ułożenie łokci. Należy wypracować takie ułożenie tułowia, przy którym główną pracę będą wykonywały mięśnie piersiowe, a łokcie pracować powinny w pewnym oddaleniu od tułowia. Dla lepszego wyeliminowania pracy tricepsów i lepszego napięcia mięsni piersiowych można również nie prostować ramion do końca.",
+				new String[] { "cała grupa mięśni klatki piersiowej", "przednie aktony mięśni naramiennych",
+						"mięśnie trójgłowe ramion" }).saveExercise();
 
-		new Exercise("ROZPI�TKI W SIADZIE NA MASZYNIE",
-				"wa�ne jest zaj�cie dobrej pozycji do �wiczenia(odpowiednia regulacja wysoko�ci siedzenia-ramiona powinny tworzy� z przedramionami k�t prosty),przedramiona na ca�ej d�ugo�ci wraz z �okciami powinny przylega� do poduszek oporowych.Przed rozpocz�ciem ruchu robimy wdech ,a powietrze wydychamy podczas zbli�ania ramion do siebie.W pozycji ko�cowej(ramiona najbli�ej siebie)mo�na wstrzyma� ruch na 1-2 sekundy(dla wi�kszego napi�cia mi�ni).Ruch powrotny powinien odbywa� si� pod pe�na kontrol�.",
-				new String[] { "mi�sie� piersiowy wi�kszy",
-						"mi�sie� kruczoramienny i przednie aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("ROZPIĘTKI W SIADZIE NA MASZYNIE",
+				"ważne jest zajęcie dobrej pozycji do ćwiczenia(odpowiednia regulacja wysokości siedzenia-ramiona powinny tworzyć z przedramionami kąt prosty),przedramiona na całej długości wraz z łokciami powinny przylegać do poduszek oporowych.Przed rozpoczęciem ruchu robimy wdech ,a powietrze wydychamy podczas zbliżania ramion do siebie.W pozycji końcowej(ramiona najbliżej siebie)można wstrzymać ruch na 1-2 sekundy(dla większego napięcia mięśni).Ruch powrotny powinien odbywać się pod pełna kontrolą.",
+				new String[] { "mięsień piersiowy większy",
+						"mięsień kruczoramienny i przednie aktony mięśni naramiennych" }).saveExercise();
 
-		new Exercise("KRZY�OWANIE LINEK WYCI�GU W STANIU",
-				"Stajemy pomi�dzy dwoma g�rnymi wyci�gami( w tzw.�bramie�)-tu��w lekko pochylony, co daje lepsz� separacj� mi�sni piersiowych. Chwytamy r�czki wyci�g�w i �ci�gamy je do wewn�trz w d�. Do tego �wiczenia nale�y u�ywa� umiarkowanych ci�ar�w i wykonywa� pe�en zakres ruchu. Wstrzymanie ruchu w ko�cowej fazie pozwoli otrzyma� lepsze napi�cie mi�ni i poprawi wyrazisto�� szczeg��w umi�nienia.",
-				new String[] { "ca�a grupa mi�sni piersiowych", "przednie aktony mi�ni naramiennych" }).saveExercise();
+		new Exercise("KRZYŻOWANIE LINEK WYCIĄGU W STANIU",
+				"Stajemy pomiędzy dwoma górnymi wyciągami( w tzw.”bramie”)-tułów lekko pochylony, co daje lepszą separację mięsni piersiowych. Chwytamy rączki wyciągów i ściągamy je do wewnątrz w dół. Do tego ćwiczenia należy używać umiarkowanych ciężarów i wykonywać pełen zakres ruchu. Wstrzymanie ruchu w końcowej fazie pozwoli otrzymać lepsze napięcie mięśni i poprawi wyrazistość szczegółów umięśnienia.",
+				new String[] { "cała grupa mięsni piersiowych", "przednie aktony mięśni naramiennych" }).saveExercise();
 
 		// Plecy
-		new Exercise("PODCI�GANIE NA DR��KU SZEROKIM UCHWYTEM (NACHWYT)",
-				"Nie ma drugiego takiego �wiczenia pod wzgl�dem wszechstronno�ci rozwoju mi�sni grzbietu. �wiczenie to mo�na wykonywa� do karku i do brody, lecz wersja do karku jest mniej naturalna dla staw�w. Chwytamy dr��ek nachwytem na szeroko�� tak�, by po podci�gni�ciu ramiona z przedramionami tworzy�y k�t prosty(w przybli�eniu).Nogi ugi�te w kolanach(dla lepszej stabilno�ci mo�na je sple��).�okcie pracuj� w p�aszczy�nie plec�w-w jednej linii. Wdech robimy przed rozpocz�ciem ruchu podci�gania-wydech dopiero, gdy jeste�my ju� u g�ry. Ruch podci�gania ko�czymy w momencie, gdy nasza broda(lub kark) jest na wysoko�ci dr��ka lub nieco ponad nim. Opuszczamy si� wolno i pod pe�n� kontrol�. Je�li jeste�my bardziej zaawansowani i mo�emy wykona� wiele powt�rze� w tym �wiczeniu, to mo�na zastosowa� dodatkowe obci��enie.",
-				new String[] { "mi�nie najszersze grzbietu", "ob�e mniejsze", "ob�e wi�ksze", "podgrzebieniowe",
-						"dwug�owe ramion" }).saveExercise();
+		new Exercise("PODCIĄGANIE NA DRĄŻKU SZEROKIM UCHWYTEM (NACHWYT)",
+				"Nie ma drugiego takiego ćwiczenia pod względem wszechstronności rozwoju mięsni grzbietu. Ćwiczenie to można wykonywać do karku i do brody, lecz wersja do karku jest mniej naturalna dla stawów. Chwytamy drążek nachwytem na szerokość taką, by po podciągnięciu ramiona z przedramionami tworzyły kąt prosty(w przybliżeniu).Nogi ugięte w kolanach(dla lepszej stabilności można je spleść).Łokcie pracują w płaszczyźnie pleców-w jednej linii. Wdech robimy przed rozpoczęciem ruchu podciągania-wydech dopiero, gdy jesteśmy już u góry. Ruch podciągania kończymy w momencie, gdy nasza broda(lub kark) jest na wysokości drążka lub nieco ponad nim. Opuszczamy się wolno i pod pełną kontrolą. Jeśli jesteśmy bardziej zaawansowani i możemy wykonać wiele powtórzeń w tym ćwiczeniu, to można zastosować dodatkowe obciążenie.",
+				new String[] { "mięśnie najszersze grzbietu", "obłe mniejsze", "obłe większe", "podgrzebieniowe",
+						"dwugłowe ramion" }).saveExercise();
 
-		new Exercise("PODCI�GANIE NA DR��KU W UCHWYCIE NEUTRALNYM",
-				"Chwytamy specjalny uchwyt(mo�e to by� r�czka tr�jk�tna od wyci�gu przerzucona nad dr��kiem prostym)-d�onie r�wnolegle do siebie w odleg�o�ci ok.20-25cm.,palcami skierowane do siebie. Z pe�nego zwisu podci�gamy si� do linii podmostkowej. Nogi zwisaj� lu�no, lekko podkurczone w kolanach. �okcie staramy si� prowadzi� wzd�u� tu�owia. Opuszczamy si� powoli-kontroluj�c sw�j ci�ar. Je�li jeste�my bardziej zaawansowani i mo�emy wykona� wiele powt�rze� w tym �wiczeniu, to mo�na zastosowa� dodatkowe obci��enie.",
-				new String[] { "mi�nie ob�e mniejsze", "ob�e wi�ksze", "podgrzebieniowe", "najszersze grzbietu",
-						"dwug�owe ramion" }).saveExercise();
+		new Exercise("PODCIĄGANIE NA DRĄŻKU W UCHWYCIE NEUTRALNYM",
+				"Chwytamy specjalny uchwyt(może to być rączka trójkątna od wyciągu przerzucona nad drążkiem prostym)-dłonie równolegle do siebie w odległości ok.20-25cm.,palcami skierowane do siebie. Z pełnego zwisu podciągamy się do linii podmostkowej. Nogi zwisają luźno, lekko podkurczone w kolanach. Łokcie staramy się prowadzić wzdłuż tułowia. Opuszczamy się powoli-kontrolując swój ciężar. Jeśli jesteśmy bardziej zaawansowani i możemy wykonać wiele powtórzeń w tym ćwiczeniu, to można zastosować dodatkowe obciążenie.",
+				new String[] { "mięśnie obłe mniejsze", "obłe większe", "podgrzebieniowe", "najszersze grzbietu",
+						"dwugłowe ramion" }).saveExercise();
 
-		new Exercise("PODCI�GANIE NA DR��KU PODCHWYTEM",
-				"Chwytamy dr��ek prosty podchwytem. Nogi zwisaj� lu�no, lekko podkurczone w kolanach. Ze zwisu przechodzimy do podci�gania. Ko�czymy je, gdy nasza broda znajdzie si� ponad dr��kiem, a nasze ramiona b�d� w pe�ni ugi�te w �okciach. �okcie staramy si� prowadzi� wzd�u� tu�owia. Opuszczamy si� powoli-kontroluj�c sw�j ci�ar. Je�li jeste�my bardziej zaawansowani i mo�emy wykona� wiele powt�rze� w tym �wiczeniu, to mo�na zastosowa� dodatkowe obci��enie.",
-				new String[] { "najszersze grzbietu", "ob�e mniejsze", "ob�e wi�ksze", "podgrzebieniowe",
-						"dwug�owe ramion" }).saveExercise();
+		new Exercise("PODCIĄGANIE NA DRĄŻKU PODCHWYTEM",
+				"Chwytamy drążek prosty podchwytem. Nogi zwisają luźno, lekko podkurczone w kolanach. Ze zwisu przechodzimy do podciągania. Kończymy je, gdy nasza broda znajdzie się ponad drążkiem, a nasze ramiona będą w pełni ugięte w łokciach. Łokcie staramy się prowadzić wzdłuż tułowia. Opuszczamy się powoli-kontrolując swój ciężar. Jeśli jesteśmy bardziej zaawansowani i możemy wykonać wiele powtórzeń w tym ćwiczeniu, to można zastosować dodatkowe obciążenie.",
+				new String[] { "najszersze grzbietu", "obłe mniejsze", "obłe większe", "podgrzebieniowe",
+						"dwugłowe ramion" }).saveExercise();
 
-		new Exercise("PODCI�GANIE SZTANGI W OPADZIE(WIOS�OWANIE)",
-				"Stajemy nad sztang� w rozkroku na szeroko�� bark�w, pochylamy tu��w do pozycji prawie r�wnoleg�ej do pod�o�a, plecy w dolnym odcinku mocno ugi�te do �rodka, nogi lekko ugi�te w kolanach przez ca�y czas trwania �wiczenia. Wdech bierzemy w momencie rozpocz�cia podci�gania-wydech dopiero, gdy sztanga dochodzi do brzucha(lub do klatki). Sztang� chwytamy na szeroko�� nieco wi�ksz� od bark�w i podci�gamy j� do brzucha(�okcie prowadzimy na boki).Druga wersja zak�ada podci�ganie sztangi do klatki piersiowej(jest to ruch odwrotny do wyciskania sztangi na �awce)-anga�owane s� mocniej w tej wersji mi�nie czworoboczne grzbietu, ob�e wi�ksze, mniejsze i tylne aktony mi�ni naramiennych. �wiczenie to mo�na r�wnie� wykonywa� przy pomocy suwnicy Smitha. Opuszczamy ci�ar z pe�n� kontrol�, wolnym tempem. Jeszcze inna wersja zak�ada zastosowanie w tym �wiczeniu podchwytu(mo�na zastosowa� wtedy, dla lepszych efekt�w sztang� �aman�).Ta wersja z kolei mocniej anga�uje dolne rejony �wiczonych mi�ni.",
-				new String[] { "najszersze grzbietu", "ob�e mniejsze", "ob�e wi�ksze", "podgrzebieniowe",
-						"czworoboczne", "mi�nie r�wnoleg�oboczne" }).saveExercise();
+		new Exercise("PODCIĄGANIE SZTANGI W OPADZIE(WIOSŁOWANIE)",
+				"Stajemy nad sztangą w rozkroku na szerokość barków, pochylamy tułów do pozycji prawie równoległej do podłoża, plecy w dolnym odcinku mocno ugięte do środka, nogi lekko ugięte w kolanach przez cały czas trwania ćwiczenia. Wdech bierzemy w momencie rozpoczęcia podciągania-wydech dopiero, gdy sztanga dochodzi do brzucha(lub do klatki). Sztangę chwytamy na szerokość nieco większą od barków i podciągamy ją do brzucha(łokcie prowadzimy na boki).Druga wersja zakłada podciąganie sztangi do klatki piersiowej(jest to ruch odwrotny do wyciskania sztangi na ławce)-angażowane są mocniej w tej wersji mięśnie czworoboczne grzbietu, obłe większe, mniejsze i tylne aktony mięśni naramiennych. Ćwiczenie to można również wykonywać przy pomocy suwnicy Smitha. Opuszczamy ciężar z pełną kontrolą, wolnym tempem. Jeszcze inna wersja zakłada zastosowanie w tym ćwiczeniu podchwytu(można zastosować wtedy, dla lepszych efektów sztangę łamaną).Ta wersja z kolei mocniej angażuje dolne rejony ćwiczonych mięśni.",
+				new String[] { "najszersze grzbietu", "obłe mniejsze", "obłe większe", "podgrzebieniowe",
+						"czworoboczne", "mięśnie równoległoboczne" }).saveExercise();
 
-		new Exercise("PODCI�GANIE KO�CA SZTANGI W OPADZIE",
-				"Stajemy okrakiem nad gryfem sztangi(p�sztangi)i chwytamy dr��ek, tu��w z udami tworz� k�t prosty, a z pod�og� nieco wi�kszy. Nogi lekko ugi�te w kolanach. W takiej pozycji podci�gamy sztang� do brzucha. Opuszczanie ci�aru kontrolowane. Wdech bierzemy w momencie rozpocz�cia podci�gania-wydech dopiero, gdy sztanga dochodzi do brzucha. W zale�no�ci od k�ta, pod jakim chcemy zaatakowa� mi�nie u�ywamy w tym �wiczeniu r�nych dr��k�w(chwytamy je r�nym uchwytem).I tak np. mo�e to by� dr��ek sztangi typu �T� (mocniej zaanga�owane g�rne cz�ci mi�sni najszerszych i mi�ni ob�ych-�okcie prowadzimy w bok od tu�owia.)lub dr��ek/r�czka r�wnoleg�a(�okcie prowadzone wzd�u� tu�owia-mocniej zaanga�owane �rodkowe cz�ci mi�sni najszerszych i ob�ych).Mo�ne te� �wiczenie to wykonywa� w le�eniu na �awce sko�nej(mniej anga�uje mi�nie dolnego odcinka grzbietu, mocniej izoluje mi�nie najszersze)",
-				new String[] { "najszersze grzbietu", "ob�e mniejsze", "ob�e wi�ksze", "podgrzebieniowe",
-						"czworoboczne", "mi�nie r�wnoleg�oboczne" }).saveExercise();
+		new Exercise("PODCIĄGANIE KOŃCA SZTANGI W OPADZIE",
+				"Stajemy okrakiem nad gryfem sztangi(półsztangi)i chwytamy drążek, tułów z udami tworzą kąt prosty, a z podłogą nieco większy. Nogi lekko ugięte w kolanach. W takiej pozycji podciągamy sztangę do brzucha. Opuszczanie ciężaru kontrolowane. Wdech bierzemy w momencie rozpoczęcia podciągania-wydech dopiero, gdy sztanga dochodzi do brzucha. W zależności od kąta, pod jakim chcemy zaatakować mięśnie używamy w tym ćwiczeniu różnych drążków(chwytamy je różnym uchwytem).I tak np. może to być drążek sztangi typu „T” (mocniej zaangażowane górne części mięsni najszerszych i mięśni obłych-łokcie prowadzimy w bok od tułowia.)lub drążek/rączka równoległa(łokcie prowadzone wzdłuż tułowia-mocniej zaangażowane środkowe części mięsni najszerszych i obłych).Możne też ćwiczenie to wykonywać w leżeniu na ławce skośnej(mniej angażuje mięśnie dolnego odcinka grzbietu, mocniej izoluje mięśnie najszersze)",
+				new String[] { "najszersze grzbietu", "obłe mniejsze", "obłe większe", "podgrzebieniowe",
+						"czworoboczne", "mięśnie równoległoboczne" }).saveExercise();
 
-		new Exercise("PRZYCI�GANIE LINKI WYCI�GU DOLNEGO W SIADZIE P�ASKIM",
-				"Siadamy p�asko przed wyci�giem dolnym nogi zaparte o stabilny punkt oparcia i chwytamy r�czk� wyci�gu. Przyci�gamy j� do brzucha, utrzymuj�c przez ca�y czas tu��w w pozycji pionowej. W ko�cowej fazie ruchu staramy si� �ci�gn�� �opatki ku sobie. Po czym powoli, kontroluj�c ruch opuszczamy ci�ar. Wdech przed rozpocz�ciem przyci�gania- wydech, gdy r�czka jest przy brzuchu. R�czka mo�e by� r�na(uchwyt w zwi�zku z tym r�wnie� mo�e by� r�ny. R�czka r�wnoleg�a(tr�jk�tna)pozwala na wykonanie �wiczenia z uchwytem �m�otkowym�. Anga�uje on mi�snie g�rnej i �rodkowej cz�ci grzbietu. R�czka/dr��ek prosta/y pozwala na uchwyt nachwytem lub podchwytem, szeroko lub w�sko, co r�wnie� anga�uje pod r�nym k�tem mi�snie grzbietu. Nachwyt w�ski i szeroki izoluje bardziej g�rn� cz�� mi�sni grzbietu(szczeg�lnie najszerszych i ob�ych), podchwyt w�ski i szeroki anga�uje mocniej �rodkow� i doln� cz�� tych mi�ni. W �wiczeniach szerokim uchwytem �okcie prowadzone s� na boki, we wszystkich innych odmianach �wiczenia prowadzone s� przy tu�owiu. �wiczenie to mo�na wykonywa� r�wnie� jednor�cz.",
-				new String[] { "najszersze grzbietu", "ob�e wi�ksze", "ob�e mniejsze", "mi�nie r�wnoleg�oboczne" })
-						.saveExercise();
+		new Exercise("PRZYCIĄGANIE LINKI WYCIĄGU DOLNEGO W SIADZIE PŁASKIM",
+				"Siadamy płasko przed wyciągiem dolnym nogi zaparte o stabilny punkt oparcia i chwytamy rączkę wyciągu. Przyciągamy ją do brzucha, utrzymując przez cały czas tułów w pozycji pionowej. W końcowej fazie ruchu staramy się ściągnąć łopatki ku sobie. Po czym powoli, kontrolując ruch opuszczamy ciężar. Wdech przed rozpoczęciem przyciągania- wydech, gdy rączka jest przy brzuchu. Rączka może być różna(uchwyt w związku z tym również może być różny. Rączka równoległa(trójkątna)pozwala na wykonanie ćwiczenia z uchwytem „młotkowym”. Angażuje on mięsnie górnej i środkowej części grzbietu. Rączka/drążek prosta/y pozwala na uchwyt nachwytem lub podchwytem, szeroko lub wąsko, co również angażuje pod różnym kątem mięsnie grzbietu. Nachwyt wąski i szeroki izoluje bardziej górną część mięsni grzbietu(szczególnie najszerszych i obłych), podchwyt wąski i szeroki angażuje mocniej środkową i dolną część tych mięśni. W ćwiczeniach szerokim uchwytem łokcie prowadzone są na boki, we wszystkich innych odmianach ćwiczenia prowadzone są przy tułowiu. Ćwiczenie to można wykonywać również jednorącz.",
+				new String[] { "najszersze grzbietu", "obłe większe", "obłe mniejsze", "mięśnie równoległoboczne" })
+				.saveExercise();
 
-		new Exercise("�CI�GANIE DR��KA lub R�CZKI WYCI�GU G�RNEGO W SIADZIE SZEROKIM UCHWYTEM (NACHWYT)",
-				"Siadamy na siode�ku pod wyci�giem g�rnym, chwytamy r�czk�/dr��ek nachwytem na szeroko�� tak�, jak przy podci�ganiu na dr��ku i przyci�gamy j� do klatki lub karku, w zale�no�ci od wersji, jak� wykonujemy. Obie wersje anga�uj� te same mi�snie, ale pod nieco innymi k�tami. �opatki �ci�gamy do siebie, jednocze�nie �okcie przywodz�c do ty�u. Przy przyci�ganiu do klatki tu��w nieco odchylony do ty�u, a przy drugiej wersji(do karku)-tu��w w pionie. W dolnym po�o�eniu przytrzymujemy dr��ek na chwil� dla lepszego napi�cia mi�sni. Opuszczanie ci�aru kontrolowane. Sta�e napi�cie w �wiczonych mi�niach i �czucie� ich pracy.",
-				new String[] { "mi�nie najszersze grzbietu", "ob�e mniejsze", "ob�e wi�ksze", "podgrzebieniowe" })
-						.saveExercise();
+		new Exercise("ŚCIĄGANIE DRĄŻKA lub RĄCZKI WYCIĄGU GÓRNEGO W SIADZIE SZEROKIM UCHWYTEM (NACHWYT)",
+				"Siadamy na siodełku pod wyciągiem górnym, chwytamy rączkę/drążek nachwytem na szerokość taką, jak przy podciąganiu na drążku i przyciągamy ją do klatki lub karku, w zależności od wersji, jaką wykonujemy. Obie wersje angażują te same mięsnie, ale pod nieco innymi kątami. Łopatki ściągamy do siebie, jednocześnie łokcie przywodząc do tyłu. Przy przyciąganiu do klatki tułów nieco odchylony do tyłu, a przy drugiej wersji(do karku)-tułów w pionie. W dolnym położeniu przytrzymujemy drążek na chwilę dla lepszego napięcia mięsni. Opuszczanie ciężaru kontrolowane. Stałe napięcie w ćwiczonych mięśniach i „czucie” ich pracy.",
+				new String[] { "mięśnie najszersze grzbietu", "obłe mniejsze", "obłe większe", "podgrzebieniowe" })
+				.saveExercise();
 
-		new Exercise("PRZNOSZENIE SZTANGI W LE�ENIU NA �AWCE POZIOMEJ",
-				"Machanie sztangaJest to �wiczenie podobne do przenoszenia sztangielki, jednak zastosowanie sztangi zmienia nieco k�t, pod jakim pracuj� ramiona, a co za tym idzie lepiej anga�uje do pracy mi�nie grzbietu, przy jednoczesnym zmniejszeniu zaanga�owania mi�sni klatki piersiowej. Je�li jednak decydujemy si� na wykonanie �wiczenia z u�yciem sztangielki, to musimy pami�ta�, by wykonywa� je na ugi�tych i u�o�onych r�wnolegle do tu�owia(nie na boki, jak w �wiczeniu na klatk� piersiow�) ramionach. Pozwala to na lepsze zaanga�owanie mi�sni grzbietu. Przy wersji ze sztang� nale�y samemu zadecydowa�, jakie u�o�enie cia�a(wzd�u�, czy w poprzek)jest dla nas najlepsze. Mo�na �wiczenie to wykonywa� z ramionami wyprostowanymi, lub(co zdecydowanie zmniejsza napr�enia w stawach �okciowych)na ugi�tych ramionach(podchwytem i nachwytem). Ruch opuszczania jest bardzo istotny i powinien by� wykonany z maksymaln� koncentracj� i pod pe�n� kontrol� ci�aru. Sztang� opuszczamy do pe�nego rozci�gni�cia mi�sni grzbietu. Unoszenie ko�czymy, gdy ramiona znajd� si� w pozycji pionowej do pod�o�a. �wiczenie mo�na r�wnie� wykona� zast�puj�c sztang� r�czk�/dr��kiem wyci�gu dolnego znajduj�cego si� za nasz� g�ow� lub przy pomocy specjalnej maszyny",
-				new String[] { "dolne partie mi�ni najszerszych grzbietu", "mi�nie z�bate przednie",
-						"mi�nie piersiowe" }).saveExercise();
+		new Exercise("PRZNOSZENIE SZTANGI W LEŻENIU NA ŁAWCE POZIOMEJ",
+				"Machanie sztangaJest to ćwiczenie podobne do przenoszenia sztangielki, jednak zastosowanie sztangi zmienia nieco kąt, pod jakim pracują ramiona, a co za tym idzie lepiej angażuje do pracy mięśnie grzbietu, przy jednoczesnym zmniejszeniu zaangażowania mięsni klatki piersiowej. Jeśli jednak decydujemy się na wykonanie ćwiczenia z użyciem sztangielki, to musimy pamiętać, by wykonywać je na ugiętych i ułożonych równolegle do tułowia(nie na boki, jak w ćwiczeniu na klatkę piersiową) ramionach. Pozwala to na lepsze zaangażowanie mięsni grzbietu. Przy wersji ze sztangą należy samemu zadecydować, jakie ułożenie ciała(wzdłuż, czy w poprzek)jest dla nas najlepsze. Można ćwiczenie to wykonywać z ramionami wyprostowanymi, lub(co zdecydowanie zmniejsza naprężenia w stawach łokciowych)na ugiętych ramionach(podchwytem i nachwytem). Ruch opuszczania jest bardzo istotny i powinien być wykonany z maksymalną koncentracją i pod pełną kontrolą ciężaru. Sztangę opuszczamy do pełnego rozciągnięcia mięsni grzbietu. Unoszenie kończymy, gdy ramiona znajdą się w pozycji pionowej do podłoża. Ćwiczenie można również wykonać zastępując sztangę rączką/drążkiem wyciągu dolnego znajdującego się za naszą głową lub przy pomocy specjalnej maszyny",
+				new String[] { "dolne partie mięśni najszerszych grzbietu", "mięśnie zębate przednie",
+						"mięśnie piersiowe" }).saveExercise();
 
-		new Exercise("PODCI�GANIE (WIOS�OWANIE) W LE�ENIU NA �AWECZCE POZIOMEJ",
-				"Jest to �wiczenie podobne do wios�owania w opadzie tu�owia, ale odci��a ono dolny odcinek mi�sni grzbietu-szczeg�lnie polecane dla os�b, kt�re maj� k�opoty z t� w�a�nie cz�ci�. Technika podobna jak w �wiczeniu w opadzie. Tu��w oparty o �awk� poziom�. �okcie przy �wiczeniu ze sztang� prowadzimy w bok od tu�owia, a w wersji ze sztangielkami wzd�u� tu�owia(zaanga�owanie mi�ni analogicznie, jak przy �wiczeniu w opadzie-z wy��czeniem pracy dolnego odcinka grzbietu). �wiczenie to mo�na r�wnie� wykona� na �awce sko�nej. Zaanga�owane b�d� te same mi�snie jednak pod innym k�tem.",
-				new String[] { "mi�nie najszersze grzbietu", "ob�e mniejsze", "ob�e wi�ksze" }).saveExercise();
+		new Exercise("PODCIĄGANIE (WIOSŁOWANIE) W LEŻENIU NA ŁAWECZCE POZIOMEJ",
+				"Jest to ćwiczenie podobne do wiosłowania w opadzie tułowia, ale odciąża ono dolny odcinek mięsni grzbietu-szczególnie polecane dla osób, które mają kłopoty z tą właśnie częścią. Technika podobna jak w ćwiczeniu w opadzie. Tułów oparty o ławkę poziomą. Łokcie przy ćwiczeniu ze sztangą prowadzimy w bok od tułowia, a w wersji ze sztangielkami wzdłuż tułowia(zaangażowanie mięśni analogicznie, jak przy ćwiczeniu w opadzie-z wyłączeniem pracy dolnego odcinka grzbietu). Ćwiczenie to można również wykonać na ławce skośnej. Zaangażowane będą te same mięsnie jednak pod innym kątem.",
+				new String[] { "mięśnie najszersze grzbietu", "obłe mniejsze", "obłe większe" }).saveExercise();
 
-		new Exercise("SK�ONY ZE SZTANG� TRZYMAN� NA KARKU",
-				"Stajemy w rozkroku nieco wi�kszym ni� szeroko�� bark�w. Sztang� k�adziemy na g�rnej cz�ci mi�sni czworobocznych grzbietu. G�owa lekko wygi�ta do ty�u, ale bez przesady-zbytnie wyginanie g�owy mo�e by� przyczyn� kontuzji. Tu��w wyprostowany, klatka piersiowa wypchni�ta ku przodowi, �opatki �ci�gni�te do siebie. Nogi lekko ugi�te w kolanach przez ca�y czas trwania �wiczenia. Z takiej pozycji wykonujemy sk�on do pozycji zbli�onej do poziomego u�o�enia tu�owia wzgl�dem pod�ogi. Bez zatrzymania, ale nie szarpi�c unosimy tu��w do pozycji wyj�ciowej. �wiczenie mo�na wykonywa� przy pomocy suwnicy Smitha. Ruch powinien by� p�ynny i kontrolowany.",
-				new String[] { "prostowniki grzbietu", "dwug�owe ud", "po�ladkowe" }).saveExercise();
+		new Exercise("SKŁONY ZE SZTANGĄ TRZYMANĄ NA KARKU",
+				"Stajemy w rozkroku nieco większym niż szerokość barków. Sztangę kładziemy na górnej części mięsni czworobocznych grzbietu. Głowa lekko wygięta do tyłu, ale bez przesady-zbytnie wyginanie głowy może być przyczyną kontuzji. Tułów wyprostowany, klatka piersiowa wypchnięta ku przodowi, łopatki ściągnięte do siebie. Nogi lekko ugięte w kolanach przez cały czas trwania ćwiczenia. Z takiej pozycji wykonujemy skłon do pozycji zbliżonej do poziomego ułożenia tułowia względem podłogi. Bez zatrzymania, ale nie szarpiąc unosimy tułów do pozycji wyjściowej. Ćwiczenie można wykonywać przy pomocy suwnicy Smitha. Ruch powinien być płynny i kontrolowany.",
+				new String[] { "prostowniki grzbietu", "dwugłowe ud", "pośladkowe" }).saveExercise();
 
 		// Biceps
-		new Exercise("UGINANIE RAMION ZE SZTANG� STOJAC PODCHWYTEM",
-				"Stajemy w rozkroku(na szeroko�� bark�w lub nieco szerzej)-sztang� chwytamy w zale�no�ci od tego, kt�r� g�ow� bicepsu chcemy zaanga�owa� bardziej. I tak odpowiednio:\n-uchwyt w�ski(w�szy ni� szeroko�� ramion)-wi�ksze zaanga�owanie g��w kr�tkich,\n-uchwyt �redni(na szeroko�� ramion)-obie g�owy zaanga�owane w r�wnym stopniu,\n-uchwyt szeroki(szerszy od ramion)-wi�ksze zaanga�owanie g��w d�ugich.\nTu��w podczas �wiczenia utrzymujemy w pozycji wyprostowanej(bez bujania nim). Zakres ruchu: od pe�nego rozgi�cia biceps�w(nie ramion)do pe�nego ich skurczu. Pe�ne rozci�gni�cie biceps�w, to nie to samo, co pe�ny wyprost ramion. Nale�y unika�(nie tylko w tym �wiczeniu) tzw. �przeprost�w� ramion, czyli nadmiernego ich wyprostowywania(do pe�nego zakresu ruchu w stawie �okciowym).�okcie przez ca�y czas przylegaj� do tu�owia-nie powinny ucieka� na boki, ani w prz�d, gdy� powoduje to zaanga�owanie innych mi�ni do pracy. Powietrza nabieramy w pozycji wyj�ciowej, wypuszczamy je dopiero po przej�ciu ci�aru przez najtrudniejszy punkt ruchu. W pozycji ko�cowej mo�na zatrzyma� na chwil� ci�ar dla lepszego ukrwienia mi�nia, ale pod warunkiem utrzymania biceps�w w pe�nym napi�ciu. Nale�y pami�ta�, �e ruch opuszczania musi by� w pe�ni kontrolowany i wolniejszy od unoszenia. Do �wiczenia mo�na u�ywa� zar�wno sztangi prostej, jak i �amanej-gryf �amany zmniejsza napi�cia powstaj�ce w nadgarstkach.",
-				new String[] { "mi�nie dwug�owe ramion", "mi�nie przedramion" }).saveExercise();
+		new Exercise("UGINANIE RAMION ZE SZTANGĄ STOJAC PODCHWYTEM",
+				"Stajemy w rozkroku(na szerokość barków lub nieco szerzej)-sztangę chwytamy w zależności od tego, którą głowę bicepsu chcemy zaangażować bardziej. I tak odpowiednio:\n-uchwyt wąski(węższy niż szerokość ramion)-większe zaangażowanie głów krótkich,\n-uchwyt średni(na szerokość ramion)-obie głowy zaangażowane w równym stopniu,\n-uchwyt szeroki(szerszy od ramion)-większe zaangażowanie głów długich.\nTułów podczas ćwiczenia utrzymujemy w pozycji wyprostowanej(bez bujania nim). Zakres ruchu: od pełnego rozgięcia bicepsów(nie ramion)do pełnego ich skurczu. Pełne rozciągnięcie bicepsów, to nie to samo, co pełny wyprost ramion. Należy unikać(nie tylko w tym ćwiczeniu) tzw. ”przeprostów” ramion, czyli nadmiernego ich wyprostowywania(do pełnego zakresu ruchu w stawie łokciowym).Łokcie przez cały czas przylegają do tułowia-nie powinny uciekać na boki, ani w przód, gdyż powoduje to zaangażowanie innych mięśni do pracy. Powietrza nabieramy w pozycji wyjściowej, wypuszczamy je dopiero po przejściu ciężaru przez najtrudniejszy punkt ruchu. W pozycji końcowej można zatrzymać na chwilę ciężar dla lepszego ukrwienia mięśnia, ale pod warunkiem utrzymania bicepsów w pełnym napięciu. Należy pamiętać, że ruch opuszczania musi być w pełni kontrolowany i wolniejszy od unoszenia. Do ćwiczenia można używać zarówno sztangi prostej, jak i łamanej-gryf łamany zmniejsza napięcia powstające w nadgarstkach.",
+				new String[] { "mięśnie dwugłowe ramion", "mięśnie przedramion" }).saveExercise();
 
-		new Exercise("UGINANIE RAMION ZE SZTANGIELKAMI STOJ�C PODCHWYTEM(Z �SUPINACJ�� NADGARSTKA)",
-				"�wiczenie to mo�na wykonywa� zar�wno w pozycji stoj�cej, jak i siedz�cej. Bardzo dobre, jako rozgrzewkowe przed ci�kimi seriami ze sztang�, ale r�wnie� jako samodzielne �wiczenie rozwijaj�ce mas� i kszta�t biceps�w. Polecane wykonanie z �supinacj�� nadgarstka. Polega ona na stopniowym obracaniu d�oni w trakcie wykonywania �wiczenia. W pozycji wyj�ciowej( ramiona wyprostowane) d�onie zwr�cone s� ku sobie palcami, a w miar� uginania ramion obracaj� si� tak, by w ko�cowym momencie ruchu(przy zgi�tych ramionach)ma�e palce by�y wy�ej od kciuk�w. Daje to dodatkowe napi�cie mi�ni oraz kszta�tuje kulisto�� biceps�w. Prostowanie ramienia ko�czymy w momencie rozci�gni�cia mi�ni dwug�owych(nie do pe�nej mo�liwo�ci stawu �okciowego). Ruch mo�na wykonywa� na przemian-raz jedna r�ka, raz druga(po 1 powt�rzeniu), obiema r�kami jednocze�nie, lub opuszczaj�c jedn� r�k�- jednocze�nie unosz�c drug�. Samemu trzeba wybra�, kt�ra wersja jest dla nas najefektywniejsza. U�o�enie �okci jak w �wiczeniu 1-ze sztang�. Mo�na r�wnie� pomin�� supinacj� nadgarstka, ale zmniejsza to efektywno�� �wiczenia.",
-				new String[] { "dwug�owe ramion", "ramienno promieniowe", "mi�snie przedramion" }).saveExercise();
+		new Exercise("UGINANIE RAMION ZE SZTANGIELKAMI STOJĄC PODCHWYTEM(Z „SUPINACJĄ” NADGARSTKA)",
+				"Ćwiczenie to można wykonywać zarówno w pozycji stojącej, jak i siedzącej. Bardzo dobre, jako rozgrzewkowe przed ciężkimi seriami ze sztangą, ale również jako samodzielne ćwiczenie rozwijające masę i kształt bicepsów. Polecane wykonanie z „supinacją” nadgarstka. Polega ona na stopniowym obracaniu dłoni w trakcie wykonywania ćwiczenia. W pozycji wyjściowej( ramiona wyprostowane) dłonie zwrócone są ku sobie palcami, a w miarę uginania ramion obracają się tak, by w końcowym momencie ruchu(przy zgiętych ramionach)małe palce były wyżej od kciuków. Daje to dodatkowe napięcie mięśni oraz kształtuje kulistość bicepsów. Prostowanie ramienia kończymy w momencie rozciągnięcia mięśni dwugłowych(nie do pełnej możliwości stawu łokciowego). Ruch można wykonywać na przemian-raz jedna ręka, raz druga(po 1 powtórzeniu), obiema rękami jednocześnie, lub opuszczając jedną rękę- jednocześnie unosząc drugą. Samemu trzeba wybrać, która wersja jest dla nas najefektywniejsza. Ułożenie łokci jak w ćwiczeniu 1-ze sztangą. Można również pominąć supinację nadgarstka, ale zmniejsza to efektywność ćwiczenia.",
+				new String[] { "dwugłowe ramion", "ramienno promieniowe", "mięsnie przedramion" }).saveExercise();
 
-		new Exercise("UGINANIE RAMION ZE SZTANG� NA �MODLITEWNIKU�",
-				"�wiczenie zar�wno na rozw�j masy, jak i �wypi�trzenie� biceps�w, a to za spraw� mi�nia ramiennego, po�o�onego pod dwug�owym, kt�ry wypycha go do g�ry. Siadamy na siode�ku modlitewnika. Nogi rozstawiamy w taki spos�b, by pozwoli�y nam utrzyma� stabiln� pozycj�. G�rna kraw�d� modlitewnika powinna znale�� si� pod naszymi pachami. Ramiona rozstawione na szeroko�� bark�w-r�wnolegle do siebie. Rozstaw d�oni, podobnie jak w �wiczeniu ze sztanga stoj�c-w zale�no�ci od celu �wiczenia(zaanga�owanie poszczeg�lnych g��w, jak w �wiczeniu ze sztang� stoj�c). Zakres ruchu: od pe�nego rozgi�cia biceps�w(nie ramion)do pe�nego ich skurczu, przy czym przedramiona nie powinny przekracza� linii pionu. Pe�ne rozci�gni�cie biceps�w, to nie to samo, co pe�ny wyprost ramion. Nale�y unika�(nie tylko w tym �wiczeniu) tzw. �przeprost�w� ramion, czyli nadmiernego ich wyprostowywania(do pe�nego zakresu ruchu w stawie �okciowym).Faza negatywna ruchu-prostowanie ramion powinna odbywa� si� przy pe�nej kontroli ci�aru. Opuszczamy sztang� wolniej ni� unosimy. Oddychanie jak w �wiczeniu ze sztang� stoj�c. Do �wiczenia mo�na u�ywa� zar�wno sztangi prostej, jak i �amanej-gryf �amany zmniejsza napi�cia powstaj�ce w nadgarstkach. �wiczenie to mo�na wykonywa� r�wnie� zast�puj�c sztang� dr��kiem wyci�gu dolnego, lub na specjalnych maszynach.",
-				new String[] { "mi�snie dwug�owe ramion", "mi�nie ramienne", "mi�nie ramienno promieniowe" })
-						.saveExercise();
+		new Exercise("UGINANIE RAMION ZE SZTANGĄ NA „MODLITEWNIKU”",
+				"Ćwiczenie zarówno na rozwój masy, jak i „wypiętrzenie” bicepsów, a to za sprawą mięśnia ramiennego, położonego pod dwugłowym, który wypycha go do góry. Siadamy na siodełku modlitewnika. Nogi rozstawiamy w taki sposób, by pozwoliły nam utrzymać stabilną pozycję. Górna krawędź modlitewnika powinna znaleźć się pod naszymi pachami. Ramiona rozstawione na szerokość barków-równolegle do siebie. Rozstaw dłoni, podobnie jak w ćwiczeniu ze sztanga stojąc-w zależności od celu ćwiczenia(zaangażowanie poszczególnych głów, jak w ćwiczeniu ze sztangą stojąc). Zakres ruchu: od pełnego rozgięcia bicepsów(nie ramion)do pełnego ich skurczu, przy czym przedramiona nie powinny przekraczać linii pionu. Pełne rozciągnięcie bicepsów, to nie to samo, co pełny wyprost ramion. Należy unikać(nie tylko w tym ćwiczeniu) tzw. ”przeprostów” ramion, czyli nadmiernego ich wyprostowywania(do pełnego zakresu ruchu w stawie łokciowym).Faza negatywna ruchu-prostowanie ramion powinna odbywać się przy pełnej kontroli ciężaru. Opuszczamy sztangę wolniej niż unosimy. Oddychanie jak w ćwiczeniu ze sztangą stojąc. Do ćwiczenia można używać zarówno sztangi prostej, jak i łamanej-gryf łamany zmniejsza napięcia powstające w nadgarstkach. Ćwiczenie to można wykonywać również zastępując sztangę drążkiem wyciągu dolnego, lub na specjalnych maszynach.",
+				new String[] { "mięsnie dwugłowe ramion", "mięśnie ramienne", "mięśnie ramienno promieniowe" })
+				.saveExercise();
 
-		new Exercise("UGINANIE RAMION ZE SZTANGIELKAMI W SIADZIE NA �AWCE SKO�NEJ(Z SUPINACJ� NADGARSTKA)",
-				"Jest to jedno z tych �wicze�, kt�re rozwijaj� zar�wno mas� mi�ni dwug�owych, jak i charakterystyczny zaokr�glony kszta�t. Trzeba je wykonywa� z du�� koncentracj�. Siadamy na �awce sko�nej, o nachyleniu ok.45 stopni. Przedramiona powinny by� lekko odchylone od tu�owia, a �okcie przylega� do niego. Wymodelowaniu kszta�tu mi�ni s�u�y �supinacja� nadgarstka. Polega ona na stopniowym obracaniu d�oni w trakcie wykonywania �wiczenia. W pozycji wyj�ciowej( ramiona wyprostowane) d�onie zwr�cone s� ku sobie palcami, a w miar� uginania ramion obracaj� si� tak, by w ko�cowym momencie ruchu(przy zgi�tych ramionach)ma�e palce by�y wy�ej od kciuk�w. Wskazane dla lepszego rozwoju biceps�w jest zatrzymanie ruchu w ko�cowym po�o�eniu i maksymalne napi�cie mi�ni przez 1-3 sekundy. Ruch mo�na wykonywa� na przemian-raz jedna r�ka, raz druga(po 1 powt�rzeniu), obiema r�kami jednocze�nie, lub opuszczaj�c jedn� r�k� jednocze�nie unosz�c drug�. Samemu trzeba wybra�, kt�ra wersja jest dla nas najefektywniejsza.",
-				new String[] { "mi�snie dwug�owe ramion", "mi�nie ramienne", "mi�nie przedramion",
-						"mi�nie ramienno promieniowe" }).saveExercise();
+		new Exercise("UGINANIE RAMION ZE SZTANGIELKAMI W SIADZIE NA ŁAWCE SKOŚNEJ(Z SUPINACJĄ NADGARSTKA)",
+				"Jest to jedno z tych ćwiczeń, które rozwijają zarówno masę mięśni dwugłowych, jak i charakterystyczny zaokrąglony kształt. Trzeba je wykonywać z dużą koncentracją. Siadamy na ławce skośnej, o nachyleniu ok.45 stopni. Przedramiona powinny być lekko odchylone od tułowia, a łokcie przylegać do niego. Wymodelowaniu kształtu mięśni służy „supinacja” nadgarstka. Polega ona na stopniowym obracaniu dłoni w trakcie wykonywania ćwiczenia. W pozycji wyjściowej( ramiona wyprostowane) dłonie zwrócone są ku sobie palcami, a w miarę uginania ramion obracają się tak, by w końcowym momencie ruchu(przy zgiętych ramionach)małe palce były wyżej od kciuków. Wskazane dla lepszego rozwoju bicepsów jest zatrzymanie ruchu w końcowym położeniu i maksymalne napięcie mięśni przez 1-3 sekundy. Ruch można wykonywać na przemian-raz jedna ręka, raz druga(po 1 powtórzeniu), obiema rękami jednocześnie, lub opuszczając jedną rękę jednocześnie unosząc drugą. Samemu trzeba wybrać, która wersja jest dla nas najefektywniejsza.",
+				new String[] { "mięsnie dwugłowe ramion", "mięśnie ramienne", "mięśnie przedramion",
+						"mięśnie ramienno promieniowe" }).saveExercise();
 
-		new Exercise("UGINANIE RAMIENIA ZE SZTANGIELK� W SIADZIE-W PODPORZE O KOLANO",
-				"Jest to �wiczenie modeluj�ce kszta�t biceps�w-ich wierzcho�ek. Wymaga ono du�ej koncentracji w czasie wykonywania. Siadamy na �awce lub krze�le, pochylamy si� lekko do przodu. Chwytamy sztangielk� w d�o� i opieramy �okie� o wewn�trzn� cz�� uda. Ruch powinien mie� wolne tempo(zar�wno podczas unoszenia i opuszczania)-jest to �wiczenie koncentryczne i technika jest w nim wa�niejsza od wielko�ci ci�aru. Mo�na r�wnie� w tym �wiczeniu stosowa� supinacj� nadgarstka. Ramiona �zamykamy� do ko�ca, napinaj�c maksymalnie mi�sie�. Prostujemy rami�(jak w innych �wiczeniach na mi�nie dwug�owe)tylko do momentu pe�nego rozci�gni�cia biceps�w, nie do pe�nego zakresu ruchu w stawie �okciowym.",
-				new String[] { "mi�snie dwug�owe ramion", "mi�nie ramienne", "mi�nie przedramion" }).saveExercise();
+		new Exercise("UGINANIE RAMIENIA ZE SZTANGIELKĄ W SIADZIE-W PODPORZE O KOLANO",
+				"Jest to ćwiczenie modelujące kształt bicepsów-ich wierzchołek. Wymaga ono dużej koncentracji w czasie wykonywania. Siadamy na ławce lub krześle, pochylamy się lekko do przodu. Chwytamy sztangielkę w dłoń i opieramy łokieć o wewnętrzną część uda. Ruch powinien mieć wolne tempo(zarówno podczas unoszenia i opuszczania)-jest to ćwiczenie koncentryczne i technika jest w nim ważniejsza od wielkości ciężaru. Można również w tym ćwiczeniu stosować supinację nadgarstka. Ramiona „zamykamy” do końca, napinając maksymalnie mięsień. Prostujemy ramię(jak w innych ćwiczeniach na mięśnie dwugłowe)tylko do momentu pełnego rozciągnięcia bicepsów, nie do pełnego zakresu ruchu w stawie łokciowym.",
+				new String[] { "mięsnie dwugłowe ramion", "mięśnie ramienne", "mięśnie przedramion" }).saveExercise();
 
-		new Exercise("UGINANIE RAMION ZE SZTANGA NACHWYTEM STOJ�C",
-				"Stajemy w rozkroku na szeroko�� bark�w(lub nieco szerszym) sztang� chwytamy nachwytem. �okcie nieruchomo przy tu�owiu, nadgarstki zblokowane w jednej pozycji przez ca�y czas �wiczenia. Ruch odbywa si� tylko w stawach �okciowych. Opuszczanie odbywa si� wolnym tempem i pod pe�n� kontrol� ci�aru. Oddychanie, jak w �wiczeniu ze sztang� podchwytem. �wiczenie to mo�na wykonywa� r�wnie� zast�puj�c sztang� dr��kiem wyci�gu dolnego.",
-				new String[] { "mi�snie ramienno promieniowe(umieszczone na wierzchu przedramion)",
-						"mi�nie dwug�owe ramion", "mi�nie przedramion" }).saveExercise();
+		new Exercise("UGINANIE RAMION ZE SZTANGA NACHWYTEM STOJĄC",
+				"Stajemy w rozkroku na szerokość barków(lub nieco szerszym) sztangę chwytamy nachwytem. Łokcie nieruchomo przy tułowiu, nadgarstki zblokowane w jednej pozycji przez cały czas ćwiczenia. Ruch odbywa się tylko w stawach łokciowych. Opuszczanie odbywa się wolnym tempem i pod pełną kontrolą ciężaru. Oddychanie, jak w ćwiczeniu ze sztangą podchwytem. Ćwiczenie to można wykonywać również zastępując sztangę drążkiem wyciągu dolnego.",
+				new String[] { "mięsnie ramienno promieniowe(umieszczone na wierzchu przedramion)",
+						"mięśnie dwugłowe ramion", "mięśnie przedramion" }).saveExercise();
 
-		new Exercise("UGINANIE NADGARSTK�W PODCHWYTEM W SIADZIE",
-				"�wiczenie to rozwija wewn�trzn� cz�� przedramion-podstawowe dla rozwoju tej partii mi�ni. Wyrabia si�� u�cisku d�oni. �apiemy sztang� w siadzie podchwytem, rozstaw d�oni ok. 15 cm(szerszy nadwyr�a nadgarstki).Opieramy przedramiona o uda, tak by poza nogi wystawa�y jedynie nasze d�onie. Pracuj� tylko nadgarstki. Staramy si�, aby zakres ruchu by� jak najwi�kszy i w tym celu pozwalamy w dolnym po�o�eniu na stoczenie si� sztangi a� do ko�c�w palc�w - po czym ponownie �ciskamy d�o� i zginamy maksymalnie nadgarstek. �wiczenie mo�na wykonywa� r�wnie� zast�puj�c sztang� dr��kiem wyci�gu dolnego, lub sztangielk� (jednor�cz).",
-				new String[] { "grupa mi�sni przedramion-zginaczy nadgarstk�w" }).saveExercise();
+		new Exercise("UGINANIE NADGARSTKÓW PODCHWYTEM W SIADZIE",
+				"Ćwiczenie to rozwija wewnętrzną część przedramion-podstawowe dla rozwoju tej partii mięśni. Wyrabia siłę uścisku dłoni. Łapiemy sztangę w siadzie podchwytem, rozstaw dłoni ok. 15 cm(szerszy nadwyręża nadgarstki).Opieramy przedramiona o uda, tak by poza nogi wystawały jedynie nasze dłonie. Pracują tylko nadgarstki. Staramy się, aby zakres ruchu był jak największy i w tym celu pozwalamy w dolnym położeniu na stoczenie się sztangi aż do końców palców - po czym ponownie ściskamy dłoń i zginamy maksymalnie nadgarstek. Ćwiczenie można wykonywać również zastępując sztangę drążkiem wyciągu dolnego, lub sztangielką (jednorącz).",
+				new String[] { "grupa mięsni przedramion-zginaczy nadgarstków" }).saveExercise();
 
-		new Exercise("PROSTOWANIE RAMION NA WYCI�GU STOJ�C",
-				"Stajemy w lekkim rozkroku przed wyci�giem, chwytamy r�czk� nachwytem na szeroko�� ok.10-20 cm. Kciuki na r�czce(tzw. �ma�pi� chwyt).Lekko pochylamy si� w prz�d i naciskamy r�czk� wyci�gu w d�. Ramiona przyci�ni�te do tu�owia. Ruch wykonuj� tylko przedramiona(pracuj� jedynie stawy �okciowe). Ramiona prostujemy do ko�ca-dla lepszego napi�cia mi�ni. Nie unosimy �okci, gdy r�czka wyci�gu jest w g�rnym po�o�eniu-spowodowa�oby to zanik napi�cia w tricepsach. Najwa�niejsze jest sta�e utrzymanie napi�cia w �wiczonych mi�niach. Unikamy szarpania-ruch powinien by� p�ynny, a faza opuszczania ci�aru wolniejsza, z pe�n� kontrol� ci�aru.",
-				new String[] { "wszystkie g�owy mi�ni tr�jg�owych ramion" }).saveExercise();
+		new Exercise("PROSTOWANIE RAMION NA WYCIĄGU STOJĄC",
+				"Stajemy w lekkim rozkroku przed wyciągiem, chwytamy rączkę nachwytem na szerokość ok.10-20 cm. Kciuki na rączce(tzw. ”małpi” chwyt).Lekko pochylamy się w przód i naciskamy rączkę wyciągu w dół. Ramiona przyciśnięte do tułowia. Ruch wykonują tylko przedramiona(pracują jedynie stawy łokciowe). Ramiona prostujemy do końca-dla lepszego napięcia mięśni. Nie unosimy łokci, gdy rączka wyciągu jest w górnym położeniu-spowodowałoby to zanik napięcia w tricepsach. Najważniejsze jest stałe utrzymanie napięcia w ćwiczonych mięśniach. Unikamy szarpania-ruch powinien być płynny, a faza opuszczania ciężaru wolniejsza, z pełną kontrolą ciężaru.",
+				new String[] { "wszystkie głowy mięśni trójgłowych ramion" }).saveExercise();
 
-		new Exercise("WYCISKANIE �FRANCUSKIE�SZTANGI W SIADZIE",
-				"�wiczenie to rozwija wszystkie g�owy triceps�w ze szczeg�lnym wskazaniem na g�ow� d�uga. Mo�na je wykonywa� zar�wno w pozycji stoj�cej, jak i siedz�cej. W pozycji siedz�cej ponadto mo�na zastosowa� oparcie(np. na �awce sko�nej).Polepsza to stabilno��, a co za tym idzie pozwala lepiej skoncentrowa� si� na wykonaniu �wiczenia. Mo�emy u�y� sztangi prostej i �amanej. �amana ma t� zalet�, �e pozwala na zwi�kszenie zakresu ruchu i zmniejsza napr�enia powstaj�ce w nadgarstkach. �okcie powinny trwa� nieruchomo(jak najbli�ej g�owy) podczas �wiczenia. Zakres ruchu:od pe�nego wyprostu ramion, do pe�nego zgi�cia w �okciach. Przy pe�nym zgi�ciu ramion, gdy sztanga znajduje si� za g�ow�, nie powinno si� traci� nad ni� kontroli(swobodne opuszczenie jej przeci��a mocno stawy �okciowe, co mo�e prowadzi� do kontuzji).�wiczenie mo�na wykonywa� r�wnie� zast�puj�c sztang� dr��kiem wyci�gu dolnego (prostym lub �amanym, b�d� grubym sznurem zako�czonym w�z�ami-stosujemy wtedy uchwyt r�wnoleg�y). Mo�na r�wnie� wykonywa� nieco inn� odmian� �wiczenia ze sztangielk� trzyman� obur�cz. Przy tej wersji nale�y pami�ta�, o jednakowym anga�owaniu w �wiczenie obu r�k.",
-				new String[] { "g�owy boczne i przy�rodkowe mi�ni tr�jg�owych ramion" }).saveExercise();
+		new Exercise("WYCISKANIE „FRANCUSKIE”SZTANGI W SIADZIE",
+				"Ćwiczenie to rozwija wszystkie głowy tricepsów ze szczególnym wskazaniem na głowę długa. Można je wykonywać zarówno w pozycji stojącej, jak i siedzącej. W pozycji siedzącej ponadto można zastosować oparcie(np. na ławce skośnej).Polepsza to stabilność, a co za tym idzie pozwala lepiej skoncentrować się na wykonaniu ćwiczenia. Możemy użyć sztangi prostej i łamanej. Łamana ma tę zaletę, że pozwala na zwiększenie zakresu ruchu i zmniejsza naprężenia powstające w nadgarstkach. Łokcie powinny trwać nieruchomo(jak najbliżej głowy) podczas ćwiczenia. Zakres ruchu:od pełnego wyprostu ramion, do pełnego zgięcia w łokciach. Przy pełnym zgięciu ramion, gdy sztanga znajduje się za głową, nie powinno się tracić nad nią kontroli(swobodne opuszczenie jej przeciąża mocno stawy łokciowe, co może prowadzić do kontuzji).Ćwiczenie można wykonywać również zastępując sztangę drążkiem wyciągu dolnego (prostym lub łamanym, bądź grubym sznurem zakończonym węzłami-stosujemy wtedy uchwyt równoległy). Można również wykonywać nieco inną odmianę ćwiczenia ze sztangielką trzymaną oburącz. Przy tej wersji należy pamiętać, o jednakowym angażowaniu w ćwiczenie obu rąk.",
+				new String[] { "głowy boczne i przyśrodkowe mięśni trójgłowych ramion" }).saveExercise();
 
-		new Exercise("PROSTOWNIE RAMIENIA ZE SZTANGIELK� W OPADZIE TU�OWIA",
-				"Przy wyprostowanych plecach pochylamy si� do przodu i opieramy jedn� r�k� o �awk�. W drugiej trzymamy sztangielk� i unosimy rami� nieco ponad lini� plec�w(nie ni�ej)-przedrami� prostopadle do pod�ogi. Z tej pozycji pracuj�c tylko tricepsem prostujemy rami� w �okciu unosz�c ci�ar a� do pe�nego wyprostu. W pozycji ko�cowej zatrzymujemy na moment ruch dla lepszego napi�cia mi�ni. Musimy zwraca� szczeg�ln� uwag� na to, by w trakcie �wiczenia w ruchu by�o jedynie przedrami�(praca w stawie �okciowym).Nie wolno dopuszcza� do bujania ramieniem. Ruch opuszczania wolniejszy od unoszenia, z pe�n� kontrol� ci�aru.",
-				new String[] { "g�owy boczne i przy�rodkowe mi�ni tr�jg�owych ramion" }).saveExercise();
+		new Exercise("PROSTOWNIE RAMIENIA ZE SZTANGIELKĄ W OPADZIE TUŁOWIA",
+				"Przy wyprostowanych plecach pochylamy się do przodu i opieramy jedną ręką o ławkę. W drugiej trzymamy sztangielkę i unosimy ramię nieco ponad linię pleców(nie niżej)-przedramię prostopadle do podłogi. Z tej pozycji pracując tylko tricepsem prostujemy ramię w łokciu unosząc ciężar aż do pełnego wyprostu. W pozycji końcowej zatrzymujemy na moment ruch dla lepszego napięcia mięśni. Musimy zwracać szczególną uwagę na to, by w trakcie ćwiczenia w ruchu było jedynie przedramię(praca w stawie łokciowym).Nie wolno dopuszczać do bujania ramieniem. Ruch opuszczania wolniejszy od unoszenia, z pełną kontrolą ciężaru.",
+				new String[] { "głowy boczne i przyśrodkowe mięśni trójgłowych ramion" }).saveExercise();
 
-		// Uda i po�ladki
-		new Exercise("PRZYSIADY ZE SZTANG� TRZYMAN� Z PRZODU",
-				"Podobna technika, jak przy zwyk�ych przysiadach. Mocniej jednak anga�owane s� mi�nie czworog�owe ud-spowodowane jest to pionow� pozycj� tu�owia zwi�zan� z po�o�eniem sztangi z przodu. Gryf spoczywa na przedniej cz�ci mi�ni naramiennych i g�rnej cz�ci klatki piersiowej. Uchwyt na szeroko�� bark�w-je�eli trzymamy sztang� podchwytem,(co jest mo�e mniej wygodne, ale bezpieczniejsze- gif 2a)lub w�szy-je�eli trzymamy gryf nachwytem-ze skrzy�owanymi ramionami",
+		// Uda i pośladki
+		new Exercise("PRZYSIADY ZE SZTANGĄ TRZYMANĄ Z PRZODU",
+				"Podobna technika, jak przy zwykłych przysiadach. Mocniej jednak angażowane są mięśnie czworogłowe ud-spowodowane jest to pionową pozycją tułowia związaną z położeniem sztangi z przodu. Gryf spoczywa na przedniej części mięśni naramiennych i górnej części klatki piersiowej. Uchwyt na szerokość barków-jeżeli trzymamy sztangę podchwytem,(co jest może mniej wygodne, ale bezpieczniejsze- gif 2a)lub węższy-jeżeli trzymamy gryf nachwytem-ze skrzyżowanymi ramionami",
 				new String[] {
-						"�wiczenie to anga�uje przede wszystkim g�owy boczne i przy�rodkowe mi�ni czworog�owych" })
-								.saveExercise();
+						"ćwiczenie to angażuje przede wszystkim głowy boczne i przyśrodkowe mięśni czworogłowych" })
+				.saveExercise();
 
 		new Exercise("HACK-PRZYSIADY",
-				"�wiczenie r�ni si� od zwyk�ych przysiad�w u�o�eniem sztangi(z ty�u za plecami, pod po�ladkami w wyprostowanych r�kach)i, co za tym idzie bardziej pionow� pozycj� tu�owia w trakcie wykonania �wiczenia. Ze wzgl�du na technik� wykonania i u�o�enie sztangi ci�ar, jaki u�yjemy w tym �wiczeniu b�dzie mniejszy, ni� w zwyk�ych przysiadach. Pozycja wyj�ciowa to wyprostowany tu��w, klatka wypchni�ta ku przodowi, nogi w rozkroku na szeroko�� bark�w, ramiona wyprostowane wzd�u� tu�owia, w d�oniach gryf sztangi(trzymany za plecami). Z tej pozycji wykonujemy przysiad do momentu, gdy nasze nogi b�d� ugi�te pod k�tem 90 stopni lub nieco mniejszym. Jednocze�nie wypychamy kolana nieco do przodu, nie odrywaj�c jednak st�p od pod�o�a-ci�ar wypychamy z pi�t. �wiczenie mo�na r�wnie� wykona� przy pomocy suwnicy Smitha",
-				new String[] { "wszystkie g�owy mi�sni czworog�owych ud" }).saveExercise();
+				"Ćwiczenie różni się od zwykłych przysiadów ułożeniem sztangi(z tyłu za plecami, pod pośladkami w wyprostowanych rękach)i, co za tym idzie bardziej pionową pozycją tułowia w trakcie wykonania ćwiczenia. Ze względu na technikę wykonania i ułożenie sztangi ciężar, jaki użyjemy w tym ćwiczeniu będzie mniejszy, niż w zwykłych przysiadach. Pozycja wyjściowa to wyprostowany tułów, klatka wypchnięta ku przodowi, nogi w rozkroku na szerokość barków, ramiona wyprostowane wzdłuż tułowia, w dłoniach gryf sztangi(trzymany za plecami). Z tej pozycji wykonujemy przysiad do momentu, gdy nasze nogi będą ugięte pod kątem 90 stopni lub nieco mniejszym. Jednocześnie wypychamy kolana nieco do przodu, nie odrywając jednak stóp od podłoża-ciężar wypychamy z pięt. Ćwiczenie można również wykonać przy pomocy suwnicy Smitha",
+				new String[] { "wszystkie głowy mięsni czworogłowych ud" }).saveExercise();
 
 		new Exercise("SYZYFKI",
-				"�wiczenie to mo�na wykonywa� zar�wno bez obci��enia, jak i z nim. Chwytamy wtedy w jedn� r�k� kr��ek i k�adziemy go sobie na klatce, drug� r�k� podpieramy si� dla zachowania r�wnowagi czego� stabilnego. �wiczenie polega na wykonaniu przysiadu z jednoczesnym mocnym odchyleniem tu�owia do ty�u i wspi�ciem na palce st�p po��czonym z wypchni�ciem kolan do przodu-dla lepszego rozci�gni�cia mi�ni g�rnej cz�ci ud i zwi�kszenia poziomu trudno�ci �wiczenia.",
-				new String[] { "wszystkie g�owy mi�ni czworog�owych ud" }).saveExercise();
+				"Ćwiczenie to można wykonywać zarówno bez obciążenia, jak i z nim. Chwytamy wtedy w jedną rękę krążek i kładziemy go sobie na klatce, drugą ręką podpieramy się dla zachowania równowagi czegoś stabilnego. Ćwiczenie polega na wykonaniu przysiadu z jednoczesnym mocnym odchyleniem tułowia do tyłu i wspięciem na palce stóp połączonym z wypchnięciem kolan do przodu-dla lepszego rozciągnięcia mięśni górnej części ud i zwiększenia poziomu trudności ćwiczenia.",
+				new String[] { "wszystkie głowy mięśni czworogłowych ud" }).saveExercise();
 
-		new Exercise("PROSTOWNIE N�G W SIADZIE",
-				"siadamy na siodle maszyny(�awki), dobrze gdy mamy oparcie-zapewnia ono lepsz� stabilno�� tu�owia, d�o�mi chwytamy za uchwyt(lub kraw�d�) maszyny. Nogi ugi�te w kolanach, zaparte o dr��ek maszyny na stopami(na wysoko�ci kostek). Z tej pozycji wykonujemy ruch prostowania n�g do pe�nego wyprostu w stawach kolanowych. W pozycji wyprostowanej zatrzymujemy ruch przez chwil� dla lepszego napi�cia mi�ni. Po czym powracamy do pozycji wyj�ciowej. Powr�t w tempie wolnym i pod pe�n� kontrol� ci�aru. Powietrze nabieramy przed rozpocz�ciem prostowania, wypuszczamy je, gdy ko�czymy prostowanie n�g.",
-				new String[] { "zaanga�owane wszystkie g�owy mi�ni czworog�owych ud" }).saveExercise();
+		new Exercise("PROSTOWNIE NÓG W SIADZIE",
+				"siadamy na siodle maszyny(ławki), dobrze gdy mamy oparcie-zapewnia ono lepszą stabilność tułowia, dłońmi chwytamy za uchwyt(lub krawędź) maszyny. Nogi ugięte w kolanach, zaparte o drążek maszyny na stopami(na wysokości kostek). Z tej pozycji wykonujemy ruch prostowania nóg do pełnego wyprostu w stawach kolanowych. W pozycji wyprostowanej zatrzymujemy ruch przez chwilę dla lepszego napięcia mięśni. Po czym powracamy do pozycji wyjściowej. Powrót w tempie wolnym i pod pełną kontrolą ciężaru. Powietrze nabieramy przed rozpoczęciem prostowania, wypuszczamy je, gdy kończymy prostowanie nóg.",
+				new String[] { "zaangażowane wszystkie głowy mięśni czworogłowych ud" }).saveExercise();
 
-		new Exercise("UGINANIE N�G W LE�ENIU",
-				"�wiczenie to wykonujemy na specjalnej maszynie,lub za pomoc� wyci�gu i specjalnym opasek na nogi(gif 8). K�adziemy si� na brzuchy tak, by poza �awk� wystawa�y jedynie podudzia poni�ej kolan, nogi wyprostowane w kolanach, zaparte o dr��ek maszyny na wysoko�ci �ci�gien Achillesa(nad pi�tami), d�onie na uchwytach(lub kraw�dzi) maszyny. Z tej pozycji wykonujemy ruch maksymalnego uginania n�g w kolanach. W ko�cowym momencie uginania zatrzymujemy ruch przez chwil� dla lepszego napi�cia mi�ni. Po czym powracamy do pozycji wyj�ciowej. Powr�t w tempie wolnym i pod pe�n� kontrol� ci�aru. Biodra(jak i reszta tu�owia) przez ca�y czas trwania �wiczenia przylegaj� do powierzchni �awki. Powietrze nabieramy przed rozpocz�ciem uginania, wypuszczamy je, gdy ko�czymy uginanie n�g. �wiczenie to mo�na wykona� r�wnie� w pozycji stoj�c(jednon�)",
-				new String[] { "mi�nie dwug�owe ud", "mi�nie p�ci�gniste", "mi�nie smuk�e", "mi�nie krawieckie" })
-						.saveExercise();
+		new Exercise("UGINANIE NÓG W LEŻENIU",
+				"Ćwiczenie to wykonujemy na specjalnej maszynie,lub za pomocą wyciągu i specjalnym opasek na nogi(gif 8). Kładziemy się na brzuchy tak, by poza ławkę wystawały jedynie podudzia poniżej kolan, nogi wyprostowane w kolanach, zaparte o drążek maszyny na wysokości ścięgien Achillesa(nad piętami), dłonie na uchwytach(lub krawędzi) maszyny. Z tej pozycji wykonujemy ruch maksymalnego uginania nóg w kolanach. W końcowym momencie uginania zatrzymujemy ruch przez chwilę dla lepszego napięcia mięśni. Po czym powracamy do pozycji wyjściowej. Powrót w tempie wolnym i pod pełną kontrolą ciężaru. Biodra(jak i reszta tułowia) przez cały czas trwania ćwiczenia przylegają do powierzchni ławki. Powietrze nabieramy przed rozpoczęciem uginania, wypuszczamy je, gdy kończymy uginanie nóg. Ćwiczenie to można wykonać również w pozycji stojąc(jednonóż)",
+				new String[] { "mięśnie dwugłowe ud", "mięśnie półścięgniste", "mięśnie smukłe", "mięśnie krawieckie" })
+				.saveExercise();
 
-		new Exercise("NO�YCE",
-				"�wiczenie to jest odwrotno�ci� poprzedniego-wykrok jest robiony do ty�u zamiast do przodu. Przysiad wykonujemy nie na nodze wykrocznej, ale na zakrocznej-czyli tej, kt�ra pozostaje w miejscu. �wiczenie to mo�na wykona� ze sztang�, sztangielkami, lub za pomoc� suwnicy Smitha",
-				new String[] { "przywodziciele kr�tkie i wielkie", "w mniejszym stopniu g�owy boczne",
-						"przy�rodkowe mi�sni czworog�owych ud" }).saveExercise();
+		new Exercise("NOŻYCE",
+				"Ćwiczenie to jest odwrotnością poprzedniego-wykrok jest robiony do tyłu zamiast do przodu. Przysiad wykonujemy nie na nodze wykrocznej, ale na zakrocznej-czyli tej, która pozostaje w miejscu. Ćwiczenie to można wykonać ze sztangą, sztangielkami, lub za pomocą suwnicy Smitha",
+				new String[] { "przywodziciele krótkie i wielkie", "w mniejszym stopniu głowy boczne",
+						"przyśrodkowe mięsni czworogłowych ud" }).saveExercise();
 
-		new Exercise("�CI�GANIE KOLAN W SIADZIE",
-				"�wiczenie wykonujemy na specjalnej maszynie siedz�c. Plecy oparte o oparcie maszyny, nogi ugi�te w kolanach pod k�tem prostym, oparte o poduszki maszyny. Z tej pozycji wykonujemy ruch ��czenie �ci�gania n�g do wewn�trz, jak w celu z��czenia ich ze sob�, pokonuj�c jednocze�nie op�r maszyny. W pozycji maksymalnego �ci�gni�cia n�g zatrzymujemy ruch przez chwil� dla lepszego napi�cia mi�ni. Po czym powracamy do pozycji wyj�ciowej. Powr�t w tempie wolnym i pod pe�n� kontrol� ci�aru. Powietrze nabieramy przed rozpocz�ciem �ci�gania, wypuszczamy je, gdy ko�czymy �ci�ganie-nogi s� w po�o�eniu najbli�szym sobie.",
-				new String[] { "mi�nie przywodziciele wielkie" }).saveExercise();
+		new Exercise("ŚCIĄGANIE KOLAN W SIADZIE",
+				"Ćwiczenie wykonujemy na specjalnej maszynie siedząc. Plecy oparte o oparcie maszyny, nogi ugięte w kolanach pod kątem prostym, oparte o poduszki maszyny. Z tej pozycji wykonujemy ruch łączenie ściągania nóg do wewnątrz, jak w celu złączenia ich ze sobą, pokonując jednocześnie opór maszyny. W pozycji maksymalnego ściągnięcia nóg zatrzymujemy ruch przez chwilę dla lepszego napięcia mięśni. Po czym powracamy do pozycji wyjściowej. Powrót w tempie wolnym i pod pełną kontrolą ciężaru. Powietrze nabieramy przed rozpoczęciem ściągania, wypuszczamy je, gdy kończymy ściąganie-nogi są w położeniu najbliższym sobie.",
+				new String[] { "mięśnie przywodziciele wielkie" }).saveExercise();
 
-		new Exercise("PRZYWODZENIE N�G DO WEWN�TRZ",
-				"Stajemy przy wyci�gu dolnym, zak�adamy na nog�(na wysoko�ci kostki)specjaln� opask� po��czon� z link� wyci�gu. Stajemy w takiej odleg�o�ci od wyci�gu, by ruch zaczyna� si� w momencie, gdy �wiczona noga odchylona jest od pionu w kierunku wyci�gu(gif 15). Z tej pozycji wykonujemy przywodzenie nogi przed sob�, a� do momentu, gdy trenowana noga znajdzie si� w pozycji odchylonej od pionu w kierunku przeciwnym do wyci�gu. W ko�cowym momencie( maksymalne wychylenie nogi w g�r�, do wewn�trz) mo�na zatrzyma� ruch na moment, po czym wracamy do pozycji wyj�ciowej.",
-				new String[] { "mi�nie przywodziciele wielkie" }).saveExercise();
+		new Exercise("PRZYWODZENIE NÓG DO WEWNĄTRZ",
+				"Stajemy przy wyciągu dolnym, zakładamy na nogę(na wysokości kostki)specjalną opaskę połączoną z linką wyciągu. Stajemy w takiej odległości od wyciągu, by ruch zaczynał się w momencie, gdy ćwiczona noga odchylona jest od pionu w kierunku wyciągu(gif 15). Z tej pozycji wykonujemy przywodzenie nogi przed sobą, aż do momentu, gdy trenowana noga znajdzie się w pozycji odchylonej od pionu w kierunku przeciwnym do wyciągu. W końcowym momencie( maksymalne wychylenie nogi w górę, do wewnątrz) można zatrzymać ruch na moment, po czym wracamy do pozycji wyjściowej.",
+				new String[] { "mięśnie przywodziciele wielkie" }).saveExercise();
 
-		new Exercise("ODWODZENIE N�G NA ZEWN�TRZ",
-				"Stajemy przy wyci�gu dolnym, zak�adamy na nog�(na wysoko�ci kostki)specjaln� opask� po��czon� z link� wyci�gu. Stajemy w takiej odleg�o�ci od wyci�gu, by ruch zaczyna� si� w momencie, gdy �wiczona noga odchylona jest od pionu w kierunku wyci�gu. Z tej pozycji wykonujemy odwodzenie(nie wymachy, jak to �wiczenie nazywane jest cz�sto)nogi w kierunku przeciwnym do wyci�gu. W ko�cowym momencie( maksymalne wychylenie nogi w g�r�) mo�na zatrzyma� ruch na moment, po czym wracamy do pozycji wyj�ciowej.",
-				new String[] { "przywodziciele wielkie", "przywodziciele d�ugie i smuk�e" }).saveExercise();
+		new Exercise("ODWODZENIE NÓG NA ZEWNĄTRZ",
+				"Stajemy przy wyciągu dolnym, zakładamy na nogę(na wysokości kostki)specjalną opaskę połączoną z linką wyciągu. Stajemy w takiej odległości od wyciągu, by ruch zaczynał się w momencie, gdy ćwiczona noga odchylona jest od pionu w kierunku wyciągu. Z tej pozycji wykonujemy odwodzenie(nie wymachy, jak to ćwiczenie nazywane jest często)nogi w kierunku przeciwnym do wyciągu. W końcowym momencie( maksymalne wychylenie nogi w górę) można zatrzymać ruch na moment, po czym wracamy do pozycji wyjściowej.",
+				new String[] { "przywodziciele wielkie", "przywodziciele długie i smukłe" }).saveExercise();
 
-		// �ydki
+		// łydki
 		new Exercise("WSPIECIA NA PALCE W STANIU",
-				"�wiczenie to mo�na wykonywa� zar�wno przy pomocy sztangi, suwnicy Smitha lub specjalnej maszyny. Mo�na wykonywa� je r�wnie� bez obci��enia, a tak�e jednon�.Sztang� mo�na r�wnie� zast�pi� sztangielk� trzyman� w d�oni(po tej samej stronie, co �wiczona noga: lewa noga- lewa r�ka, prawa noga- prawa r�ka). Istotnym elementem w tym �wiczeniu jest u�ycie grubej podk�adki pod palce st�p, kt�ra pozwala zwi�kszy� znacznie zakres ruchu, a co za tym idzie-poprawi� efektywno�� �wiczenia. Pozycja wyj�ciowa, to wyprostowany tu��w i plecy, nogi wyprostowane w kolanach, rozkrok 25-30 cm, palce st�p(wraz ze stawami ��cz�cymi je ze �r�dstopiem) na podk�adce-mi�snie �ydek rozci�gni�te maksymalnie. Z takiej pozycji rozpoczynamy wspi�cia. Ruch powinien by� wolny i dok�adny, ze sta�ym �czuciem� pracy mi�ni. Nale�y unika� odbijania si� pi�t od pod�ogi.",
-				new String[] { "obie g�owy mi�sni brzuchatych �ydek", "mi�nie p�aszczkowate", "strza�kowe d�ugie" })
-						.saveExercise();
+				"Ćwiczenie to można wykonywać zarówno przy pomocy sztangi, suwnicy Smitha lub specjalnej maszyny. Można wykonywać je również bez obciążenia, a także jednonóż.Sztangę można również zastąpić sztangielką trzymaną w dłoni(po tej samej stronie, co ćwiczona noga: lewa noga- lewa ręka, prawa noga- prawa ręka). Istotnym elementem w tym ćwiczeniu jest użycie grubej podkładki pod palce stóp, która pozwala zwiększyć znacznie zakres ruchu, a co za tym idzie-poprawić efektywność ćwiczenia. Pozycja wyjściowa, to wyprostowany tułów i plecy, nogi wyprostowane w kolanach, rozkrok 25-30 cm, palce stóp(wraz ze stawami łączącymi je ze śródstopiem) na podkładce-mięsnie łydek rozciągnięte maksymalnie. Z takiej pozycji rozpoczynamy wspięcia. Ruch powinien być wolny i dokładny, ze stałym „czuciem” pracy mięśni. Należy unikać odbijania się pięt od podłogi.",
+				new String[] { "obie głowy mięsni brzuchatych łydek", "mięśnie płaszczkowate", "strzałkowe długie" })
+				.saveExercise();
 
-		new Exercise("WSPI�CIA NA PALCE NA HACK-MASZYNIE",
-				"�wiczenie to mo�na wykonywa� w pozycji ty�em do maszyny, jak r�wnie� przodem do maszyny(o ile oczywi�cie dysponujemy maszyn� ze specjalnymi oparciami na barki). Wskazane jest, jak w pozosta�ych �wiczeniach na mi�snie �ydek, grubej podk�adki pod palce.",
-				new String[] { "przednie g�owy mi�ni brzuchatych �ydek", "mi�nie p�aszczkowate �ydek",
-						"g�owy boczne mi�ni brzuchatych", "mi�nie strza�kowe d�ugie" }).saveExercise();
+		new Exercise("WSPIĘCIA NA PALCE NA HACK-MASZYNIE",
+				"Ćwiczenie to można wykonywać w pozycji tyłem do maszyny, jak również przodem do maszyny(o ile oczywiście dysponujemy maszyną ze specjalnymi oparciami na barki). Wskazane jest, jak w pozostałych ćwiczeniach na mięsnie łydek, grubej podkładki pod palce.",
+				new String[] { "przednie głowy mięśni brzuchatych łydek", "mięśnie płaszczkowate łydek",
+						"głowy boczne mięśni brzuchatych", "mięśnie strzałkowe długie" }).saveExercise();
 
-		new Exercise("WYPYCHANIE CIʯARU NA MASZYNIE LUB SUWNICY PALCAMI N�G",
-				"Jest to, jakby odwrotna wersja wspi�� na Hack-maszynie- odwrotna jest pozycja-g�owa znajduje si� ni�ej n�g. Pozycja wyj�ciowa to siad na siedzisku maszyny/suwnicy, plecy oparte, nogi wyprostowane w kolanach, stopy dotykaj� do p�aszczyzny maszyny/suwnicy tylko palcami i stawami ��cz�cymi je ze sr�dstopiem, mi�nie �ydek rozci�gni�te maksymalnie. Z tej pozycji wypychamy ci�ar si�� mi�sni �ydek.",
-				new String[] { "przednie g�owy mi�ni brzuchatych �ydek", "mi�nie p�aszczkowate �ydek",
-						"g�owy boczne mi�ni brzuchatych", "mi�nie strza�kowe d�ugie" }).saveExercise();
+		new Exercise("WYPYCHANIE CIĘŻARU NA MASZYNIE LUB SUWNICY PALCAMI NÓG",
+				"Jest to, jakby odwrotna wersja wspięć na Hack-maszynie- odwrotna jest pozycja-głowa znajduje się niżej nóg. Pozycja wyjściowa to siad na siedzisku maszyny/suwnicy, plecy oparte, nogi wyprostowane w kolanach, stopy dotykają do płaszczyzny maszyny/suwnicy tylko palcami i stawami łączącymi je ze sródstopiem, mięśnie łydek rozciągnięte maksymalnie. Z tej pozycji wypychamy ciężar siłą mięsni łydek.",
+				new String[] { "przednie głowy mięśni brzuchatych łydek", "mięśnie płaszczkowate łydek",
+						"głowy boczne mięśni brzuchatych", "mięśnie strzałkowe długie" }).saveExercise();
 
-		new Exercise("ODWROTNE WSPI�CIA W STANIU",
-				"�wiczenie podobne do wspi�� na palce- r�nica jest taka, �e podk�adki s� pod pi�tami, a unosimy nie pi�ty, lecz �r�dstopia n�g. Pozycja taka, jak przy wspi�ciach na palce, ale nie rozci�gamy mi�ni �ydek w pocz�tkowej fazie-tylko mi�nie piszczelowe.",
-				new String[] { "mi�nie piszczelowe" }).saveExercise();
+		new Exercise("ODWROTNE WSPIĘCIA W STANIU",
+				"Ćwiczenie podobne do wspięć na palce- różnica jest taka, że podkładki są pod piętami, a unosimy nie pięty, lecz śródstopia nóg. Pozycja taka, jak przy wspięciach na palce, ale nie rozciągamy mięśni łydek w początkowej fazie-tylko mięśnie piszczelowe.",
+				new String[] { "mięśnie piszczelowe" }).saveExercise();
 
 		// przedramiona
-		new Exercise("UGINANIE NADGARSTK�W PODCHWYTEM W SIADZIE",
-				"�wiczenie to rozwija wewn�trzn� cz�� przedramion-podstawowe dla rozwoju tej partii mi�ni. Wyrabia si�� u�cisku d�oni. �apiemy sztang� w siadzie podchwytem, rozstaw d�oni ok. 15 cm(szerszy nadwyr�a nadgarstki).Opieramy przedramiona o uda, tak by poza nogi wystawa�y jedynie nasze d�onie. Pracuj� tylko nadgarstki. Staramy si�, aby zakres ruchu by� jak najwi�kszy i w tym celu pozwalamy w dolnym po�o�eniu na stoczenie si� sztangi a� do ko�c�w palc�w - po czym ponownie �ciskamy d�o� i zginamy maksymalnie nadgarstek. �wiczenie mo�na wykonywa� r�wnie� zast�puj�c sztang� dr��kiem wyci�gu dolnego, lub sztangielk� (jednor�cz).",
-				new String[] { "grupa mi�sni przedramion-zginaczy nadgarstk�w" }).saveExercise();
+		new Exercise("UGINANIE NADGARSTKÓW PODCHWYTEM W SIADZIE",
+				"Ćwiczenie to rozwija wewnętrzną część przedramion-podstawowe dla rozwoju tej partii mięśni. Wyrabia siłę uścisku dłoni. Łapiemy sztangę w siadzie podchwytem, rozstaw dłoni ok. 15 cm(szerszy nadwyręża nadgarstki).Opieramy przedramiona o uda, tak by poza nogi wystawały jedynie nasze dłonie. Pracują tylko nadgarstki. Staramy się, aby zakres ruchu był jak największy i w tym celu pozwalamy w dolnym położeniu na stoczenie się sztangi aż do końców palców - po czym ponownie ściskamy dłoń i zginamy maksymalnie nadgarstek. Ćwiczenie można wykonywać również zastępując sztangę drążkiem wyciągu dolnego, lub sztangielką (jednorącz).",
+				new String[] { "grupa mięsni przedramion-zginaczy nadgarstków" }).saveExercise();
 
-		new Exercise("UGINANIE NADGARSTK�W NACHWYTEM W SIADZIE",
-				"Pozycja i technika, jak w �wiczeniu poprzednim(podchwytem)-r�nica polega na uchwycie sztangi-w tym �wiczeniu stosujemy nachwyt i raczej nie pozwalamy na �zjechanie� sztangi na ko�ce palc�w. Zginaj�c nadgarstki opuszczamy sztang� tak mocno, jak pozwala na to zakres ruchu, po czym unosimy si�� nadgarstk�w sztang� tak wysoko, jak tylko damy rad�. W ruchu pozostaje jedynie nadgarstek.",
-				new String[] { "grupa mi�sni przedramion-prostownik�w nadgarstk�w" }).saveExercise();
+		new Exercise("UGINANIE NADGARSTKÓW NACHWYTEM W SIADZIE",
+				"Pozycja i technika, jak w ćwiczeniu poprzednim(podchwytem)-różnica polega na uchwycie sztangi-w tym ćwiczeniu stosujemy nachwyt i raczej nie pozwalamy na „zjechanie” sztangi na końce palców. Zginając nadgarstki opuszczamy sztangę tak mocno, jak pozwala na to zakres ruchu, po czym unosimy siłą nadgarstków sztangę tak wysoko, jak tylko damy radę. W ruchu pozostaje jedynie nadgarstek.",
+				new String[] { "grupa mięsni przedramion-prostowników nadgarstków" }).saveExercise();
 
 		// brzuch
-		new Exercise("SK�ONY W LE�ENIU P�ASKO",
-				"K�adziemy si� na materacu lub �awce. Nogi ugi�te, r�ce nad g�ow� i unosimy tu��w w g�r�. Pierwsza do g�ry unosi si� g�owa, potem barki, a na ko�cu reszta tu�owia. Dla lepszego zaanga�owania mi�ni sko�nych brzucha, w ko�cowej fazie unoszenia tu�owia mo�na wykonywa� nim skr�ty. Jest to jednak wersja trudniejsza i bardziej nara�aj�ca na ewentualne kontuzje(mocniej obci��a dolne partie grzbietu).Nabieramy powietrza przed rozpocz�ciem ruchu, a wypuszczamy je w trakcie unoszenia tu�owia.",
-				new String[] { "mi�nie proste brzucha", "sko�ne brzucha" }).saveExercise();
+		new Exercise("SKŁONY W LEŻENIU PŁASKO",
+				"Kładziemy się na materacu lub ławce. Nogi ugięte, ręce nad głową i unosimy tułów w górę. Pierwsza do góry unosi się głowa, potem barki, a na końcu reszta tułowia. Dla lepszego zaangażowania mięśni skośnych brzucha, w końcowej fazie unoszenia tułowia można wykonywać nim skręty. Jest to jednak wersja trudniejsza i bardziej narażająca na ewentualne kontuzje(mocniej obciąża dolne partie grzbietu).Nabieramy powietrza przed rozpoczęciem ruchu, a wypuszczamy je w trakcie unoszenia tułowia.",
+				new String[] { "mięśnie proste brzucha", "skośne brzucha" }).saveExercise();
 
-		new Exercise("SK�ONY W LE�ENIU G�OW� W Dӣ",
-				"Wykonanie jak w �wiczeniu poprzednim-p�asko, ale pozycja wyj�ciowa jest g�ow� w d� na �awce sko�nej. Dla lepszego zaanga�owania mi�ni sko�nych brzucha w ko�cowej fazie unoszenia tu�owia mo�na wykonywa� nim skr�ty. Jest to jednak wersja trudniejsza i bardziej nara�aj�ca na ewentualne kontuzje(mocniej obci��a dolne partie grzbietu).",
-				new String[] { "mi�nie proste brzucha", "sko�ne brzucha" }).saveExercise();
+		new Exercise("SKŁONY W LEŻENIU GŁOWĄ W DÓŁ",
+				"Wykonanie jak w ćwiczeniu poprzednim-płasko, ale pozycja wyjściowa jest głową w dół na ławce skośnej. Dla lepszego zaangażowania mięśni skośnych brzucha w końcowej fazie unoszenia tułowia można wykonywać nim skręty. Jest to jednak wersja trudniejsza i bardziej narażająca na ewentualne kontuzje(mocniej obciąża dolne partie grzbietu).",
+				new String[] { "mięśnie proste brzucha", "skośne brzucha" }).saveExercise();
 
-		new Exercise("UNOSZENIE N�G W LE�ENIU NA SKO�NEJ �AWCE",
-				"K�adziemy si� na �awce poziomej lub sko�nej-g�ow� do g�ry, ramiona za g�ow�(najlepiej je�li trzymamy jaki� punkt oparcia np. �awk� lub dr��ek), tu��w przylega do pod�o�a. Z tej pozycji unosimy nogi do klatki jednocze�nie zginaj�c je lekko w kolanach. Nabieramy powietrza przed rozpocz�ciem ruchu, a wypuszczamy je w trakcie unoszenia n�g. Pod koniec unoszenia mo�na skr�ca� nieco tu��w i biodra dla zaanga�owania mi�ni sko�nych brzucha.",
-				new String[] { "mi�nie proste brzucha", "sko�ne brzucha" }).saveExercise();
+		new Exercise("UNOSZENIE NÓG W LEŻENIU NA SKOŚNEJ ŁAWCE",
+				"Kładziemy się na ławce poziomej lub skośnej-głową do góry, ramiona za głową(najlepiej jeśli trzymamy jakiś punkt oparcia np. ławkę lub drążek), tułów przylega do podłoża. Z tej pozycji unosimy nogi do klatki jednocześnie zginając je lekko w kolanach. Nabieramy powietrza przed rozpoczęciem ruchu, a wypuszczamy je w trakcie unoszenia nóg. Pod koniec unoszenia można skręcać nieco tułów i biodra dla zaangażowania mięśni skośnych brzucha.",
+				new String[] { "mięśnie proste brzucha", "skośne brzucha" }).saveExercise();
 
-		new Exercise("UNOSZENIE N�G W ZWISIE NA DR��KU",
-				"Chwytamy dr��ek prosty nachwytem lub podchwytem, je�eli mamy k�opot z d�u�szym utrzymaniem si� na dr��ku, mo�emy zastosowa� paski. Unosimy nogi jak najwy�ej do brody. Mo�na r�wnie� w tym �wiczeniu wprowadzi� skr�ty tu�owia w ko�cowej fazie unoszenia n�g, co mocniej zaanga�uje do pracy mi�nie sko�ne brzucha. Jeszcze inna wersja(mocno anga�uj�ca mi�nie sko�ne)polega na jednoczesnym skr�cie bioder wraz z unoszeniem n�g. Osoby zaawansowane mog� w tym �wiczeniu u�ywa� dodatkowego obci��enia zamocowanego do n�g, ale tylko je�eli czuj� si� na si�ach-�atwo �przedobrzy� i nabawi� si� bolesnej kontuzji. Tempo ruchu umiarkowane, bez zryw�w. Im mniejsze ugi�cie n�g w kolanach, tym wi�kszy stopie� trudno�ci �wiczenia, wi�ksze zaanga�owanie mi�ni zginaczy bioder(przy zmniejszeniu pracy mi�sni brzucha) i wi�ksze napi�cia w dolnym odcinku grzbietu.",
-				new String[] { "mi�nie proste brzucha", "sko�ne brzucha", "mi�snie z�bate przednie" }).saveExercise();
+		new Exercise("UNOSZENIE NÓG W ZWISIE NA DRĄŻKU",
+				"Chwytamy drążek prosty nachwytem lub podchwytem, jeżeli mamy kłopot z dłuższym utrzymaniem się na drążku, możemy zastosować paski. Unosimy nogi jak najwyżej do brody. Można również w tym ćwiczeniu wprowadzić skręty tułowia w końcowej fazie unoszenia nóg, co mocniej zaangażuje do pracy mięśnie skośne brzucha. Jeszcze inna wersja(mocno angażująca mięśnie skośne)polega na jednoczesnym skręcie bioder wraz z unoszeniem nóg. Osoby zaawansowane mogą w tym ćwiczeniu używać dodatkowego obciążenia zamocowanego do nóg, ale tylko jeżeli czują się na siłach-łatwo „przedobrzyć” i nabawić się bolesnej kontuzji. Tempo ruchu umiarkowane, bez zrywów. Im mniejsze ugięcie nóg w kolanach, tym większy stopień trudności ćwiczenia, większe zaangażowanie mięśni zginaczy bioder(przy zmniejszeniu pracy mięsni brzucha) i większe napięcia w dolnym odcinku grzbietu.",
+				new String[] { "mięśnie proste brzucha", "skośne brzucha", "mięsnie zębate przednie" }).saveExercise();
 
-		new Exercise("UNOSZENIE N�G W PODPORZE",
-				"Stajemy plecami do specjalnej podpory, ramiona opieramy na poziomych poprzeczkach podpory, d�o�mi chwytamy uchwyty, w tym momencie znajdujemy si� ju� ponad pod�og�. Z tej pozycji unosimy nogi w g�r�, w kierunku klatki piersiowej, jednocze�nie uginaj�c je w kolanach. Technika podobna, jak w unoszeniu n�g w zwisie, jednak mi�nie zaanga�owane pod innym k�tem. W tym �wiczeniu r�wnie� nale�y pami�ta� o zachowaniu pe�nego zakresu ruchu-zmniejszanie go prowadzi do skracania mi�ni. Tempo ruchu umiarkowane, bez zryw�w. Im mniejsze ugi�cie n�g w kolanach, tym wi�kszy stopie� trudno�ci �wiczenia, wi�ksze zaanga�owanie mi�ni zginaczy bioder(przy zmniejszeniu pracy mi�sni brzucha) i wi�ksze napi�cia w dolnym odcinku grzbietu.",
-				new String[] { "mi�nie proste brzucha", "sko�ne brzucha," }).saveExercise();
+		new Exercise("UNOSZENIE NÓG W PODPORZE",
+				"Stajemy plecami do specjalnej podpory, ramiona opieramy na poziomych poprzeczkach podpory, dłońmi chwytamy uchwyty, w tym momencie znajdujemy się już ponad podłogą. Z tej pozycji unosimy nogi w górę, w kierunku klatki piersiowej, jednocześnie uginając je w kolanach. Technika podobna, jak w unoszeniu nóg w zwisie, jednak mięśnie zaangażowane pod innym kątem. W tym ćwiczeniu również należy pamiętać o zachowaniu pełnego zakresu ruchu-zmniejszanie go prowadzi do skracania mięśni. Tempo ruchu umiarkowane, bez zrywów. Im mniejsze ugięcie nóg w kolanach, tym większy stopień trudności ćwiczenia, większe zaangażowanie mięśni zginaczy bioder(przy zmniejszeniu pracy mięsni brzucha) i większe napięcia w dolnym odcinku grzbietu.",
+				new String[] { "mięśnie proste brzucha", "skośne brzucha," }).saveExercise();
 
-		new Exercise("�SPINANIE�, UNOSZENIE KOLAN W LE�ENIU P�ASKO",
-				"K�adziemy si� na �awce lub materacu p�asko, nogi wyprostowane, ramiona uniesione do g�ry nad g�ow�(dla lepszej stabilizacji mo�na chwyci� nimi za jaki� punkt oparcia- np. �awk�) i z tej pozycji podci�gamy kolana do klatki piersiowej. �wiczenie to mo�na r�wnie� wykonywa� z dodatkowym obci��eniem w postaci linki wyci�gu zahaczonej o nogi",
-				new String[] { "mi�nie proste brzucha" }).saveExercise();
+		new Exercise("”SPINANIE”, UNOSZENIE KOLAN W LEŻENIU PŁASKO",
+				"Kładziemy się na ławce lub materacu płasko, nogi wyprostowane, ramiona uniesione do góry nad głową(dla lepszej stabilizacji można chwycić nimi za jakiś punkt oparcia- np. ławkę) i z tej pozycji podciągamy kolana do klatki piersiowej. Ćwiczenie to można również wykonywać z dodatkowym obciążeniem w postaci linki wyciągu zahaczonej o nogi",
+				new String[] { "mięśnie proste brzucha" }).saveExercise();
 
-		new Exercise("SK�ONY TU�OWIA Z LINK� WYCI�GU SIEDZ�C",
-				"Siadamy na �awce, tu��w wyprostowany,(najlepiej z podpor� pod plecy),za plecami mamy wyci�g g�rny(zamiast r�czki zaczepiona lina z w�z�ami na ko�cach),chwytamy koniec liny(w ten spos�b, �e otacza nam z ty�u kark), z tej pozycji wykonujemy sk�ony w prz�d na taka g��boko��, by nie odrywa� dolnego odcinka plec�w od oparcia, staraj�c si� przez ca�y czas utrzyma� dolny odcinek grzbietu wyprostowany. Powrotny ruch kontrolowany i w wolnym tempie. Bardzo podobne dzia�anie ma �wiczenie wykonane na specjalnej maszynie",
-				new String[] { "proste brzucha", "sko�ne brzucha" }).saveExercise();
+		new Exercise("SKŁONY TUŁOWIA Z LINKĄ WYCIĄGU SIEDZĄC",
+				"Siadamy na ławce, tułów wyprostowany,(najlepiej z podporą pod plecy),za plecami mamy wyciąg górny(zamiast rączki zaczepiona lina z węzłami na końcach),chwytamy koniec liny(w ten sposób, że otacza nam z tyłu kark), z tej pozycji wykonujemy skłony w przód na taka głębokość, by nie odrywać dolnego odcinka pleców od oparcia, starając się przez cały czas utrzymać dolny odcinek grzbietu wyprostowany. Powrotny ruch kontrolowany i w wolnym tempie. Bardzo podobne działanie ma ćwiczenie wykonane na specjalnej maszynie",
+				new String[] { "proste brzucha", "skośne brzucha" }).saveExercise();
 
-		new Exercise("SKR�TY TU�OWIA",
-				"�wiczenie to mo�na wykona� zar�wno w pozycji siedz�cej, jak i stoj�cej-na maszynie lub, je�li takiej nie posiadamy-za pomoc� gryfu sztangi(tylko nie �olimpijskiej�- mo�e by� zbyt ci�ki)zaawansowani mog� pozwoli� sobie na u�ycie pewnego obci��enia, oczywi�cie z umiarem. Zbyt du�e przeci��a dolny odcinek kr�gos�upa. W pozycji stoj�cej- stajemy w rozkroku szerszym ni� barki, gryf k�adziemy na karku, ramiona oparte szeroko na gryfie. W pozycji siedz�cej(na maszynie) chwytamy r�czki maszyny, tu��w wyprostowany przez ca�y czas wykonania �wiczenia, nogi w jednakowej pozycji(ugi�te w kolanach i skierowane do przodu-najlepiej, gdy s� zaparte- dla lepszej stabilizacji tu�owia)w trakcie ca�ego �wiczenia.",
-				new String[] { "sko�ne brzucha", "proste brzucha", "prostowniki grzbietu" }).saveExercise();
+		new Exercise("SKRĘTY TUŁOWIA",
+				"Ćwiczenie to można wykonać zarówno w pozycji siedzącej, jak i stojącej-na maszynie lub, jeśli takiej nie posiadamy-za pomocą gryfu sztangi(tylko nie „olimpijskiej”- może być zbyt ciężki)zaawansowani mogą pozwolić sobie na użycie pewnego obciążenia, oczywiście z umiarem. Zbyt duże przeciąża dolny odcinek kręgosłupa. W pozycji stojącej- stajemy w rozkroku szerszym niż barki, gryf kładziemy na karku, ramiona oparte szeroko na gryfie. W pozycji siedzącej(na maszynie) chwytamy rączki maszyny, tułów wyprostowany przez cały czas wykonania ćwiczenia, nogi w jednakowej pozycji(ugięte w kolanach i skierowane do przodu-najlepiej, gdy są zaparte- dla lepszej stabilizacji tułowia)w trakcie całego ćwiczenia.",
+				new String[] { "skośne brzucha", "proste brzucha", "prostowniki grzbietu" }).saveExercise();
 
-		new Exercise("SK�ONY BOCZNE",
-				"Stajemy w lekkim rozkroku(na szeroko�� bark�w, lub nieco szerzej),tu��w wyprostowany, w jedn� r�k� chwytamy sztangielk�, drug� zak�adamy sobie na g�ow�(d�oni�). Z tej pozycji wykonujemy sk�on w kierunku wolnej r�ki, napinaj�c mi�nie sko�ne brzucha. Oddech bierzemy w momencie rozpocz�cia ruchu, wypuszczamy powietrze w momencie maksymalnego sk�onu. Powr�t do pozycji wyj�ciowej mo�e by� z przekroczeniem linii pionu(tu�owia)-zwi�ksza to napi�cie mi�ni sko�nych. Ruch powinien by� p�ynny i w wolnym tempie, bez gwa�townych szarpni��. �wiczenie to mo�na r�wnie� wykona� przy pomocy wyci�gu dolnego-zast�puj�c nim sztangielk�.",
-				new String[] { "sko�ne brzucha" }).saveExercise();
+		new Exercise("SKŁONY BOCZNE",
+				"Stajemy w lekkim rozkroku(na szerokość barków, lub nieco szerzej),tułów wyprostowany, w jedną rękę chwytamy sztangielkę, drugą zakładamy sobie na głowę(dłonią). Z tej pozycji wykonujemy skłon w kierunku wolnej ręki, napinając mięśnie skośne brzucha. Oddech bierzemy w momencie rozpoczęcia ruchu, wypuszczamy powietrze w momencie maksymalnego skłonu. Powrót do pozycji wyjściowej może być z przekroczeniem linii pionu(tułowia)-zwiększa to napięcie mięśni skośnych. Ruch powinien być płynny i w wolnym tempie, bez gwałtownych szarpnięć. Ćwiczenie to można również wykonać przy pomocy wyciągu dolnego-zastępując nim sztangielkę.",
+				new String[] { "skośne brzucha" }).saveExercise();
 
-		new Exercise("SK�ONY TU�OWIA Z LINK� WYCI�GU KL�CZ�C",
-				"Do tego �wiczenia zn�w potrzebna b�dzie specjalna lina za w�z�ami na ko�cach, zast�puj�ca r�czk� wyci�gu,(je�li takiej nie posiadamy mo�na �wiczenie wykona� trzymaj�c r�czk� wyci�gu nad g�ow�-zmieni si� nieco po�o�enie d�oni w �wiczeniu na mniej wygodne).Kl�kamy przed wyci�giem g�rnym, biodra cofni�te do ty�u, chwytamy ko�ce liny tak, by przebiega�a ona nad g�ow�, z tej pozycji wykonujemy sk�ony tu�owia w prz�d pokonuj�c op�r wyci�gu, jednocze�nie napinaj�c mi�nie brzucha. Bardzo istotne jest, by �czu� w�a�ciw� prac� mi�ni brzucha-tylko one wykonuj� prace. Unikamy ruch�w ramionami(anga�uje to do pracy mi�snie najszersze)-pozostaj� one w jednakowym po�o�eniu, d�onie obok g�owy(lub nad ni�). Powrotny ruch kontrolowany i w wolnym tempie. Zalecany ostro�ny dob�r obci��enia-zbyt du�e przeszkadza w poprawnym wykonaniu �wiczenia i ponadto przeci��a dolne partie grzbietu.",
-				new String[] { "proste brzucha", "sko�ne brzucha" }).saveExercise();
+		new Exercise("SKŁONY TUŁOWIA Z LINKĄ WYCIĄGU KLĘCZĄC",
+				"Do tego ćwiczenia znów potrzebna będzie specjalna lina za węzłami na końcach, zastępująca rączkę wyciągu,(jeśli takiej nie posiadamy można ćwiczenie wykonać trzymając rączkę wyciągu nad głową-zmieni się nieco położenie dłoni w ćwiczeniu na mniej wygodne).Klękamy przed wyciągiem górnym, biodra cofnięte do tyłu, chwytamy końce liny tak, by przebiegała ona nad głową, z tej pozycji wykonujemy skłony tułowia w przód pokonując opór wyciągu, jednocześnie napinając mięśnie brzucha. Bardzo istotne jest, by „czuć” właściwą pracę mięśni brzucha-tylko one wykonują prace. Unikamy ruchów ramionami(angażuje to do pracy mięsnie najszersze)-pozostają one w jednakowym położeniu, dłonie obok głowy(lub nad nią). Powrotny ruch kontrolowany i w wolnym tempie. Zalecany ostrożny dobór obciążenia-zbyt duże przeszkadza w poprawnym wykonaniu ćwiczenia i ponadto przeciąża dolne partie grzbietu.",
+				new String[] { "proste brzucha", "skośne brzucha" }).saveExercise();
 
 		return true;
 	}
